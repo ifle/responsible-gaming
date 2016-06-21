@@ -14,7 +14,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
 
         public GetDepositLimitHandler(MainContext mainDbContext)
         {
-            this._mainDbContext = mainDbContext;
+            _mainDbContext = mainDbContext;
         }
 
         public async Task<GetDepositLimitResponse> Handle(GetDepositLimit getDepositLimit)

@@ -17,12 +17,12 @@ namespace Pinnacle.ResponsibleGaming.Domain.Validators
 
         public DepositLimitValidator(MainContext mainDbContext)
         {
-            this._mainDbContext = mainDbContext;
+            _mainDbContext = mainDbContext;
         }
 
         public async Task Validate(DepositLimit depositLimit)
         {
-            var currentDepositLimit = await _mainDbContext.Limits.OfType<DepositLimit>().FirstOrDefaultAsync(LimitExpressions.CurrentCustomerLimit(depositLimit.CustomerId));
+            var currentDepositLimit = await _mainDbContext.Limits.OfType<DepositLimit>().FirstOrDefaultAsync(LimitExpressions.CurrentActiveCustomerLimit(depositLimit.CustomerId));
             if (!LimitRules.LimitMustNotExist(currentDepositLimit)) throw new ConflictException(ValidationMessages.ThereIsAnExitingLimitForThisCustomer); 
         }
     }
