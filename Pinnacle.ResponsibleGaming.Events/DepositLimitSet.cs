@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 
 namespace Pinnacle.ResponsibleGaming.Events
 {
- 
     public class DepositLimitSet
     {
         public string CustomerId { get; set; }
