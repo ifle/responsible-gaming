@@ -72,18 +72,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ResponseBuilders\GetDepositLimitBuilder.cs" />
-    <Compile Include="RequestMessages\SetDepositLimitMessages.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="RequestHandlers\SetDepositLimitHandler.cs" />
+    <Compile Include="Builders\GetDepositLimitBuilder.cs" />
+    <Compile Include="Messages\SetDepositLimitMessages.cs" />
+    <Compile Include="_Common\ObjectExtensions.cs" />
+    <Compile Include="Handlers\SetDepositLimitHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\CustomerRequest.cs" />
     <Compile Include="Requests\SetDepositLimit.cs" />
-    <Compile Include="RequestHandlers\GetDepositLimitHandler.cs" />
+    <Compile Include="Handlers\GetDepositLimitHandler.cs" />
     <Compile Include="Responses\GetDepositLimitResponse.cs" />
     <Compile Include="Requests\GetDepositLimit.cs" />
-    <Compile Include="RequestRules\SetDepositLimitRules.cs" />
-    <Compile Include="RequestValidators\SetDepositLimitValidator.cs" />
+    <Compile Include="Rules\SetDepositLimitRules.cs" />
+    <Compile Include="Validators\SetDepositLimitValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">

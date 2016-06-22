@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Pinnacle.ResponsibleGaming.Application.Requests;
-using Pinnacle.ResponsibleGaming.Application.RequestMessages;
-using Pinnacle.ResponsibleGaming.Application.RequestRules;
+using Pinnacle.ResponsibleGaming.Application.Messages;
+using Pinnacle.ResponsibleGaming.Application.Rules;
 
-namespace Pinnacle.ResponsibleGaming.Application.RequestValidators
+namespace Pinnacle.ResponsibleGaming.Application.Validators
 {
     public class SetDepositLimitValidator : AbstractValidator<SetDepositLimit>
     {

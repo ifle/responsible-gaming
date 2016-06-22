@@ -4,13 +4,13 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using log4net;
-using Pinnacle.ResponsibleGaming.Application.Extensions;
+using Pinnacle.ResponsibleGaming.Application._Common;
 using Pinnacle.ResponsibleGaming.Domain.Contexts;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Domain.Models;
-using Pinnacle.ResponsibleGaming.Domain.ModelValidators;
+using Pinnacle.ResponsibleGaming.Domain.Validators;
 
-namespace Pinnacle.ResponsibleGaming.Application.RequestHandlers
+namespace Pinnacle.ResponsibleGaming.Application.Handlers
 {
     public class SetDepositLimitHandler
     {

@@ -57,9 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\EventConfiguration.cs" />
-    <Compile Include="Constants\ValidationMessages.cs" />
+    <Compile Include="Messages\LimitMessages.cs" />
     <Compile Include="Contexts\MainContext.cs" />
-    <Compile Include="Exceptions\ConflictException.cs" />
+    <Compile Include="_Common\ConflictException.cs" />
     <Compile Include="Configurations\LogConfiguration.cs" />
     <Compile Include="Configurations\SelfExclusionConfiguration.cs" />
     <Compile Include="Configurations\LimitConfiguration.cs" />
@@ -72,9 +72,9 @@
     <Compile Include="Models\Limit.cs" />
     <Compile Include="Models\SelfExclusion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ModelExpressions\LimitExpressions.cs" />
+    <Compile Include="Expressions\LimitExpressions.cs" />
     <Compile Include="Rules\LimitRules.cs" />
-    <Compile Include="ModelValidators\DepositLimitValidator.cs" />
+    <Compile Include="Validators\DepositLimitValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

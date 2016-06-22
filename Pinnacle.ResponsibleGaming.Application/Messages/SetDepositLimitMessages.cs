@@ -1,6 +1,6 @@
 ﻿
 
-namespace Pinnacle.ResponsibleGaming.Application.RequestMessages
+namespace Pinnacle.ResponsibleGaming.Application.Messages
 {
     public static class SetDepositLimitMessages
     {

@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 
-namespace Pinnacle.ResponsibleGaming.Domain.ModelExpressions
+namespace Pinnacle.ResponsibleGaming.Domain.Expressions
 {
     public static class LimitExpressions
     {
