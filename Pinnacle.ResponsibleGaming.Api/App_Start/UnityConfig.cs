@@ -21,12 +21,12 @@ namespace Pinnacle.ResponsibleGaming.Api
 
             // e.g. container.RegisterType<ITestService, TestService>();
 
-            container.RegisterType<MainContext, MainContext>(new PerThreadLifetimeManager());
-            container.RegisterType<SetDepositLimitContext, SetDepositLimitContext>(new PerThreadLifetimeManager());
-            container.RegisterType<IDepositLimitRepository, DepositLimitRepository>(new PerThreadLifetimeManager());
-            container.RegisterType<ILogRepository, LogRepository>(new PerThreadLifetimeManager());
-            container.RegisterType<SetDepositLimitHandler, SetDepositLimitHandler>(new PerThreadLifetimeManager());
-            container.RegisterType<DepositLimitValidator, DepositLimitValidator>(new PerThreadLifetimeManager());
+            container.RegisterType<MainContext, MainContext>(new TransientLifetimeManager());
+            container.RegisterType<SetDepositLimitContext, SetDepositLimitContext>(new TransientLifetimeManager());
+            container.RegisterType<IDepositLimitRepository, DepositLimitRepository>(new TransientLifetimeManager());
+            container.RegisterType<ILogRepository, LogRepository>(new TransientLifetimeManager());
+            container.RegisterType<SetDepositLimitHandler, SetDepositLimitHandler>(new TransientLifetimeManager());
+            container.RegisterType<DepositLimitValidator, DepositLimitValidator>(new TransientLifetimeManager());
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
