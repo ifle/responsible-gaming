@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using Pinnacle.ResponsibleGaming.Domain.Contexts;
+using Pinnacle.ResponsibleGaming.Persistence.Contexts;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application.Responses;
 using Pinnacle.ResponsibleGaming.Domain.Models;

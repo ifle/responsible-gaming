@@ -1,9 +1,9 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Pinnacle.ResponsibleGaming.Domain.Configurations;
+using Pinnacle.ResponsibleGaming.Persistence.Configurations;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 
-namespace Pinnacle.ResponsibleGaming.Domain.Contexts
+namespace Pinnacle.ResponsibleGaming.Persistence.Contexts
 {
     public  class MainContext: DbContext
     {

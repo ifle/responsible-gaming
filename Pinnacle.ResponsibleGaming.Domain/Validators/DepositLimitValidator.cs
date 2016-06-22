@@ -3,26 +3,25 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Constants;
-using Pinnacle.ResponsibleGaming.Domain.Contexts;
 using Pinnacle.ResponsibleGaming.Domain._Common;
-using Pinnacle.ResponsibleGaming.Domain.Expressions;
 using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Validators
 {
     public class DepositLimitValidator
     {
-        private readonly MainContext _mainDbContext;
+        private readonly IDepositLimitRepository _depositLimitRepository;
 
-        public DepositLimitValidator(MainContext mainDbContext)
+        public DepositLimitValidator(IDepositLimitRepository depositLimitRepository)
         {
-            _mainDbContext = mainDbContext;
+            _depositLimitRepository = depositLimitRepository;
         }
 
         public async Task Validate(DepositLimit depositLimit)
         {
-            var currentDepositLimit = await _mainDbContext.Limits.OfType<DepositLimit>().FirstOrDefaultAsync(LimitExpressions.CurrentActiveCustomerLimit(depositLimit.CustomerId));
+            var currentDepositLimit = await _depositLimitRepository.GetCurrentActiveCustomerLimit(depositLimit.CustomerId);
             if (!LimitRules.LimitMustNotExist(currentDepositLimit)) throw new ConflictException(LimitMessages.ThereIsAnExitingLimitForThisCustomer); 
         }
     }
