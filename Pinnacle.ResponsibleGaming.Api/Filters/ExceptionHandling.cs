@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
-using Pinnacle.ResponsibleGaming.Domain._Common;
+using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
 
 namespace Pinnacle.ResponsibleGaming.Api.Filters
 {
