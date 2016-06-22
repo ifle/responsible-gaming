@@ -51,7 +51,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             _logRepository.Add(log);
 
             //Save
-            var i = await _setDepositLimitContext.SaveChangesAsync(depositLimit.ToDepositLimitSet());
+            await _setDepositLimitContext.SaveChangesAsync(depositLimit.ToDepositLimitSet());
 
             //Commit
             _setDepositLimitContext.Commit();
