@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Pinnacle.ResponsibleGaming.Application.Requests;
-using Pinnacle.ResponsibleGaming.Application.Constants;
-using Pinnacle.ResponsibleGaming.Application.Rules;
+using Pinnacle.ResponsibleGaming.Application.RequestMessages;
+using Pinnacle.ResponsibleGaming.Application.RequestRules;
 
-namespace Pinnacle.ResponsibleGaming.Application.Validators
+namespace Pinnacle.ResponsibleGaming.Application.RequestValidators
 {
     public class SetDepositLimitValidator : AbstractValidator<SetDepositLimit>
     {
@@ -11,15 +11,15 @@ namespace Pinnacle.ResponsibleGaming.Application.Validators
         {
             RuleFor(x => x.CustomerId)
                 .Must((x, request) => SetDepositLimitRules.StartDateCannotBeAPastDate(x.StartDate))
-                .WithMessage(ValidationMessages.CustomerIdDoesNotExist);
+                .WithMessage(SetDepositLimitMessages.CustomerIdDoesNotExist);
 
             RuleFor(x => x.StartDate)
                .Must((x, request) => SetDepositLimitRules.StartDateCannotBeAPastDate(x.StartDate))
-               .WithMessage(ValidationMessages.StartDateCannotBeAPastDate);
+               .WithMessage(SetDepositLimitMessages.StartDateCannotBeAPastDate);
 
             RuleFor(x => x.Author)
             .NotEmpty()
-            .WithMessage(ValidationMessages.AuthorMustBeProvided);
+            .WithMessage(SetDepositLimitMessages.AuthorMustBeProvided);
         }
     }
 }

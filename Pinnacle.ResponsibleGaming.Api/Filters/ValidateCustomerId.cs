@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-using Pinnacle.ResponsibleGaming.Application.Constants;
+using Pinnacle.ResponsibleGaming.Application.RequestMessages;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 
 namespace Pinnacle.ResponsibleGaming.Api.Filters
@@ -32,7 +32,7 @@ namespace Pinnacle.ResponsibleGaming.Api.Filters
                 {
                     actionContext.Response = new HttpResponseMessage(HttpStatusCode.NotFound)
                                              {
-                                                 Content = new StringContent(ValidationMessages.CustomerIdDoesNotExist)
+                                                 Content = new StringContent(SetDepositLimitMessages.CustomerIdDoesNotExist)
                                              };
                 }
             }

@@ -6,7 +6,7 @@ using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application.Responses;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 
-namespace Pinnacle.ResponsibleGaming.Application.Handlers
+namespace Pinnacle.ResponsibleGaming.Application.RequestHandlers
 {
     public class GetDepositLimitHandler
     {

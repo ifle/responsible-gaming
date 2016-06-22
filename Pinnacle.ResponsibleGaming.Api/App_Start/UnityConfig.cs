@@ -1,8 +1,8 @@
 using Microsoft.Practices.Unity;
 using System.Web.Http;
-using Pinnacle.ResponsibleGaming.Application.Handlers;
+using Pinnacle.ResponsibleGaming.Application.RequestHandlers;
 using Pinnacle.ResponsibleGaming.Domain.Contexts;
-using Pinnacle.ResponsibleGaming.Domain.Validators;
+using Pinnacle.ResponsibleGaming.Domain.ModelValidators;
 using Unity.WebApi;
 
 namespace Pinnacle.ResponsibleGaming.Api

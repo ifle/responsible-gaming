@@ -1,8 +1,8 @@
 ﻿
 
-namespace Pinnacle.ResponsibleGaming.Application.Constants
+namespace Pinnacle.ResponsibleGaming.Application.RequestMessages
 {
-    public static class ValidationMessages
+    public static class SetDepositLimitMessages
     {
         public const string CustomerIdDoesNotExist = "The provided customer ID does not exist";
         public const string StartDateCannotBeAPastDate = "The start date cannot be a past date";

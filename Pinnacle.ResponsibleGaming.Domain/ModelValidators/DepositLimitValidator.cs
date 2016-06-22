@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Constants;
 using Pinnacle.ResponsibleGaming.Domain.Contexts;
 using Pinnacle.ResponsibleGaming.Domain.Exceptions;
-using Pinnacle.ResponsibleGaming.Domain.Expressions;
+using Pinnacle.ResponsibleGaming.Domain.ModelExpressions;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
 
-namespace Pinnacle.ResponsibleGaming.Domain.Validators
+namespace Pinnacle.ResponsibleGaming.Domain.ModelValidators
 {
     public class DepositLimitValidator
     {

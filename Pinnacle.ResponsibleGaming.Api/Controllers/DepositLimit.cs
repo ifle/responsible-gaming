@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using Pinnacle.ResponsibleGaming.Application.Requests;
-using Pinnacle.ResponsibleGaming.Application.Handlers;
+using Pinnacle.ResponsibleGaming.Application.RequestHandlers;
 using Pinnacle.ResponsibleGaming.Api.Constants;
 
 namespace Pinnacle.ResponsibleGaming.Api.Controllers

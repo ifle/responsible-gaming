@@ -8,9 +8,9 @@ using Pinnacle.ResponsibleGaming.Application.Extensions;
 using Pinnacle.ResponsibleGaming.Domain.Contexts;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Domain.Models;
-using Pinnacle.ResponsibleGaming.Domain.Validators;
+using Pinnacle.ResponsibleGaming.Domain.ModelValidators;
 
-namespace Pinnacle.ResponsibleGaming.Application.Handlers
+namespace Pinnacle.ResponsibleGaming.Application.RequestHandlers
 {
     public class SetDepositLimitHandler
     {
