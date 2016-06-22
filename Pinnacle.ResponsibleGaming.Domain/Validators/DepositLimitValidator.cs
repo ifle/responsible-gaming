@@ -22,7 +22,8 @@ namespace Pinnacle.ResponsibleGaming.Domain.Validators
         public async Task Validate(DepositLimit depositLimit)
         {
             var currentDepositLimit = await _depositLimitRepository.GetCurrentActiveCustomerLimit(depositLimit.CustomerId);
-            if (!LimitRules.LimitMustNotExist(currentDepositLimit)) throw new ConflictException(LimitMessages.ThereIsAnExitingLimitForThisCustomer); 
+            if (!DepositLimitRules.DepositLimitMustBeMoreRestrictive(currentDepositLimit, depositLimit)) throw new ConflictException(DepositLimitMessages.DepositLimitMustBeMoreRestrictive);
+            
         }
     }
 }

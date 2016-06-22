@@ -16,7 +16,7 @@ namespace Pinnacle.ResponsibleGaming.Persistence.Configurations
                 .HasMaxLength(10)
                 .IsRequired();
 
-            Property(t => t.Value)
+            Property(t => t.Limit)
                 .HasColumnType("int")
                 .IsRequired();
 

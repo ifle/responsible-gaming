@@ -38,6 +38,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -54,10 +58,11 @@
     <Compile Include="Configurations\LimitConfiguration.cs" />
     <Compile Include="Configurations\LogConfiguration.cs" />
     <Compile Include="Configurations\SelfExclusionConfiguration.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Contexts\MainContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\LogRepository.cs" />
     <Compile Include="Repositories\DepositLimitRepository.cs" />
-    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\LimitRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +73,10 @@
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
+      <Project>{bf04adfc-75fa-4cf6-aa27-58e8610e7cc6}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

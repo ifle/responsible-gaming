@@ -19,7 +19,7 @@ namespace Pinnacle.ResponsibleGaming.Persistence.Configurations
 
             //Properties
             Property(t => t.AmountInCents)
-                .HasColumnName("Value")
+                .HasColumnName("Limit")
                 .HasColumnType("int")
                 .IsRequired();
         }

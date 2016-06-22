@@ -1,7 +1,10 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Persistence.Configurations;
 using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Events;
+using Pinnacle.ResponsibleGaming.Persistence.Models;
 
 namespace Pinnacle.ResponsibleGaming.Persistence.Contexts
 {
@@ -28,6 +31,13 @@ namespace Pinnacle.ResponsibleGaming.Persistence.Contexts
             modelBuilder.Configurations.Add(new EventConfiguration());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public Task<int> SaveChangesAsync(CustomerEvent customerEvent)
+        {
+            var @event = new Event(customerEvent);
+            Event.Add(@event);
+            return base.SaveChangesAsync();
         }
     }
 }

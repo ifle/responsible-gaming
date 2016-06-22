@@ -4,8 +4,9 @@ using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Repositories
 {
-    public  interface ILimitRepository<T>: IRepository<T> where T:Limit
+    public  interface ILimitRepository<T> where T:Limit
     {
-        Task<Limit> GetCurrentActiveCustomerLimit(string customerId);
+        Task<T> GetCurrentActiveCustomerLimit(string customerId);
+        void AddOrUpdate(T t);
     }
 }

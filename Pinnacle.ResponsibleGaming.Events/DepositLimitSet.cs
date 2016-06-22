@@ -2,9 +2,8 @@
 
 namespace Pinnacle.ResponsibleGaming.Events
 {
-    public class DepositLimitSet
+    public class DepositLimitSet: CustomerEvent
     {
-        public string CustomerId { get; set; }
         public decimal Amount { get; set; }
         public int? PeriodInDays { get; set; }
         public DateTime? StartDate { get; set; }

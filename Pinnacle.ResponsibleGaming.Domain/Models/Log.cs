@@ -6,7 +6,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
     {
         public string CustomerId { get; set; }
         public string Action { get; set; }
-        public int? Value { get; set; }
+        public int? Limit { get; set; }
         public int? PeriodInDays { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }

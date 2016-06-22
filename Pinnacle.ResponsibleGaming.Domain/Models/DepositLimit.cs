@@ -14,7 +14,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
             {
                 Action = action,
                 CustomerId = CustomerId,
-                Value = AmountInCents,
+                Limit = AmountInCents,
                 PeriodInDays = PeriodInDays,
                 StartDate = StartDate,
                 EndDate = EndDate,

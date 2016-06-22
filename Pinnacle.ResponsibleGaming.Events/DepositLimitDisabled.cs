@@ -3,8 +3,8 @@
 namespace Pinnacle.ResponsibleGaming.Events
 {
  
-    public class DepositLimitDisabled
+    public class DepositLimitDisabled: CustomerEvent
     {
-        public string CustomerId { get; set; }
+
     }
 }
