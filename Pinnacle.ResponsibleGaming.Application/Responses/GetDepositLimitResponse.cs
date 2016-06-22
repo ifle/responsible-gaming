@@ -15,7 +15,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Responses
             PeriodInDays = depositLimit.PeriodInDays;
             StartDate = depositLimit.StartDate;
             EndDate = depositLimit.EndDate;
-            Status = StatusBuilder.Build(depositLimit.Status);
+            Status = GetDepositLimitBuilder.BuildStatus(depositLimit.Status);
             Author = depositLimit.Author;
             CreationTime = depositLimit.CreationTime;
         }

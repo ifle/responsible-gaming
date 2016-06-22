@@ -72,7 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\LimitStatusBuilder.cs" />
+    <Compile Include="Builders\GetDepositLimitBuilder.cs" />
     <Compile Include="Constants\ValidationMessages.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Handlers\SetDepositLimitHandler.cs" />

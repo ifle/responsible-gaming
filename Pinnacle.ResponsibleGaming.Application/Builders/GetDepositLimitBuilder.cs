@@ -3,9 +3,9 @@
 
 namespace Pinnacle.ResponsibleGaming.Application.Builders
 {
-    public static class StatusBuilder
+    public static class GetDepositLimitBuilder
     {
-        public static string Build(LimitStatus limitStatus)
+        public static string BuildStatus(LimitStatus limitStatus)
         {
             return limitStatus == LimitStatus.Active ? "Active" : "Expired";
         }
