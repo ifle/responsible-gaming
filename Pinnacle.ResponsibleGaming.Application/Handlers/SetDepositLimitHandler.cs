@@ -3,9 +3,7 @@ using System.Threading.Tasks;
 using log4net;
 using Pinnacle.ResponsibleGaming.Application.Contexts;
 using Pinnacle.ResponsibleGaming.Application._Common;
-using Pinnacle.ResponsibleGaming.Persistence.Contexts;
 using Pinnacle.ResponsibleGaming.Application.Requests;
-using Pinnacle.ResponsibleGaming.Domain.Models;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain.Validators;
 
@@ -46,7 +44,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             //Add deposit limit or modify existing      
             _depositLimitRepository.AddOrUpdate(depositLimit);
 
-            //Save in log (this will move away and will be handled in cloud)
+            //Save in log (this model will go away when we listen from events in the cloud)
             var log = depositLimit.ToLog(setDepositLimit.GetType().Name);
             _logRepository.Add(log);
 
@@ -56,7 +54,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             //Commit
             _setDepositLimitContext.Commit();
 
-            _log.Info(setDepositLimit.SerializeAsKeyValues());  //(this will move away and will be handled in cloud)
+            _log.Info(setDepositLimit.SerializeAsKeyValues()); 
         }
     }
 }
