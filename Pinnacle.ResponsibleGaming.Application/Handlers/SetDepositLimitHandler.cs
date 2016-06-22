@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using log4net;
 using Pinnacle.ResponsibleGaming.Application.Contexts;
-using Pinnacle.ResponsibleGaming.Application._Common;
+using Pinnacle.ResponsibleGaming.Application._Common.Extensions;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain.Validators;

@@ -1,6 +1,6 @@
 ﻿
 
-namespace Pinnacle.ResponsibleGaming.Domain.Constants
+namespace Pinnacle.ResponsibleGaming.Domain.Messages
 {
     public static class DepositLimitMessages
     {

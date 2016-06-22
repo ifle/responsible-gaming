@@ -5,7 +5,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Rules
 {
     public static class DepositLimitRules
     {
-        public static bool DepositLimitMustBeMoreRestrictive(DepositLimit currentDepositLimit, DepositLimit depositLimit)
+        public static bool NewDepositLimitMustBeMoreRestrictiveThanTheCurrentOne(DepositLimit depositLimit, DepositLimit currentDepositLimit)
         {
             return currentDepositLimit == null || currentDepositLimit.AmountInCents > depositLimit.AmountInCents;
         }

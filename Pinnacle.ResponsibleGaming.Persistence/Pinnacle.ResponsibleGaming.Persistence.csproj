@@ -64,6 +64,7 @@
     <Compile Include="Repositories\LogRepository.cs" />
     <Compile Include="Repositories\DepositLimitRepository.cs" />
     <Compile Include="Repositories\LimitRepository.cs" />
+    <Compile Include="_Common\Extensions\ObjectExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

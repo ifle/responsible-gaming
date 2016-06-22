@@ -61,7 +61,7 @@
     <Compile Include="Repositories\IDepositLimitRepository.cs" />
     <Compile Include="Repositories\ILimitRepository.cs" />
     <Compile Include="Rules\DepositLimitRules.cs" />
-    <Compile Include="_Common\ConflictException.cs" />
+    <Compile Include="_Common\Exceptions\ConflictException.cs" />
     <Compile Include="Models\DepositLimit.cs" />
     <Compile Include="Models\LimitStatus.cs" />
     <Compile Include="Models\LimitType.cs" />
