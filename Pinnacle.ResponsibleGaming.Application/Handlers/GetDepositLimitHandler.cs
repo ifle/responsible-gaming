@@ -1,26 +1,22 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using Pinnacle.ResponsibleGaming.Persistence.Contexts;
+﻿using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application.Responses;
-using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Domain.Repositories;
 
 namespace Pinnacle.ResponsibleGaming.Application.Handlers
 {
     public class GetDepositLimitHandler
     {
-        private readonly MainContext _mainDbContext;
+        private readonly IDepositLimitRepository _depositLimitRepository;
 
-        public GetDepositLimitHandler(MainContext mainDbContext)
+        public GetDepositLimitHandler(IDepositLimitRepository depositLimitRepository)
         {
-            _mainDbContext = mainDbContext;
+            _depositLimitRepository = depositLimitRepository;
         }
 
         public async Task<GetDepositLimitResponse> Handle(GetDepositLimit getDepositLimit)
         {
-            var depositLimit =  await _mainDbContext.Limits.OfType<DepositLimit>()
-                .FirstOrDefaultAsync(x => x.CustomerId == getDepositLimit.CustomerId);
+            var depositLimit =  await _depositLimitRepository.GetByCustomerId(getDepositLimit.CustomerId);
             if (depositLimit == null) return null;
             var getDepositLimitResult = new GetDepositLimitResponse(depositLimit);
             return getDepositLimitResult;

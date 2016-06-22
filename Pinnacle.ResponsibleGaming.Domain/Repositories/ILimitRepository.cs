@@ -6,7 +6,8 @@ namespace Pinnacle.ResponsibleGaming.Domain.Repositories
 {
     public  interface ILimitRepository<T> where T:Limit
     {
-        Task<T> GetCurrentActiveCustomerLimit(string customerId);
+        Task<T> GetByCustomerId(string customerId);
+        Task<T> GetCurrentActive(string customerId);
         void AddOrUpdate(T t);
     }
 }

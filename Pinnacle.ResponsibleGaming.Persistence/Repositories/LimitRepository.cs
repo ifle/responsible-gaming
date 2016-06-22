@@ -19,7 +19,11 @@ namespace Pinnacle.ResponsibleGaming.Persistence.Repositories
             _mainDbContext = mainDbContext;
         }
 
-        public async Task<T> GetCurrentActiveCustomerLimit(string customerId)
+        public async Task<T> GetByCustomerId(string customerId)
+        {
+            return await _mainDbContext.Limits.OfType<T>().FirstOrDefaultAsync(x=>x.CustomerId == customerId);
+        }
+        public async Task<T> GetCurrentActive(string customerId)
         {
             return await _mainDbContext.Limits.OfType<T>().FirstOrDefaultAsync(LimitExpressions.CurrentActiveCustomerLimit(customerId)) as T;
         }

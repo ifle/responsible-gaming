@@ -16,6 +16,10 @@ namespace Pinnacle.ResponsibleGaming.Api._Common.Filters
                                        Content = new StringContent(actionContext.Exception.Message)
                                    };
             }
+            actionContext.Response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+            {
+                Content = new StringContent(actionContext.Exception.Message)
+            };
         }
     }
 }
