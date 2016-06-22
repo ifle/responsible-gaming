@@ -148,9 +148,9 @@
     <Compile Include="Controllers\Customers.cs" />
     <Compile Include="Controllers\Log.cs" />
     <Compile Include="Controllers\DepositLimit.cs" />
-    <Compile Include="Filters\ExceptionHandling.cs" />
+    <Compile Include="_Common\Filters\ExceptionHandling.cs" />
     <Compile Include="Filters\ValidateCustomerId.cs" />
-    <Compile Include="Filters\ValidateRequest.cs" />
+    <Compile Include="_Common\Filters\ValidateRequest.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

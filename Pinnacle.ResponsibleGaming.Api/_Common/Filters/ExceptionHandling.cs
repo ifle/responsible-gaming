@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Web.Http.Filters;
 using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
 
-namespace Pinnacle.ResponsibleGaming.Api.Filters
+namespace Pinnacle.ResponsibleGaming.Api._Common.Filters
 {
     public class ExceptionHandlingAttribute : ExceptionFilterAttribute
     {

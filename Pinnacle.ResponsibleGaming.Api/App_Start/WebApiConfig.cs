@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using Pinnacle.ResponsibleGaming.Api.Filters;
+using Pinnacle.ResponsibleGaming.Api._Common.Filters;
 
 namespace Pinnacle.ResponsibleGaming.Api
 {

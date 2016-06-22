@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
-namespace Pinnacle.ResponsibleGaming.Api.Filters
+namespace Pinnacle.ResponsibleGaming.Api._Common.Filters
 {
     public class ValidateRequestAttribute : ActionFilterAttribute
     {
