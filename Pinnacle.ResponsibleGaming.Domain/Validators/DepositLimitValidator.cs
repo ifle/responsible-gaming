@@ -7,6 +7,7 @@ using Pinnacle.ResponsibleGaming.Domain.Expressions;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
 using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Domain.Queries;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Validators
@@ -22,7 +23,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Validators
 
         public async Task Validate(DepositLimit depositLimit)
         {
-            var currentDepositLimit = await _mainContext.Limits.OfType<DepositLimit>().FirstOrDefaultAsync(LimitExpressions.CurrentActiveCustomerLimit<DepositLimit>(depositLimit.CustomerId));
+            var currentDepositLimit = await _mainContext.Limits.GetCurrentActive<DepositLimit>(depositLimit.CustomerId);
             if (!DepositLimitRules.NewDepositLimitMustBeMoreRestrictiveThanTheCurrentOne(depositLimit, currentDepositLimit)) throw new ConflictException(DepositLimitMessages.DepositLimitMustBeMoreRestrictive);
         }
     }

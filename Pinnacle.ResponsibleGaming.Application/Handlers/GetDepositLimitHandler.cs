@@ -5,6 +5,7 @@ using Pinnacle.ResponsibleGaming.Domain.Contexts;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application.Responses;
 using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Domain.Queries;
 
 namespace Pinnacle.ResponsibleGaming.Application.Handlers
 {
@@ -19,7 +20,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
 
         public async Task<GetDepositLimitResponse> Handle(GetDepositLimit getDepositLimit)
         {
-            var depositLimit = await _mainDbContext.Limits.OfType<DepositLimit>().FirstOrDefaultAsync(x => x.CustomerId == getDepositLimit.CustomerId);
+            var depositLimit = await _mainDbContext.Limits.GetByCustomerId<DepositLimit>(getDepositLimit.CustomerId);
             if (depositLimit == null) return null;
             var getDepositLimitResult = new GetDepositLimitResponse(depositLimit);
             return getDepositLimitResult;
