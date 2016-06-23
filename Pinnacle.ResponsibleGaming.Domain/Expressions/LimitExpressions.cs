@@ -6,9 +6,11 @@ namespace Pinnacle.ResponsibleGaming.Domain.Expressions
 {
     public static class LimitExpressions
     {
-        public static Expression<Func<T, bool>> CurrentActiveCustomerLimit<T>(string customerId) where T: Limit
+        public static Expression<Func<T, bool>> CurrentActiveLimit<T>(string customerId) where T: Limit
         {
-            return x => x.CustomerId == customerId && x.StartDate < DateTime.Now;
+            var now = DateTime.Now;
+            var now2 = DateTime.Now;
+            return x => x.CustomerId == customerId && now >= x.StartDate && (!x.EndDate.HasValue || now <  x.EndDate );
         }
     }
 }

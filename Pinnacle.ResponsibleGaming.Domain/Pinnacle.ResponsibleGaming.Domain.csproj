@@ -64,6 +64,7 @@
     <Compile Include="Contexts\MainContext.cs" />
     <Compile Include="Messages\DepositLimitMessages.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Queries\DepositLimitQuery.cs" />
     <Compile Include="Queries\LimitQuery.cs" />
     <Compile Include="Rules\DepositLimitRules.cs" />
     <Compile Include="_Common\Exceptions\ConflictException.cs" />

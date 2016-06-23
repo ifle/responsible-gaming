@@ -5,6 +5,7 @@ using log4net;
 using Pinnacle.ResponsibleGaming.Domain.Contexts;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application._Common.Extensions;
+using Pinnacle.ResponsibleGaming.Domain.Queries;
 using Pinnacle.ResponsibleGaming.Domain.Validators;
 
 namespace Pinnacle.ResponsibleGaming.Application.Handlers
@@ -13,14 +14,17 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
     {
         private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly MainContext _mainDbContext;
+        private readonly DepositLimitQuery _depositLimitQuery;
         private readonly DepositLimitValidator _depositLimitValidator;
 
         public SetDepositLimitHandler(
             MainContext mainDbContext,
+            DepositLimitQuery depositLimitQuery,
             DepositLimitValidator depositLimitValidator
             )
         {
             _mainDbContext = mainDbContext;
+            _depositLimitQuery = depositLimitQuery;
             _depositLimitValidator = depositLimitValidator;
         }
 
