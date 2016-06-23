@@ -18,10 +18,10 @@ namespace Pinnacle.ResponsibleGaming.Api._Common.Filters
                                    {
                                        Content = new StringContent(actionContext.Exception.Message)
                                    };
+                return;
             }
 
-            //actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, null, actionContext.Exception);
-            _log.Error("Please, contact CSD.", actionContext.Exception);
+            _log.Error(actionContext.Exception);
         }
     }
 }
