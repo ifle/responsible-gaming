@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Events;
-using Pinnacle.ResponsibleGaming.Persistence.Contexts;
+using Pinnacle.ResponsibleGaming.Domain.Contexts;
 
 
 namespace Pinnacle.ResponsibleGaming.Application.Contexts

@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using Pinnacle.ResponsibleGaming.Persistence.Models;
+using Pinnacle.ResponsibleGaming.Domain.Models;
 
-namespace Pinnacle.ResponsibleGaming.Persistence.Configurations
+namespace Pinnacle.ResponsibleGaming.Domain.Configurations
 {
     public class EventConfiguration : EntityTypeConfiguration<Event>
     {

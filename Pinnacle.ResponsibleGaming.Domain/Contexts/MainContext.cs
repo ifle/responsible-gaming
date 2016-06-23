@@ -4,10 +4,8 @@ using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Configurations;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 using Pinnacle.ResponsibleGaming.Events;
-using Pinnacle.ResponsibleGaming.Persistence.Configurations;
-using Pinnacle.ResponsibleGaming.Persistence.Models;
 
-namespace Pinnacle.ResponsibleGaming.Persistence.Contexts
+namespace Pinnacle.ResponsibleGaming.Domain.Contexts
 {
     public  class MainContext: DbContext
     {

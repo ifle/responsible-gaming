@@ -56,10 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\DepositLimitConfiguration.cs" />
+    <Compile Include="Configurations\EventConfiguration.cs" />
+    <Compile Include="Configurations\LimitConfiguration.cs" />
+    <Compile Include="Configurations\LogConfiguration.cs" />
+    <Compile Include="Configurations\SelfExclusionConfiguration.cs" />
+    <Compile Include="Contexts\MainContext.cs" />
     <Compile Include="Messages\DepositLimitMessages.cs" />
-    <Compile Include="Repositories\ILogRepository.cs" />
-    <Compile Include="Repositories\IDepositLimitRepository.cs" />
-    <Compile Include="Repositories\ILimitRepository.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Rules\DepositLimitRules.cs" />
     <Compile Include="_Common\Exceptions\ConflictException.cs" />
     <Compile Include="Models\DepositLimit.cs" />

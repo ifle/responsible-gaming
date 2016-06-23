@@ -92,10 +92,6 @@
       <Project>{bf04adfc-75fa-4cf6-aa27-58e8610e7cc6}</Project>
       <Name>Pinnacle.ResponsibleGaming.Events</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Persistence\Pinnacle.ResponsibleGaming.Persistence.csproj">
-      <Project>{2f97b487-9da7-4981-8ff9-d30803b502a3}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Persistence</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,4 +1,4 @@
-﻿using Pinnacle.ResponsibleGaming.Persistence.Contexts;
+﻿using Pinnacle.ResponsibleGaming.Domain.Contexts;
 
 
 namespace Pinnacle.ResponsibleGaming.Application.Contexts
