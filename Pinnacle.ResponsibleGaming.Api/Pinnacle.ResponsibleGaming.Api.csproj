@@ -24,7 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ApplicationInsightsResourceId>/subscriptions/1cc5ae95-8429-41e6-b573-0f79407be038/resourcegroups/ResponsibleGaming/providers/microsoft.insights/components/ResponsibleGaming</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/1cc5ae95-8429-41e6-b573-0f79407be038/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/Pinnacle.ResponsibleGaming.Api</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
