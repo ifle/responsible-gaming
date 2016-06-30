@@ -1,12 +1,12 @@
-﻿using Pinnacle.ResponsibleGaming.Domain.Contexts;
+﻿using System.Data.Entity;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Queries
 {
     public class DepositLimitQuery: LimitQuery<DepositLimit>
     {
-        public DepositLimitQuery(MainContext mainDbContext)
-            :base(mainDbContext)
+        public DepositLimitQuery(DbContext dbContext)
+            :base(dbContext)
         {
         }
     }

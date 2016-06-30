@@ -5,7 +5,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pinnacle.ResponsibleGaming.Publisher
+namespace Pinnacle.ResponsibleGaming.Bus
 {
     static class Program
     {

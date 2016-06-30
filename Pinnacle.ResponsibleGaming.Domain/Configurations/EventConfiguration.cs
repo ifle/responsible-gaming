@@ -11,6 +11,12 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
             HasKey(x => x.Json);
 
             //Properties
+            Property(t => t.Name)
+               .HasColumnType("nvarchar")
+               .HasMaxLength(50)
+               .HasColumnName("Event")
+               .IsRequired();
+
             Property(t => t.Json)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(1000)

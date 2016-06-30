@@ -8,7 +8,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pinnacle.ResponsibleGaming.Publisher
+namespace Pinnacle.ResponsibleGaming.Bus
 {
     public partial class Service1 : ServiceBase
     {

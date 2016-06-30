@@ -12,7 +12,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Rules
         {
             return !startDate.HasValue || (startDate.Value - DateTime.Now).Days >= 0;
         }
-        public static bool AmountMustBeAPositiveValue(decimal amount)
+        public static bool AmountMustBePositive(decimal amount)
         {
             return amount > 0;
         }

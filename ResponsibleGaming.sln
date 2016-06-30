@@ -9,11 +9,25 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.Api", "Pinnacle.ResponsibleGaming.Api\Pinnacle.ResponsibleGaming.Api.csproj", "{4D4BC99B-C546-4A3B-84ED-B7BF7BCBFD57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.Events", "Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj", "{BF04ADFC-75FA-4CF6-AA27-58E8610E7CC6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.Publisher", "Pinnacle.ResponsibleGaming.Publisher\Pinnacle.ResponsibleGaming.Publisher.csproj", "{4B3A7D0F-E157-4B1E-91FB-F29876F25571}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Pinnacle.ResponsibleGaming.Database", "Pinnacle.ResponsibleGaming.Database\Pinnacle.ResponsibleGaming.Database.sqlproj", "{B37022D4-6B83-471C-8310-5B1B230276EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.- Rest Api (Resources)", "1.- Rest Api (Resources)", "{997D3268-F37A-453D-8983-AA1510A79284}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.- Application (Requests)", "2.- Application (Requests)", "{C42B21A1-F725-44D6-AFA7-4896266942E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.- Domain (Models)", "3.- Domain (Models)", "{468E6C5C-5BD9-49E4-A5A6-F243C5608EBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.- Bus (Events)", "6.- Bus (Events)", "{81EEAB1D-A91B-481A-ABC8-56059F7626CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.Bus", "Pinnacle.ResponsibleGaming.Bus\Pinnacle.ResponsibleGaming.Bus.csproj", "{4B3A7D0F-E157-4B1E-91FB-F29876F25571}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.- Read (Views)", "4.- Read (Views)", "{08B569C4-5F70-4D6C-810B-08B88FF3F437}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.Read", "Pinnacle.ResponsibleGaming.Read\Pinnacle.ResponsibleGaming.Read.csproj", "{55F06917-39E2-4DBC-AF25-F145EDF0A838}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.Persistence", "Pinnacle.ResponsibleGaming.Persistence\Pinnacle.ResponsibleGaming.Persistence.csproj", "{24BDFF65-0F6E-478D-B55A-9F3B10B2F57D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.- Persistence (Contexts)", "5.- Persistence (Contexts)", "{8B6546FC-6869-495A-B7C5-35982917761A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,18 +54,6 @@ Global
 		{4D4BC99B-C546-4A3B-84ED-B7BF7BCBFD57}.Integration|Any CPU.Build.0 = Integration|Any CPU
 		{4D4BC99B-C546-4A3B-84ED-B7BF7BCBFD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D4BC99B-C546-4A3B-84ED-B7BF7BCBFD57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF04ADFC-75FA-4CF6-AA27-58E8610E7CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF04ADFC-75FA-4CF6-AA27-58E8610E7CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF04ADFC-75FA-4CF6-AA27-58E8610E7CC6}.Integration|Any CPU.ActiveCfg = Integration|Any CPU
-		{BF04ADFC-75FA-4CF6-AA27-58E8610E7CC6}.Integration|Any CPU.Build.0 = Integration|Any CPU
-		{BF04ADFC-75FA-4CF6-AA27-58E8610E7CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF04ADFC-75FA-4CF6-AA27-58E8610E7CC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Integration|Any CPU.ActiveCfg = Integration|Any CPU
-		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Integration|Any CPU.Build.0 = Integration|Any CPU
-		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B37022D4-6B83-471C-8310-5B1B230276EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B37022D4-6B83-471C-8310-5B1B230276EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B37022D4-6B83-471C-8310-5B1B230276EE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -61,8 +63,35 @@ Global
 		{B37022D4-6B83-471C-8310-5B1B230276EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B37022D4-6B83-471C-8310-5B1B230276EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B37022D4-6B83-471C-8310-5B1B230276EE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Integration|Any CPU.ActiveCfg = Integration|Any CPU
+		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Integration|Any CPU.Build.0 = Integration|Any CPU
+		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B3A7D0F-E157-4B1E-91FB-F29876F25571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55F06917-39E2-4DBC-AF25-F145EDF0A838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55F06917-39E2-4DBC-AF25-F145EDF0A838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55F06917-39E2-4DBC-AF25-F145EDF0A838}.Integration|Any CPU.ActiveCfg = Release|Any CPU
+		{55F06917-39E2-4DBC-AF25-F145EDF0A838}.Integration|Any CPU.Build.0 = Release|Any CPU
+		{55F06917-39E2-4DBC-AF25-F145EDF0A838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55F06917-39E2-4DBC-AF25-F145EDF0A838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24BDFF65-0F6E-478D-B55A-9F3B10B2F57D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BDFF65-0F6E-478D-B55A-9F3B10B2F57D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24BDFF65-0F6E-478D-B55A-9F3B10B2F57D}.Integration|Any CPU.ActiveCfg = Release|Any CPU
+		{24BDFF65-0F6E-478D-B55A-9F3B10B2F57D}.Integration|Any CPU.Build.0 = Release|Any CPU
+		{24BDFF65-0F6E-478D-B55A-9F3B10B2F57D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24BDFF65-0F6E-478D-B55A-9F3B10B2F57D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6223C61D-7F87-4C3D-BCA6-696BB31A5CA7} = {468E6C5C-5BD9-49E4-A5A6-F243C5608EBC}
+		{F39B93A6-28A8-4AE3-A5DC-28188465B33B} = {C42B21A1-F725-44D6-AFA7-4896266942E8}
+		{4D4BC99B-C546-4A3B-84ED-B7BF7BCBFD57} = {997D3268-F37A-453D-8983-AA1510A79284}
+		{B37022D4-6B83-471C-8310-5B1B230276EE} = {8B6546FC-6869-495A-B7C5-35982917761A}
+		{4B3A7D0F-E157-4B1E-91FB-F29876F25571} = {81EEAB1D-A91B-481A-ABC8-56059F7626CB}
+		{55F06917-39E2-4DBC-AF25-F145EDF0A838} = {08B569C4-5F70-4D6C-810B-08B88FF3F437}
+		{24BDFF65-0F6E-478D-B55A-9F3B10B2F57D} = {8B6546FC-6869-495A-B7C5-35982917761A}
 	EndGlobalSection
 EndGlobal

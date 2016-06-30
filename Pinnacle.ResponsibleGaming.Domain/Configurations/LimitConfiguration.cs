@@ -31,14 +31,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
                .HasColumnType("datetime2")
                .IsOptional();
 
-            Property(t => t.Author)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(20)
-                .IsRequired();
-
-            Property(t => t.CreationTime)
-              .HasColumnType("datetime2")
-              .IsRequired();
 
             //Ignore
             Ignore(x => x.Status);

@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Pinnacle.ResponsibleGaming.Publisher")]
+[assembly: AssemblyTitle("Pinnacle.ResponsibleGaming.Read")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Pinnacle.ResponsibleGaming.Publisher")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCompany("Tech-Tean")]
+[assembly: AssemblyProduct("Pinnacle.ResponsibleGaming.Read")]
+[assembly: AssemblyCopyright("Copyright © Tech-Tean 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4b3a7d0f-e157-4b1e-91fb-f29876f25571")]
+[assembly: Guid("55f06917-39e2-4dbc-af25-f145edf0a838")]
 
 // Version information for an assembly consists of the following four values:
 //

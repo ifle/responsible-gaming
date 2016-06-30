@@ -18,9 +18,9 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
             HasKey(x => x.CustomerId);
 
             //Properties
-            Property(t => t.AmountInCents)
+            Property(t => t.Amount)
                 .HasColumnName("Limit")
-                .HasColumnType("int")
+                .HasColumnType("decimal")
                 .IsRequired();
         }
     }

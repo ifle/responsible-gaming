@@ -1,4 +1,4 @@
-﻿namespace Pinnacle.ResponsibleGaming.Publisher
+﻿namespace Pinnacle.ResponsibleGaming.Bus
 {
     partial class Service1
     {

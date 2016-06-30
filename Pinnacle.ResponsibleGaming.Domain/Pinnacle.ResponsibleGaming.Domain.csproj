@@ -59,9 +59,7 @@
     <Compile Include="Configurations\DepositLimitConfiguration.cs" />
     <Compile Include="Configurations\EventConfiguration.cs" />
     <Compile Include="Configurations\LimitConfiguration.cs" />
-    <Compile Include="Configurations\LogConfiguration.cs" />
     <Compile Include="Configurations\SelfExclusionConfiguration.cs" />
-    <Compile Include="Contexts\MainContext.cs" />
     <Compile Include="Messages\DepositLimitMessages.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Queries\DepositLimitQuery.cs" />
@@ -71,7 +69,6 @@
     <Compile Include="Models\DepositLimit.cs" />
     <Compile Include="Models\LimitStatus.cs" />
     <Compile Include="Models\LimitType.cs" />
-    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Limit.cs" />
     <Compile Include="Models\SelfExclusion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,12 +78,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
-      <Project>{bf04adfc-75fa-4cf6-aa27-58e8610e7cc6}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Events</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

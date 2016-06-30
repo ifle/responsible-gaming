@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Read.Views;
 
-namespace Pinnacle.ResponsibleGaming.Domain.Configurations
+namespace Pinnacle.ResponsibleGaming.Read.Configurations
 {
     public class LogConfiguration : EntityTypeConfiguration<Log>
     {
@@ -16,8 +16,13 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
                 .HasMaxLength(10)
                 .IsRequired();
 
+            Property(t => t.Action)
+                .HasColumnType("nvarchar")
+                .HasMaxLength(50)
+                .IsRequired();
+
             Property(t => t.Limit)
-                .HasColumnType("int")
+                .HasColumnType("decimal")
                 .IsRequired();
 
             Property(t => t.PeriodInDays)
@@ -29,8 +34,8 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
                 .IsRequired();
 
             Property(t => t.EndDate)
-               .HasColumnType("datetime2")
-               .IsOptional();
+                .HasColumnType("datetime2")
+                .IsOptional();
 
             Property(t => t.Author)
                 .HasColumnType("nvarchar")

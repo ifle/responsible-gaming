@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using Pinnacle.ResponsibleGaming.Domain.Contexts;
 using Pinnacle.ResponsibleGaming.Domain.Expressions;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 
@@ -9,19 +8,19 @@ namespace Pinnacle.ResponsibleGaming.Domain.Queries
 {
     public abstract class LimitQuery<T> where T : Limit
     {
-        private readonly MainContext _mainDbContext;
+        private readonly DbContext _dbContext;
 
-        public LimitQuery(MainContext mainDbContext)
+        public LimitQuery(DbContext dbContext)
         {
-            _mainDbContext = mainDbContext;
+            _dbContext = dbContext;
         }
         public async Task<T> GetByCustomerId(string customerId)
         {
-            return await _mainDbContext.Limits.OfType<T>().FirstOrDefaultAsync(x => x.CustomerId == customerId);
+            return await _dbContext.Set<Limit>().OfType<T>().FirstOrDefaultAsync(x => x.CustomerId == customerId);
         }
         public async Task<T> GetCurrentActive(string customerId)
         {
-            return await _mainDbContext.Limits.OfType<T>().FirstOrDefaultAsync(LimitExpressions.CurrentActiveLimit<T>(customerId));
+            return await _dbContext.Set<Limit>().OfType<T>().FirstOrDefaultAsync(LimitExpressions.IsActiveCustomerLimit<T>(customerId));
         }
     }
 }

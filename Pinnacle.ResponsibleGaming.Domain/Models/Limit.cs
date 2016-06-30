@@ -1,4 +1,5 @@
 ﻿using System;
+using Pinnacle.ResponsibleGaming.Domain.Expressions;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Models
 {
@@ -12,15 +13,10 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
         {
             get
             {
-                var now = DateTime.Now;
-                if (StartDate < now && (!EndDate.HasValue || EndDate.Value > now))
+                if (LimitExpressions.IsActiveLimit<Limit>().Compile()(this))
                     return LimitStatus.Active;
                 return LimitStatus.Expired;
             }
         }
-        public string Author { get; set; }
-        public DateTime CreationTime { get; set; }
-
-       
     }
 }

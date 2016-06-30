@@ -20,7 +20,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
             //Properties
             Property(t => t.TimeInDays)
                 .HasColumnName("Limit")
-                .HasColumnType("int")
+                .HasColumnType("decimal")
                 .IsRequired();
         }
     }
