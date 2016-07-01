@@ -1,7 +1,7 @@
 ﻿using Pinnacle.ResponsibleGaming.Domain.Models;
 
 
-namespace Pinnacle.ResponsibleGaming.Application.ResponseBuilders
+namespace Pinnacle.ResponsibleGaming.Application.Builders
 {
     public static class GetDepositLimitBuilder
     {
