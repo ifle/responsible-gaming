@@ -187,9 +187,6 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants\ResourceNames.cs" />
-    <Compile Include="Controllers\Users.cs" />
-    <Compile Include="Controllers\Customers.cs" />
-    <Compile Include="Controllers\Log.cs" />
     <Compile Include="Controllers\DepositLimit.cs" />
     <Compile Include="_Common\Filters\ExceptionHandling.cs" />
     <Compile Include="Filters\ValidateCustomerId.cs" />

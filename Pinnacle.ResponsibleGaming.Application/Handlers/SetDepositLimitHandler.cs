@@ -35,16 +35,14 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         {
             using (var dbContextTransaction = _dbContext.Database.BeginTransaction())
             {
-                //Map
-                var depositLimit = setDepositLimit.ToDepositLimit();
-
                 //Validate
+                var depositLimit = setDepositLimit.ToDepositLimit();
                 await _depositLimitValidator.Validate(depositLimit);
 
                 //Add deposit limit or modify existing      
                 _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
 
-                //Save event (the event is stored under the same transaction and, aftewards, published through the bus) 
+                //Save event (the event gets stored under the same transaction) 
                 var depositLimitSet = setDepositLimit.ToDepositLimitSet(); 
                 var @event = new Event(depositLimitSet);
                 _dbContext.Set<Event>().Add(@event);
