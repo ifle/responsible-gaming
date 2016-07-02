@@ -11,14 +11,14 @@ namespace Pinnacle.ResponsibleGaming.Read.Configurations
             HasKey(x => x.CustomerId);
 
             //Properties
-            Property(t => t.CustomerId)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(10)
-                .IsRequired();
-
             Property(t => t.Action)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(50)
+                .IsRequired();
+
+            Property(t => t.CustomerId)
+                .HasColumnType("nvarchar")
+                .HasMaxLength(10)
                 .IsRequired();
 
             Property(t => t.Limit)

@@ -8,12 +8,11 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
         public EventConfiguration()
         {
             //Key
-            HasKey(x => x.Json);
+            HasKey(x => x.Id);
 
             //Properties
-            Property(t => t.EventId)
-              .HasColumnType("uniqueidentifier")
-              .HasColumnName("EventId")
+            Property(t => t.Id)
+              .HasColumnType("int")
               .IsRequired();
 
             Property(t => t.Name)
