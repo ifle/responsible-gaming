@@ -1,6 +1,6 @@
 ﻿
 
-namespace Pinnacle.ResponsibleGaming.Bus.Events
+namespace Pinnacle.ResponsibleGaming.Events
 {
  
     public abstract class CustomerEvent

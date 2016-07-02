@@ -36,12 +36,16 @@
     <OutputPath>bin\Integration\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EasyNetQ, Version=0.59.0.434, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyNetQ.0.59.0.434\lib\net45\EasyNetQ.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RabbitMQ.Client, Version=3.3.5.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
-      <HintPath>..\packages\RabbitMQ.Client.3.3.5\lib\net30\RabbitMQ.Client.dll</HintPath>
+    <Reference Include="RabbitMQ.Client, Version=3.6.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.3.6.0\lib\net45\RabbitMQ.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -55,9 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events\CustomerEvent.cs" />
-    <Compile Include="Events\DepositLimitDisabled.cs" />
-    <Compile Include="Events\DepositLimitSet.cs" />
+    <Compile Include="Bus.cs" />
     <Compile Include="_Common\Publishers\RabbitMqPublisher.cs" />
     <Compile Include="Service1.cs">
       <SubType>Component</SubType>
@@ -74,11 +76,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
-      <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Domain</Name>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
+      <Project>{bf04adfc-75fa-4cf6-aa27-58e8610e7cc6}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Read\Pinnacle.ResponsibleGaming.Read.csproj">
+      <Project>{55f06917-39e2-4dbc-af25-f145edf0a838}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Read</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

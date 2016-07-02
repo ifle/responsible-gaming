@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using log4net;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application._Common.Extensions;
-using Pinnacle.ResponsibleGaming.Bus.Events;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 using Pinnacle.ResponsibleGaming.Domain.Validators;
 using Pinnacle.ResponsibleGaming.Read.Updaters;

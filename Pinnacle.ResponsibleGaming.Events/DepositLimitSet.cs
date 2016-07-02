@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Pinnacle.ResponsibleGaming.Bus.Events
+namespace Pinnacle.ResponsibleGaming.Events
 {
     public class DepositLimitSet: CustomerEvent
     {
