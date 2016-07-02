@@ -27,6 +27,7 @@ namespace Pinnacle.ResponsibleGaming.Api
             container.RegisterType<SetDepositLimitHandler, SetDepositLimitHandler>();
             container.RegisterType<DepositLimitValidator, DepositLimitValidator>();
             container.RegisterType<LogUpdater, LogUpdater>();
+            container.RegisterType<Bus.Bus, Bus.Bus>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

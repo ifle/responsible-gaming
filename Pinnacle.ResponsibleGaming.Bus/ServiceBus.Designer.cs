@@ -1,6 +1,6 @@
 ﻿namespace Pinnacle.ResponsibleGaming.Bus
 {
-    partial class Service1
+    partial class ServiceBus
     {
         /// <summary> 
         /// Required designer variable.

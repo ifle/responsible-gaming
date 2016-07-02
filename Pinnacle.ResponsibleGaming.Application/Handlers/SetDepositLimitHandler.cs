@@ -17,17 +17,20 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         private readonly DepositLimitValidator _depositLimitValidator;
         private readonly DbContext _dbContext;
         private readonly LogUpdater _logUpdater;
+        private readonly Bus.Bus _bus;
 
         public SetDepositLimitHandler(
             DepositLimitValidator depositLimitValidator,
             DbContext dbContext,
-            LogUpdater logUpdater
+            LogUpdater logUpdater,
+            Bus.Bus bus
 
             )
         {
             _depositLimitValidator = depositLimitValidator;
             _dbContext = dbContext;
             _logUpdater = logUpdater;
+            _bus = bus;
         }
 
         public async Task Handle(SetDepositLimit setDepositLimit)
@@ -46,8 +49,8 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
                 var @event = new Event(depositLimitSet);
                 _dbContext.Set<Event>().Add(@event);
 
-                //Once implemented the bus, the following line will be replaced by bus.Send()
-                await _logUpdater.Update(depositLimitSet);
+                //await _logUpdater.Update(depositLimitSet);
+                await _bus.Publish(depositLimitSet);// this is temporary sa we cannot publish event without ensuring the commit
 
                 //Save
                 await _dbContext.SaveChangesAsync();

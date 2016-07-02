@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
+using Pinnacle.ResponsibleGaming.Persistence.Contexts;
+using Pinnacle.ResponsibleGaming.Read.Updaters;
 
 namespace Pinnacle.ResponsibleGaming.Bus
 {
@@ -14,12 +12,20 @@ namespace Pinnacle.ResponsibleGaming.Bus
         /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
+            var servicesToRun = new ServiceBase[]
             {
-                new Service1()
+                new ServiceBus()
             };
-            ServiceBase.Run(ServicesToRun);
+
+            if (Environment.UserInteractive)
+            {
+                var dbContext = new MainContext();
+                var bus = new Bus(new LogUpdater(dbContext));
+            }
+            else
+            {
+                ServiceBase.Run(servicesToRun);
+            }
         }
     }
 }

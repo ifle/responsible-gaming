@@ -10,48 +10,54 @@ namespace Pinnacle.ResponsibleGaming.Bus
     public class Bus
     {
         private IBus _bus;
+        private IExchange _exchange;
+        private IQueue _queue;
+
         private readonly LogUpdater _logUpdater;
 
         public Bus(LogUpdater logUpdater)
         {
             _logUpdater = logUpdater;
+            Initialize();
         }
 
         private void Initialize()
         {
-            const string rabbitMqConnectionString = "host=172.24.20.224;username=soccertrader;password=testtest";
+            const string rabbitMqConnectionString = "host=weasel.rmq.cloudamqp.com;virtualHost=rwcysecm;username=rwcysecm;password=SBv4_yE-S_GMcAeJjk2iIkBrySy3QoRr";
             _bus = RabbitHutch.CreateBus(rabbitMqConnectionString,
                 conventions => conventions
                     .Register<IEasyNetQLogger>(_ => new NullLogger())); //adds custom exchange prefix
+
+
+            _exchange = _bus.Advanced.ExchangeDeclare("responsible-gaming", ExchangeType.Fanout);
+            _queue = _bus.Advanced.QueueDeclare("responsible-gaming # responsible-gaming");
+            _bus.Advanced.Bind(_exchange, _queue, "");
+
+            Subscribe();
         }
 
-        public async void Publish<T>(T @event) where T : class
+        public async Task Publish<T>(T @event) where T : class
         {
-            var exchange = await _bus.Advanced.ExchangeDeclareAsync("someExchangeName", ExchangeType.Fanout);
-            var queue = await _bus.Advanced.QueueDeclareAsync("someQueueName");
-            var routingKey = string.Empty; //fanout
-            await _bus.Advanced.BindAsync(exchange, queue, routingKey);
-
-            //Publisher
-            await _bus.Advanced.PublishAsync(exchange, routingKey, false, new Message<T>(@event));
-
+            await _bus.Advanced.PublishAsync(_exchange, "", false, new Message<T>(@event));
         }
 
-        private async void Subscribe()
+        private void Subscribe()
         {
-            var queue = await _bus.Advanced.QueueDeclareAsync("someQueueName");
-
-            //Subscriber
-            _bus.Advanced.Consume(queue, x => x
-                .Add<DepositLimitSet>((message, info) =>
-                    {
-                        _logUpdater.Update(message.Body);
-                    })
-                .Add<DepositLimitDisabled>((message, info) =>
-                    {
-                        _logUpdater.Update(message.Body);
-                    })
+            _bus.Advanced.Consume(_queue, x => x
+                .Add<DepositLimitSet>((message, info) => Task.Run(async () =>
+                {
+                        await _logUpdater.Update(message.Body);
+                }))
+                .Add<DepositLimitDisabled>((message, info) => Task.Run(async () =>
+                {
+                        await _logUpdater.Update(message.Body);
+                }))
              );
+        }
+
+        public void Dispose()
+        {
+            _bus.Advanced.Dispose();
         }
     }
 }
