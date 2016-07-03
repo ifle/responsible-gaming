@@ -19,8 +19,15 @@ namespace Pinnacle.ResponsibleGaming.Bus
 
             if (Environment.UserInteractive)
             {
-                var dbContext = new MainContext();
-                var bus = new Bus(new LogUpdater(dbContext));
+                try
+                {
+                    var dbContext = new MainContext();
+                    var bus = new Bus(new LogUpdater(dbContext));
+                }
+                catch (Exception ex)
+                {
+                    var s = "";
+                }
             }
             else
             {

@@ -2,7 +2,7 @@
 using FluentValidation.Attributes;
 using Newtonsoft.Json;
 using Pinnacle.ResponsibleGaming.Application.Validators;
-using Pinnacle.ResponsibleGaming.Events;
+using Pinnacle.ResponsibleGaming.Domain.Events;
 
 namespace Pinnacle.ResponsibleGaming.Application.Requests
 {

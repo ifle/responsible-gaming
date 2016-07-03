@@ -92,10 +92,6 @@
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
-      <Project>{bf04adfc-75fa-4cf6-aa27-58e8610e7cc6}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Events</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Read\Pinnacle.ResponsibleGaming.Read.csproj">
       <Project>{55f06917-39e2-4dbc-af25-f145edf0a838}</Project>
       <Name>Pinnacle.ResponsibleGaming.Read</Name>

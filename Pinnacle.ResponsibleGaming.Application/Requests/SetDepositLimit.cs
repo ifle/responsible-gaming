@@ -2,7 +2,7 @@
 using FluentValidation.Attributes;
 using Newtonsoft.Json;
 using Pinnacle.ResponsibleGaming.Application.Validators;
-using Pinnacle.ResponsibleGaming.Events;
+using Pinnacle.ResponsibleGaming.Domain.Events;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Application.Requests
@@ -33,7 +33,9 @@ namespace Pinnacle.ResponsibleGaming.Application.Requests
                        Amount = Amount,
                        PeriodInDays = PeriodInDays,
                        StartDate = StartDate,
-                       EndDate = EndDate
+                       EndDate = EndDate,
+                       Author = Author,
+                       CreationTime = CreationTime
                    };
         }
 

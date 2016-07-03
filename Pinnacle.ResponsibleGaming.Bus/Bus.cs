@@ -2,7 +2,7 @@
 using EasyNetQ;
 using EasyNetQ.Loggers;
 using EasyNetQ.Topology;
-using Pinnacle.ResponsibleGaming.Events;
+using Pinnacle.ResponsibleGaming.Domain.Events;
 using Pinnacle.ResponsibleGaming.Read.Updaters;
 
 namespace Pinnacle.ResponsibleGaming.Bus

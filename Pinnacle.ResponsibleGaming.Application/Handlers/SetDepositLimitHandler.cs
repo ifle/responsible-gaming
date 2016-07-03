@@ -34,24 +34,29 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         {
             using (var dbContextTransaction = _dbContext.Database.BeginTransaction())
             {
-                var newDepositLimit = setDepositLimit.ToDepositLimit();
-                var depositLimit = await _depositLimitQuery.GetByCustomerId(setDepositLimit.CustomerId);
-
-                depositLimit.ApplyNewLimit(newDepositLimit); 
-                _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
-
-                //Save event (the event gets stored under the same transaction) 
-                var depositLimitSet = setDepositLimit.ToDepositLimitSet(); 
+                //Event 
+                var depositLimitSet = setDepositLimit.ToDepositLimitSet();
                 var @event = new Event(depositLimitSet);
                 _dbContext.Set<Event>().Add(@event);
 
-                //await _logUpdater.Update(depositLimitSet);
-                await _bus.Publish(depositLimitSet);// this is temporary sa we cannot publish event without ensuring the commit
+                //State
+                var depositLimit = await _depositLimitQuery.GetByCustomerId(setDepositLimit.CustomerId);
+                if (depositLimit != null)
+                {
+                    depositLimit.Apply(depositLimitSet);
+                }
+                else
+                {
+                    depositLimit = new DepositLimit();
+                    depositLimit.Apply(depositLimitSet);
+                }
+                _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
 
-                //Save
-                await _dbContext.SaveChangesAsync();
+                //Publish (to remove)
+                await _bus.Publish(depositLimitSet);
 
                 //Commit
+                await _dbContext.SaveChangesAsync();
                 dbContextTransaction.Commit();
             }
             _log.Info(setDepositLimit.SerializeAsKeyValues());

@@ -1,11 +1,11 @@
-﻿using Pinnacle.ResponsibleGaming.Events;
-using Pinnacle.ResponsibleGaming.Read.Views;
+﻿using Pinnacle.ResponsibleGaming.Domain.Events;
+using Pinnacle.ResponsibleGaming.Read.Models;
 
 namespace Pinnacle.ResponsibleGaming.Read.Mappers
 {
-    public static class LogMapper
+    public static class LogEntryMapper
     {
-        public static Log Map(this Log t, DepositLimitSet depositLimitSet)
+        public static LogEntry Map(this LogEntry t, DepositLimitSet depositLimitSet)
         {
             t.Action = depositLimitSet.GetType().Name;
             t.CustomerId = depositLimitSet.CustomerId;
@@ -19,7 +19,7 @@ namespace Pinnacle.ResponsibleGaming.Read.Mappers
             return t;
         }
 
-        public static Log Map(this Log t, DepositLimitDisabled depositLimitDisabled)
+        public static LogEntry Map(this LogEntry t, DepositLimitDisabled depositLimitDisabled)
         {
             t.Action = depositLimitDisabled.GetType().Name;
             t.CustomerId = depositLimitDisabled.CustomerId;

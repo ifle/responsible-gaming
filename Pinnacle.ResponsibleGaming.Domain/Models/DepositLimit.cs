@@ -1,5 +1,4 @@
-﻿
-
+﻿using Pinnacle.ResponsibleGaming.Domain.Events;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
 using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
@@ -10,19 +9,21 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
     {
         public decimal Amount { get; set; }
 
-        public void ApplyNewLimit(DepositLimit depositLimit)
+        public void Apply(DepositLimitSet depositLimitSet)
         {
-            if (!DepositLimitRules.NewDepositLimitMustBeMoreRestrictiveThanTheCurrentOne(depositLimit, this)) { throw new ConflictException(DepositLimitMessages.DepositLimitMustBeMoreRestrictive); }
-            Map(depositLimit);
+            if (!DepositLimitRules.NewDepositLimitMustBeMoreRestrictiveThanTheCurrentOne(depositLimitSet, this)) { throw new ConflictException(DepositLimitMessages.DepositLimitMustBeMoreRestrictive); }
+            Map(depositLimitSet);
         }
 
-        public void Map(DepositLimit depositLimit)
+        public void Map(DepositLimitSet depositLimitSet)
         {
-            CustomerId = CustomerId;
-            Amount = Amount;
-            PeriodInDays = PeriodInDays;
-            StartDate = StartDate;
-            EndDate = EndDate;
+            CustomerId = depositLimitSet.CustomerId;
+            Amount = depositLimitSet.Amount;
+            PeriodInDays = depositLimitSet.PeriodInDays;
+            StartDate = depositLimitSet.StartDate;
+            EndDate = depositLimitSet.EndDate;
+            Author = depositLimitSet.Author;
+            CreationTime = depositLimitSet.CreationTime;
         }
     }
 }

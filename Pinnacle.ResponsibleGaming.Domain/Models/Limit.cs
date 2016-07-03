@@ -1,4 +1,5 @@
 ﻿using System;
+using Pinnacle.ResponsibleGaming.Domain.Events;
 using Pinnacle.ResponsibleGaming.Domain.Expressions;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Models
@@ -9,6 +10,8 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
         public int? PeriodInDays { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public string Author { get; set; }
+        public DateTime CreationTime { get; set; }
         public LimitStatus Status
         {
             get
@@ -20,10 +23,13 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
         }
         public bool IsRecurring => PeriodInDays.HasValue;
 
-        public void Expire()
+        public void Apply(DepositLimitDisabled depositLimitDisabled)
         {
             const int coolingOffPeriodInDays = 1;
+
             EndDate = DateTime.Now.AddDays(coolingOffPeriodInDays);
+            Author = Author;
+            CreationTime = CreationTime;
         }
     }
 }

@@ -87,9 +87,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
-      <Project>{bf04adfc-75fa-4cf6-aa27-58e8610e7cc6}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Events</Name>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
+      <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Persistence\Pinnacle.ResponsibleGaming.Persistence.csproj">
       <Project>{24bdff65-0f6e-478d-b55a-9f3b10b2f57d}</Project>

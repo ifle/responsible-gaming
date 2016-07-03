@@ -1,8 +1,9 @@
 ﻿using System;
 
-namespace Pinnacle.ResponsibleGaming.Read.Views
+
+namespace Pinnacle.ResponsibleGaming.Read.Models
 {
-    public class Log
+    public class LogEntry
     {
         public string CustomerId { get; set; }
         public string Action { get; set; }
@@ -12,6 +13,5 @@ namespace Pinnacle.ResponsibleGaming.Read.Views
         public DateTime? EndDate { get; set; }
         public string Author { get; set; }
         public DateTime CreationTime { get; set; }
-
     }
 }
