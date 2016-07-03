@@ -10,14 +10,17 @@ namespace Pinnacle.ResponsibleGaming.Api.Controllers
     {
         private readonly GetDepositLimitHandler _getDepositLimitHandler;
         private readonly SetDepositLimitHandler _setDepositLimitHandler;
+        private readonly DisableDepositLimitHandler _disableDepositLimitHandler;
 
         public DepositLimitController(
             GetDepositLimitHandler getDepositLimitHandler,
-            SetDepositLimitHandler setDepositLimitHandler
+            SetDepositLimitHandler setDepositLimitHandler,
+            DisableDepositLimitHandler disableDepositLimitHandler
             )
         {
             _getDepositLimitHandler = getDepositLimitHandler;
             _setDepositLimitHandler = setDepositLimitHandler;
+            _disableDepositLimitHandler = disableDepositLimitHandler;
         }
 
         [HttpGet]
@@ -34,7 +37,15 @@ namespace Pinnacle.ResponsibleGaming.Api.Controllers
         [Route(ResourceNames.DepositLimit)]
         public async Task<IHttpActionResult> Set([FromUri]string customerId, SetDepositLimit request)
         {
-            await _setDepositLimitHandler.Handle(request);
+            if(!await _setDepositLimitHandler.Handle(request)) return NotFound();
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route(ResourceNames.DepositLimit)]
+        public async Task<IHttpActionResult> Expire([FromUri]string customerId, DisableDepositLimit request)
+        {
+            if (!await _disableDepositLimitHandler.Handle(request)) return NotFound();
             return Ok();
         }
     }

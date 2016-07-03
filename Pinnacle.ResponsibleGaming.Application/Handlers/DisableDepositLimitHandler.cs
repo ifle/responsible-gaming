@@ -11,14 +11,14 @@ using Pinnacle.ResponsibleGaming.Read.Updaters;
 
 namespace Pinnacle.ResponsibleGaming.Application.Handlers
 {
-    public class SetDepositLimitHandler
+    public class DisableDepositLimitHandler
     {
         private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly DbContext _dbContext;
         private readonly DepositLimitQuery _depositLimitQuery;
         private readonly Bus.Bus _bus;
 
-        public SetDepositLimitHandler(
+        public DisableDepositLimitHandler(
             DbContext dbContext,
             DepositLimitQuery depositLimitQuery,
             Bus.Bus bus
@@ -30,23 +30,23 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             _bus = bus;
         }
 
-        public async Task<bool> Handle(SetDepositLimit setDepositLimit)
+        public async Task<bool> Handle(DisableDepositLimit disableDepositLimit)
         {
             using (var dbContextTransaction = _dbContext.Database.BeginTransaction())
             {
-                var newDepositLimit = setDepositLimit.ToDepositLimit();
-                var depositLimit = await _depositLimitQuery.GetByCustomerId(setDepositLimit.CustomerId);
+                var depositLimit = await _depositLimitQuery.GetByCustomerId(disableDepositLimit.CustomerId);
+                if (depositLimit == null) return false;
 
-                depositLimit.ApplyNewLimit(newDepositLimit); 
+                depositLimit.Expire(); 
                 _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
 
                 //Save event (the event gets stored under the same transaction) 
-                var depositLimitSet = setDepositLimit.ToDepositLimitSet(); 
-                var @event = new Event(depositLimitSet);
+                var depositLimitDisabled = disableDepositLimit.ToDepositLimitDisabled(); 
+                var @event = new Event(depositLimitDisabled);
                 _dbContext.Set<Event>().Add(@event);
 
                 //await _logUpdater.Update(depositLimitSet);
-                await _bus.Publish(depositLimitSet);// this is temporary sa we cannot publish event without ensuring the commit
+                await _bus.Publish(depositLimitDisabled);// this is temporary sa we cannot publish event without ensuring the commit
 
                 //Save
                 await _dbContext.SaveChangesAsync();
@@ -54,8 +54,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
                 //Commit
                 dbContextTransaction.Commit();
             }
-            _log.Info(setDepositLimit.SerializeAsKeyValues());
-
+            _log.Info(disableDepositLimit.SerializeAsKeyValues());
             return true;
         }
     }

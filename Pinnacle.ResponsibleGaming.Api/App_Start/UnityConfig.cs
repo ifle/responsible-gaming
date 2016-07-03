@@ -4,7 +4,6 @@ using System.Web.Http;
 using Pinnacle.ResponsibleGaming.Application.Handlers;
 using Pinnacle.ResponsibleGaming.Persistence.Contexts;
 using Pinnacle.ResponsibleGaming.Domain.Queries;
-using Pinnacle.ResponsibleGaming.Domain.Validators;
 using Pinnacle.ResponsibleGaming.Read.Updaters;
 using Unity.WebApi;
 
@@ -25,7 +24,7 @@ namespace Pinnacle.ResponsibleGaming.Api
             container.RegisterType<DepositLimitQuery, DepositLimitQuery>();
             container.RegisterType<GetDepositLimitHandler, GetDepositLimitHandler>();
             container.RegisterType<SetDepositLimitHandler, SetDepositLimitHandler>();
-            container.RegisterType<DepositLimitValidator, DepositLimitValidator>();
+            container.RegisterType<DisableDepositLimitHandler, DisableDepositLimitHandler>();
             container.RegisterType<LogUpdater, LogUpdater>();
             container.RegisterType<Bus.Bus, Bus.Bus>();
 

@@ -69,10 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\GetDepositLimitBuilder.cs" />
+    <Compile Include="Handlers\DisableDepositLimitHandler.cs" />
     <Compile Include="Messages\SetDepositLimitMessages.cs" />
     <Compile Include="Handlers\SetDepositLimitHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Requests\CustomerCommand.cs" />
+    <Compile Include="Requests\CustomerRequest.cs" />
+    <Compile Include="Requests\DisableDepositLimit.cs" />
     <Compile Include="Requests\SetDepositLimit.cs" />
     <Compile Include="Handlers\GetDepositLimitHandler.cs" />
     <Compile Include="Responses\GetDepositLimitResponse.cs" />

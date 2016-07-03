@@ -18,5 +18,12 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
                 return LimitStatus.Expired;
             }
         }
+        public bool IsRecurring => PeriodInDays.HasValue;
+
+        public void Expire()
+        {
+            const int coolingOffPeriodInDays = 1;
+            EndDate = DateTime.Now.AddDays(coolingOffPeriodInDays);
+        }
     }
 }
