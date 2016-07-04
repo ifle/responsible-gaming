@@ -57,15 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\DepositLimitConfiguration.cs" />
-    <Compile Include="Configurations\EventConfiguration.cs" />
+    <Compile Include="Configurations\LogConfiguration.cs" />
     <Compile Include="Configurations\LimitConfiguration.cs" />
     <Compile Include="Configurations\SelfExclusionConfiguration.cs" />
-    <Compile Include="Events\CustomerEvent.cs" />
-    <Compile Include="Events\DepositLimitDisabled.cs" />
-    <Compile Include="Events\DepositLimitSet.cs" />
-    <Compile Include="Events\Event.cs" />
+    <Compile Include="Contexts\MainContext.cs" />
     <Compile Include="Messages\DepositLimitMessages.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Queries\DepositLimitQuery.cs" />
     <Compile Include="Queries\LimitQuery.cs" />
     <Compile Include="Rules\DepositLimitRules.cs" />

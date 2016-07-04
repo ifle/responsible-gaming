@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Pinnacle.ResponsibleGaming.Domain.Events;
 using Pinnacle.ResponsibleGaming.Read.Mappers;
 using Pinnacle.ResponsibleGaming.Read.Models;
 

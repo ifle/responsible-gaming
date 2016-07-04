@@ -126,7 +126,7 @@
     <Build Include="Tables\Event.sql" />
     <Build Include="Tables\Limit.sql" />
     <Build Include="Tables\LimitType.sql" />
-    <Build Include="Tables\Document.sql" />
+    <Build Include="Tables\Log.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />

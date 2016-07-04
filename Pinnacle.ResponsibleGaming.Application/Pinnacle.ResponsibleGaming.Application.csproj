@@ -84,17 +84,9 @@
     <Compile Include="_Common\Extensions\ObjectExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Bus\Pinnacle.ResponsibleGaming.Bus.csproj">
-      <Project>{4b3a7d0f-e157-4b1e-91fb-f29876f25571}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Bus</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Read\Pinnacle.ResponsibleGaming.Read.csproj">
-      <Project>{55f06917-39e2-4dbc-af25-f145edf0a838}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Read</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using FluentValidation.Attributes;
 using Newtonsoft.Json;
 using Pinnacle.ResponsibleGaming.Application.Validators;
-using Pinnacle.ResponsibleGaming.Domain.Events;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Application.Requests
@@ -39,17 +39,18 @@ namespace Pinnacle.ResponsibleGaming.Application.Requests
                    };
         }
 
-        public DepositLimitSet ToDepositLimitSet()
+        public Log ToLog()
         {
-            return new DepositLimitSet
+            return new Log
             {
+                Action = this.GetType().Name,
                 CustomerId = CustomerId,
-                Amount = Amount,
-                PeriodInDays = PeriodInDays,
-                StartDate = StartDate,
-                EndDate = EndDate,
+                Limit = Amount.ToString(CultureInfo.InvariantCulture),
+                PeriodInDays = PeriodInDays?.ToString() ?? string.Empty,
+                StartDate = StartDate.ToString("dd-MMM-yyyy HH:mm"),
+                EndDate = EndDate?.ToString("dd-MMM-yyyy HH:mm") ?? string.Empty,
                 Author = Author,
-                CreationTime = CreationTime
+                CreationTime = CreationTime.ToString("dd-MMM-yyyy HH:mm")
             };
         }
 

@@ -16,7 +16,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
             //Properties
             Property(t => t.CustomerId)
                 .HasColumnType("nvarchar")
-                .HasMaxLength(10)
+                .HasMaxLength(50)
                 .IsRequired();
 
             Property(t => t.PeriodInDays)
@@ -33,7 +33,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
 
             Property(t => t.Author)
                 .HasColumnType("nvarchar")
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .IsRequired();
 
             Property(t => t.CreationTime)

@@ -61,10 +61,6 @@
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Read\Pinnacle.ResponsibleGaming.Read.csproj">
-      <Project>{55f06917-39e2-4dbc-af25-f145edf0a838}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Read</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
