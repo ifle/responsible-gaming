@@ -34,12 +34,11 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
                 var depositLimit = await _depositLimitQuery.GetByCustomerId(setDepositLimit.CustomerId);
                 if (depositLimit != null)
                 {
-                    depositLimit.Set(setDepositLimit.ToDepositLimit());
+                    depositLimit.ApplyNewLimit(setDepositLimit.ToDepositLimit());
                 }
                 else
                 {
-                    depositLimit = new DepositLimit();
-                    depositLimit.Set(setDepositLimit.ToDepositLimit());
+                    depositLimit = setDepositLimit.ToDepositLimit();
                 }
                 _mainContext.Limits.AddOrUpdate(depositLimit);
 

@@ -8,7 +8,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
     {
         public decimal Amount { get; set; }
 
-        public void Set(DepositLimit depositLimit)
+        public void ApplyNewLimit(DepositLimit depositLimit)
         {
             if (!DepositLimitRules.NewDepositLimitMustBeMoreRestrictiveThanTheCurrentOne(depositLimit, this)) { throw new ConflictException(DepositLimitMessages.DepositLimitMustBeMoreRestrictive); }
             Map(depositLimit);

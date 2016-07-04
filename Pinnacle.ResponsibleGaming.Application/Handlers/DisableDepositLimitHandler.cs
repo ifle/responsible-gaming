@@ -32,15 +32,8 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             {
                 //Limit
                 var depositLimit = await _depositLimitQuery.GetByCustomerId(disableDepositLimit.CustomerId);
-                if (depositLimit != null)
-                {
-                    depositLimit.Disable(disableDepositLimit.Author, disableDepositLimit.CreationTime);
-                }
-                else
-                {
-                    depositLimit = new DepositLimit();
-                    depositLimit.Disable(disableDepositLimit.Author, disableDepositLimit.CreationTime);
-                }
+                if(depositLimit == null) return false;
+                depositLimit.Disable(disableDepositLimit.Author, disableDepositLimit.CreationTime);
                 _mainContext.Limits.AddOrUpdate(depositLimit);
 
                 //Log 
