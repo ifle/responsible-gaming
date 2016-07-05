@@ -31,7 +31,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             using (var dbContextTransaction = _mainContext.Database.BeginTransaction())
             {
                 //Limit
-                var depositLimit = await _depositLimitQuery.GetByCustomerIdAsync(disableDepositLimit.CustomerId);
+                var depositLimit = await _depositLimitQuery.GetByCustomerId(disableDepositLimit.CustomerId);
                 if(depositLimit == null) return false;
                 depositLimit.Disable(disableDepositLimit.Author, disableDepositLimit.CreationTime);
                 _mainContext.Limits.AddOrUpdate(depositLimit);
