@@ -10,7 +10,8 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
 
         public void ApplyNewLimit(DepositLimit depositLimit)
         {
-            if (!DepositLimitRules.NewDepositLimitMustBeMoreRestrictiveThanTheCurrentOne(depositLimit, this)) { throw new ConflictException(DepositLimitMessages.DepositLimitMustBeMoreRestrictive); }
+            if (!DepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.Amount, Amount)) { throw new ConflictException(DepositLimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
+            if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
             Map(depositLimit);
         }
 

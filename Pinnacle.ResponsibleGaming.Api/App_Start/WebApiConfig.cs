@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
-using Pinnacle.ResponsibleGaming.Api.Filters;
+using Pinnacle.ResponsibleGaming.Api.Binders;
 using Pinnacle.ResponsibleGaming.Api._Common.Filters;
+using Pinnacle.ResponsibleGaming.Application.Requests;
 
 namespace Pinnacle.ResponsibleGaming.Api
 {
@@ -11,7 +12,7 @@ namespace Pinnacle.ResponsibleGaming.Api
             // Web API configuration and services
             config.Filters.Add(new ValidateRequestAttribute());
             config.Filters.Add(new ExceptionHandlingAttribute());
-            config.Filters.Add(new ValidateCustomerIdAttribute());
+            config.ParameterBindingRules.Insert(0, descriptor => descriptor.ParameterType.IsSubclassOf(typeof(CustomerRequest)) ? new BodyAndUriParameterBinding(descriptor) : null);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
