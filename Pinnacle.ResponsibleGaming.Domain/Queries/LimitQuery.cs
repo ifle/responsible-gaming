@@ -15,11 +15,15 @@ namespace Pinnacle.ResponsibleGaming.Domain.Queries
         {
             _mainContext = mainContext;
         }
-        public async Task<T> GetByCustomerId(string customerId)
+        public async Task<T> GetByCustomerIdAsync(string customerId)
         {
             return await _mainContext.Limits.OfType<T>().FirstOrDefaultAsync(x => x.CustomerId == customerId);
         }
-        public async Task<T> GetCurrentActive(string customerId)
+        public  T GetByCustomerId(string customerId)
+        {
+            return  _mainContext.Limits.OfType<T>().FirstOrDefault(x => x.CustomerId == customerId);
+        }
+        public async Task<T> GetCurrentActiveAsync(string customerId)
         {
             return await _mainContext.Limits.OfType<T>().FirstOrDefaultAsync(LimitExpressions.IsActiveCustomerLimit<T>(customerId));
         }

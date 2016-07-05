@@ -43,7 +43,7 @@ namespace Pinnacle.ResponsibleGaming.Api.Controllers
 
         [HttpDelete]
         [Route(ResourceNames.DepositLimit)]
-        public async Task<IHttpActionResult> Expire([FromUri]string customerId, DisableDepositLimit request)
+        public async Task<IHttpActionResult> Disable([FromUri]string customerId, DisableDepositLimit request)
         {
             if (!await _disableDepositLimitHandler.Handle(request)) return NotFound();
             return Ok();

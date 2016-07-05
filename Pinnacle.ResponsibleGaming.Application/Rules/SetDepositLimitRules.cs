@@ -26,16 +26,16 @@ namespace Pinnacle.ResponsibleGaming.Application.Rules
         {
             return amount > 0;
         }
-        public async Task<bool> NewLimitMustBeMoreRestrictiveThanTheCurrentOne(string customerId, decimal newAmount)
+        public bool NewLimitMustBeMoreRestrictiveThanTheCurrentOne(string customerId, decimal newAmount)
         {
-            var currentDepositLimit = await _depositLimitQuery.GetByCustomerId(customerId);
-            if (currentDepositLimit == null) return true;
-            return DepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(newAmount,
-                currentDepositLimit.Amount);
+                var currentDepositLimit =  _depositLimitQuery.GetByCustomerId(customerId);
+                if (currentDepositLimit == null) return true;
+                return DepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(newAmount,
+                    currentDepositLimit.Amount);
         }
-        public async Task<bool> NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(string customerId, int? newPeriodInDays)
+        public bool NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(string customerId, int? newPeriodInDays)
         {
-            var currentDepositLimit = await _depositLimitQuery.GetByCustomerId(customerId);
+            var currentDepositLimit =  _depositLimitQuery.GetByCustomerId(customerId);
             if (currentDepositLimit == null) return true;
             return DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(newPeriodInDays,
                 currentDepositLimit.PeriodInDays);

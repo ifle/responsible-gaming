@@ -30,13 +30,13 @@ namespace Pinnacle.ResponsibleGaming.Application.Validators
                .NotEmpty()
                .WithMessage(SetDepositLimitMessages.AuthorMustBeProvided);
 
-            //RuleFor(x => x)
-            //   .MustAsync((x, request) => setDepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(x.CustomerId, x.Amount))
-            //   .WithMessage(DepositLimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne);
+            RuleFor(x => x.Amount)
+               .Must((x, request) => setDepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(x.CustomerId, x.Amount))
+               .WithMessage(DepositLimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne);
 
-            //RuleFor(x => x)
-            //   .MustAsync((x, request) => setDepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(x.CustomerId, x.PeriodInDays))
-            //   .WithMessage(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne);
+            RuleFor(x => x)
+               .Must((x, request) => setDepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(x.CustomerId, x.PeriodInDays))
+               .WithMessage(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne);
         }
     }
 }

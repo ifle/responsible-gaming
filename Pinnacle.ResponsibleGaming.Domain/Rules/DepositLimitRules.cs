@@ -12,7 +12,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Rules
         }
         public static bool NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(int? newPeriod, int? currentPeriod)
         {
-            return newPeriod < currentPeriod;
+            return newPeriod <= currentPeriod;
         }
     }
 }
