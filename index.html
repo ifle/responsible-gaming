@@ -56,14 +56,14 @@ Or imagine that he doesn't even want to receive any marketing campaign in his ma
 <h2>
 <a id="project-structure" class="anchor" href="#project-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project structure</h2>
 
-<p>The <strong>Api layer</strong> does all the work around resources.<br>
+<p>The <strong>Api layer</strong> does all the work around <strong>resources</strong>.<br>
 If you look at the controllers, you will see that each controller represents a resource.<br>
 There you can also see that each resource can support multiple Http Verbs (GET, POST, PUT, DELETE)</p>
 
-<p>The <strong>Application layer</strong> does all the work around intents.<br>
+<p>The <strong>Application layer</strong> does all the work around <strong>intents</strong>.<br>
 Intents are reflected as requests in the code. There could be as many as the application needs.</p>
 
-<p>The <strong>Domain layer</strong> does all the work around models (aggregates in DDD).</p>
+<p>The <strong>Domain layer</strong> does all the work around <strong>models</strong> (aggregates in DDD).</p>
 
 <p>The <strong>Persistence layer</strong> does all the work around contexts.<br>
 <em>DbContext in EF6 acts as a repository pattern and a unit of work already. So, if you are thinking about reinventing the wheel, you must know that there is no need to complicate the code.</em></p>
