@@ -45,13 +45,13 @@ It is separated in layers and, within each layer, the responsibilities are group
 <h2>
 <a id="scope-of-the-project" class="anchor" href="#scope-of-the-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scope of the project</h2>
 
-<p>Even though this project just wants to serve as an example, it is important to provide you with some context to understand what is being solved here.</p>
+<p>Even though this project just wants to serve as an example, it is important to provide with some context to understand what's being solved here.</p>
 
 <p>The project arose as a need to regulate compulsive gambling. Basically, it allows customers to create <strong>deposit limits</strong> and <strong>self-exclusions</strong> within a period of time.<br> 
 For example, imagine that a customer wants to limit the amount of money he deposits in his account to a maximum of 100USD per week. Or imagine that this customer directly prefers to avoid logging in his account losing therefore the chance to see what's going on.<br>
 Or imagine that he doesn't even want to receive any marketing campaign in his mailbox.<br></p>
 
-<p>You will agree with me that, the ability for the customer to apply these rules, definitely attenuates his impulses and promotes auto-control.</p>
+<p>You will agree with me that, the ability for the customer to apply these rules, definitely attenuates his impulses to gamble and promotes auto-control.</p>
 
 <h2>
 <a id="project-structure" class="anchor" href="#project-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project structure</h2>
@@ -66,17 +66,17 @@ Intents are reflected as requests in the code. There could be as many as the app
 <p>The <strong>Domain layer</strong> does all the work around models (aggregates in DDD).</p>
 
 <p>The <strong>Persistence layer</strong> does all the work around contexts.<br>
-<em>DbContext in EF6 acts as a repository pattern and unit of work already. So, if you are thinking about reinventing the wheel, you must know that there is no need to complicate the code.</em></p>
+<em>DbContext in EF6 acts as a repository pattern and a unit of work already. So, if you are thinking about reinventing the wheel, you must know that there is no need to complicate the code.</em></p>
 
 <h2>
 <a id="validation" class="anchor" href="#validation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validation</h2>
 
 <p>Validation intrinsically affects two layers - The Application layer and the Domain layer.</p>
 
-<p>Imagine that there are a total of two developers collaborating in the project. One is the domain expert and the other one knows how the application must behave. This includes knowing the intents of the user when he uses the application.</p>
+<p>Imagine that there are a total of two developers collaborating in the project. One is the domain expert and the other one knows how the application must behave (this includes knowing the intents of the user when using the application).</p>
 
 <p>Developer A, while developing the Domain, needs to make sure that no business rule is violated during the context of a transaction.<br>
-If any of the rules are violated, the developer then will throw a custom exception of the type <strong>ConflictException</strong>.<br>
+If any of the rules are violated, a custom exception of the type <strong>ConflictException</strong> will be thrown.<br>
 Ultimately, this exception will be transformed by the API in a Http Error Code of type <strong>409 Conflict</strong></p>
 
 <p>Developer B, while developing the Application, needs to make sure that requests are properly formed. This includes standard validations like making sure the properties are well formatted or satisfy an specific range.<br>
