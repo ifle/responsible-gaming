@@ -75,13 +75,13 @@ Intents are reflected as requests in the code. There could be as many as the app
 
 <p>Imagine that there are a total of two developers collaborating in the project. One is the domain expert and the other one knows how the application must behave (this includes knowing the intents of the user when using the application).</p>
 
-<p>Developer A, while developing the Domain, needs to make sure that no business rule is violated during the context of a transaction.<br>
+<p>Developer A, while developing the Domain layer, needs to make sure that no business rule is violated during the context of a transaction.<br>
 If any of the rules are violated, a custom exception of the type <strong>ConflictException</strong> will be thrown.<br>
-Ultimately, this exception will be transformed by the API in a Http Error Code of type <strong>409 Conflict</strong></p>
+Ultimately, this exception will be transformed by the API into a Http Error Code of type <strong>409 Conflict</strong></p>
 
-<p>Developer B, while developing the Application, needs to make sure that requests are properly formed. This includes standard validations like making sure the properties are well formatted or satisfy an specific range.<br>
+<p>Developer B, while developing the Application layer, needs to make sure that requests are properly formed. This includes standard validations like making sure the properties are well formatted or satisfy an specific range.<br>
 <strong>FluentValidation</strong> enormously helps with these type of validations. Besides, it allows the validation to happen even before the request reaches the controller.<br>
-From the API, this type of validation results in <strong>400 Bad request</strong></p>
+The API transforms these validations into <strong>400 Bad request</strong></p>
 
 <p>If you are wondering why 409 is preferred over 400 in the Domain, the reasoning is that 400 explicitly says in its description that the request is malformed and, therefore, should not be re-sent without modifications. However, 409  says that the conflict is intrinsic to the current state and, therefore, could go away. 
 This leaves us with the following basic Http Codes:</p>
