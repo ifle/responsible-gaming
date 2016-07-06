@@ -8,47 +8,42 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
         public LogConfiguration()
         {
             //Key
-            HasKey(x => x.Id);
+            HasKey(x => x.LogId);
 
             //Properties
-            Property(t => t.Action)
-              .HasColumnType("nvarchar")
-              .HasMaxLength(50)
-              .IsRequired();
-
-            Property(t => t.Limit)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(50)
-                .IsRequired();
-
             Property(t => t.CustomerId)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(50)
                 .IsRequired();
 
+            Property(t => t.LimitTypeId)
+               .HasColumnType("int")
+               .IsRequired();
+
+            Property(t => t.Limit)
+               .HasColumnName("Limit")
+               .HasColumnType("decimal")
+               .IsRequired();
+
             Property(t => t.PeriodInDays)
-              .HasColumnType("nvarchar")
-                .HasMaxLength(50)
-                .IsRequired();
+                .HasColumnType("int")
+                .IsOptional();
 
             Property(t => t.StartDate)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(50)
+                .HasColumnType("datetime2")
                 .IsRequired();
 
             Property(t => t.EndDate)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(50)
-                .IsRequired();
+                .HasColumnType("datetime2")
+                .IsOptional();
 
             Property(t => t.Author)
                 .HasColumnType("nvarchar")
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .IsRequired();
 
             Property(t => t.CreationTime)
-                .HasColumnType("nvarchar")
-                .HasMaxLength(50)
+                .HasColumnType("datetime2")
                 .IsRequired();
         }
     }

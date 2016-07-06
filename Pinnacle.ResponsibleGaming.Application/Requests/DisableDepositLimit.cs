@@ -18,21 +18,5 @@ namespace Pinnacle.ResponsibleGaming.Application.Requests
             var now = DateTime.Now;
             CreationTime = now;
         }
-
-
-        public Log ToLog()
-        {
-            return new Log
-            {
-                Action = this.GetType().Name,
-                CustomerId = CustomerId,
-                Limit = string.Empty,
-                PeriodInDays = string.Empty,
-                StartDate = string.Empty,
-                EndDate = string.Empty,
-                Author = Author,
-                CreationTime = CreationTime.ToShortDateString()
-            };
-        }
     }
 }

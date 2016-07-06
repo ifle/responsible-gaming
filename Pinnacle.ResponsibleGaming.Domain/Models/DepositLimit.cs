@@ -26,5 +26,20 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
             Author = depositLimit.Author;
             CreationTime = depositLimit.CreationTime;
         }
+
+        public Log ToLog()
+        {
+            return new Log
+            {
+                CustomerId = CustomerId,
+                LimitTypeId = (int)LimitType.DepositLimit,
+                Limit = Amount,
+                PeriodInDays = PeriodInDays,
+                StartDate = StartDate,
+                EndDate = EndDate,
+                Author = Author,
+                CreationTime = CreationTime
+            };
+        }
     }
 }

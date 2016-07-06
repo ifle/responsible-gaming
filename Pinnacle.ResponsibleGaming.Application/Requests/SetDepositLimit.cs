@@ -38,21 +38,5 @@ namespace Pinnacle.ResponsibleGaming.Application.Requests
                        CreationTime = CreationTime
                    };
         }
-
-        public Log ToLog()
-        {
-            return new Log
-            {
-                Action = this.GetType().Name,
-                CustomerId = CustomerId,
-                Limit = Amount.ToString(CultureInfo.InvariantCulture),
-                PeriodInDays = PeriodInDays?.ToString() ?? string.Empty,
-                StartDate = StartDate.ToString("dd-MMM-yyyy HH:mm"),
-                EndDate = EndDate?.ToString("dd-MMM-yyyy HH:mm") ?? string.Empty,
-                Author = Author,
-                CreationTime = CreationTime.ToString("dd-MMM-yyyy HH:mm")
-            };
-        }
-
     }
 }

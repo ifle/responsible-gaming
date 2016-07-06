@@ -43,7 +43,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
                 _mainContext.Limits.AddOrUpdate(depositLimit);
 
                 //Log 
-                _mainContext.Logs.Add(setDepositLimit.ToLog());
+                _mainContext.Logs.Add(depositLimit.ToLog());
 
                 //Commit
                 await _mainContext.SaveChangesAsync();

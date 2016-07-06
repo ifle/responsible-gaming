@@ -1,22 +1,13 @@
 ﻿CREATE TABLE [dbo].[Log] (
-    [Id] INT NOT NULL IDENTITY  ,
-    [Action] NVARCHAR(50) NOT NULL, 
-    [CustomerId]   NVARCHAR (50) NOT NULL,
-    [Limit]        NVARCHAR(50)	NOT NULL,
-    [PeriodInDays] NVARCHAR(50)	NOT NULL,
-    [StartDate]    NVARCHAR(50) NOT NULL,
-    [EndDate]      NVARCHAR(50) NOT NULL,
+    [LogId]  INT           NOT NULL IDENTITY,
+	[CustomerId]   NVARCHAR (50) NOT NULL,
+    [LimitTypeId]  INT           NOT NULL,
+    [Limit]        DECIMAL(18, 2)           NOT NULL,
+    [PeriodInDays] INT           NULL,
+    [StartDate]    DATETIME2 (7) NOT NULL,
+    [EndDate]      DATETIME2 (7) NULL,
 	[Author]       NVARCHAR (50) NOT NULL,
-    [CreationTime] NVARCHAR(50) NOT NULL, 
-    CONSTRAINT [PK_Log] PRIMARY KEY ([Id])
+    [CreationTime] DATETIME2 (7) NOT NULL, 
+    CONSTRAINT [PK_Log] PRIMARY KEY ([LogId])
 );
 
-
-
-GO
-
-CREATE INDEX [IX_Log_CustomerId] ON [dbo].[Log] ([CustomerId])
-
-GO
-
-CREATE INDEX [IX_Log_Author] ON [dbo].[Log] ([Author])
