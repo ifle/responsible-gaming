@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-using Pinnacle.ResponsibleGaming.Api.Binders;
+using Pinnacle.ResponsibleGaming.Api._Common.Binders;
 using Pinnacle.ResponsibleGaming.Api._Common.Filters;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 
