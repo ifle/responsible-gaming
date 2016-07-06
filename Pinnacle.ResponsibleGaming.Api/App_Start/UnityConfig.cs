@@ -2,8 +2,8 @@ using System.Data.Entity;
 using Microsoft.Practices.Unity;
 using System.Web.Http;
 using Pinnacle.ResponsibleGaming.Application.Handlers;
-using Pinnacle.ResponsibleGaming.Domain.Contexts;
 using Pinnacle.ResponsibleGaming.Domain.Queries;
+using Pinnacle.ResponsibleGaming.Persistence.Contexts;
 using Unity.WebApi;
 
 namespace Pinnacle.ResponsibleGaming.Api

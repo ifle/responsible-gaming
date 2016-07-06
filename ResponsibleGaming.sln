@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.- Application (Requests)"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.- Domain (Models)", "3.- Domain (Models)", "{468E6C5C-5BD9-49E4-A5A6-F243C5608EBC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.- Persistence (Contexts)", "4.- Persistence (Contexts)", "{F82E0C04-0365-4266-BA6A-3BB4012A5483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.Persistence", "Pinnacle.ResponsibleGaming.Persistence\Pinnacle.ResponsibleGaming.Persistence.csproj", "{FA9DC9A8-AE81-4B53-AC8B-28551387DB71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,12 @@ Global
 		{B37022D4-6B83-471C-8310-5B1B230276EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B37022D4-6B83-471C-8310-5B1B230276EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B37022D4-6B83-471C-8310-5B1B230276EE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FA9DC9A8-AE81-4B53-AC8B-28551387DB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9DC9A8-AE81-4B53-AC8B-28551387DB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9DC9A8-AE81-4B53-AC8B-28551387DB71}.Integration|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9DC9A8-AE81-4B53-AC8B-28551387DB71}.Integration|Any CPU.Build.0 = Release|Any CPU
+		{FA9DC9A8-AE81-4B53-AC8B-28551387DB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9DC9A8-AE81-4B53-AC8B-28551387DB71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +69,7 @@ Global
 		{6223C61D-7F87-4C3D-BCA6-696BB31A5CA7} = {468E6C5C-5BD9-49E4-A5A6-F243C5608EBC}
 		{F39B93A6-28A8-4AE3-A5DC-28188465B33B} = {C42B21A1-F725-44D6-AFA7-4896266942E8}
 		{4D4BC99B-C546-4A3B-84ED-B7BF7BCBFD57} = {997D3268-F37A-453D-8983-AA1510A79284}
-		{B37022D4-6B83-471C-8310-5B1B230276EE} = {468E6C5C-5BD9-49E4-A5A6-F243C5608EBC}
+		{B37022D4-6B83-471C-8310-5B1B230276EE} = {F82E0C04-0365-4266-BA6A-3BB4012A5483}
+		{FA9DC9A8-AE81-4B53-AC8B-28551387DB71} = {F82E0C04-0365-4266-BA6A-3BB4012A5483}
 	EndGlobalSection
 EndGlobal
