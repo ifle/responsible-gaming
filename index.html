@@ -63,7 +63,10 @@ There you can also see that each resource can support multiple Http Verbs (GET, 
 <p>The <strong>Application layer</strong> does all the work around intents.<br>
 Intents are reflected as requests in the code. There could be as many as the application needs.</p>
 
-<p>The <strong>Domain layer</strong> does all the work around models (aggregates in DDD)</p>
+<p>The <strong>Domain layer</strong> does all the work around models (aggregates in DDD).</p>
+
+<p>The <strong>Persistence layer</strong> does all the work around contexts.<br>
+<em>DbContext in EF6 acts as a repository pattern and unit of work already. So, if you are thinking about reinventing the wheel, you must know that there is no need to complicate the code.</em></p>
 
 <h2>
 <a id="validation" class="anchor" href="#validation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validation</h2>
