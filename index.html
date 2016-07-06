@@ -1,41 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
 <html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Responsible-gaming : Spike in the cloud">
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/github-dark.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+  <title>Responsible Gaming</title>
+  <meta name="description" content="Spike in the cloud">
 
-    <title>Responsible-gaming</title>
-  </head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <body>
+</head>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/cesarbmx/responsible-gaming">View on GitHub</a>
+<body>
 
-          <h1 id="project_title">Responsible-gaming</h1>
-          <h2 id="project_tagline">Spike in the cloud</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/cesarbmx/responsible-gaming/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/cesarbmx/responsible-gaming/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h2>
-<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Responsible Gaming</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">Spike in the cloud</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/cesarbmx/responsible-gaming/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/cesarbmx/responsible-gaming/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/cesarbmx/responsible-gaming" class="code">View Responsible Gaming on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h2>
+<a id="welcome" class="anchor" href="#welcome" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome</h2>
 
 <p>This project is meant for those who want to create an API with DDD principles in mind.<br>
 It is separated in layers and, within each layer, the responsibilities are grouped in folders.</p>
+
+<h2>
+<a id="scope-of-the-project" class="anchor" href="#scope-of-the-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scope of the project</h2>
+
+<p>Even though this project just wants to serve as an example, it is important providing you with some context to understand what is being solved here.</p>
+
+<p>The project arose as a need to regulate compulsive gambling. Basically, it allows customers to create <strong>deposit limits</strong> and <strong>self-exclusions</strong> within a period of time.<br> 
+For example, imagine that a customer wants to limit the amount of money he deposits in his account to a maximum of 100USD per week. Or imagine that this customer directly prefers to avoid logging in his account losing therefore the chance to see what's going on.<br>
+Or imagine that he doesn't even want to receive any marketing campaign in his mailbox.<br></p>
+
+<p>You will agree with me that, the ability for the customer to apply these rules, definitely attenuates his impulses and promotes auto-control.</p>
+
+<p>Ok - Having introduced you the scope of the project, now the rest is for you to see in the code. There, you will find few business rules. These are extremely easy to understand.</p>
 
 <h2>
 <a id="project-structure" class="anchor" href="#project-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project structure</h2>
@@ -45,21 +63,66 @@ If you look at the controllers, you will see that each controller represents a r
 You will also see that each resource can support multiple Http Verbs (GET, POST, PUT, DELETE)</p>
 
 <p>The <strong>Application layer</strong> does all the work around intents.<br>
-Intents are reflected as requests in the code and there could be many as our application needs.</p>
+Intents are reflected as requests in the code and there could be as many as the application needs.</p>
 
 <p>The <strong>Domain layer</strong> does all the work around models (aggregates in DDD)</p>
-      </section>
+
+<h2>
+<a id="validation" class="anchor" href="#validation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validation</h2>
+
+<p>Validation intrinsically affects two layers - The Application layer and the Domain layer.</p>
+
+<p>Imagine that there are a total of two developers collaborating in the project. One is the domain expert and the other one knows how the application must behave. This includes knowing the intents the user might have while using of the application.</p>
+
+<p>Developer A, while developing the Domain, needs to make sure that any business rule is violated during the context of a transaction.<br>
+If any of the rules are violated, the developer then will throw an exception of the type <strong>ConflictException</strong>.<br>
+Ultimately, this exception will be transformed in a Http Error Code of type <strong>409 Conflict</strong></p>
+
+<p>Developer B, while developing the Application, needs to make sure that requests are properly formed. This includes standard validations like making sure the properties are well formatted or satisfy an specific range.<br>
+<strong>FluentValidation</strong> enormously helps with these type of validations. Besides, it allows the validation to happen even before the request reaches the controller.<br>
+These type of validation results in <strong>400 Bad request</strong></p>
+
+<p>If you are wondering why 409 is preferred over 400 in the Domain, the reasoning is that 400 explicitly says in its description that the request is malformed and, therefore, should not be re-sent without modifications. However, 409  says that the conflict is intrinsic to the current state and, therefore, could go away. 
+This leaves us with the following basic Http Codes:</p>
+
+<table>
+<tr>
+<td>GET</td>
+<td>200, 404, 500 </td>
+</tr>
+<tr>
+<td>POST</td>
+<td>200, 404, 409, 500</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>204, 404, 409, 500</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>204, 404, 409, 500</td>
+</tr>
+</table>
+        </article>
+      </div>
     </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/cesarbmx" class="avatar"><img src="https://avatars3.githubusercontent.com/u/1844530?v=3&amp;s=60" width="48" height="48"></a> <a href="https://github.com/cesarbmx">cesarbmx</a> maintains <a href="https://github.com/cesarbmx/responsible-gaming">Responsible Gaming</a></p>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Responsible-gaming maintained by <a href="https://github.com/cesarbmx">cesarbmx</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
 
-    
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/cesarbmx/responsible-gaming/tarball/master" class="tar">tar</a><a href="https://github.com/cesarbmx/responsible-gaming/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
 
-  </body>
+  
+</body>
 </html>
