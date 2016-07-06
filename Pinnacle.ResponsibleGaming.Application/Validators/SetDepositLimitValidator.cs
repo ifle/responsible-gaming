@@ -10,8 +10,8 @@ namespace Pinnacle.ResponsibleGaming.Application.Validators
         public SetDepositLimitValidator()
         {
             RuleFor(x => x.CustomerId)
-               .Must((x, request) => SetDepositLimitRules.StartDateCannotBeAPastDate(x.StartDate))
-               .WithMessage(SetDepositLimitMessages.CustomerIdDoesNotExist);
+               .Must((x, request) => SetDepositLimitRules.CustomerIdMustBeProvided(x.CustomerId))
+               .WithMessage(SetDepositLimitMessages.CustomerIdMustBeProvided);
 
             RuleFor(x => x.CustomerId)
                .Must((x, request) => SetDepositLimitRules.AmountMustBePositive(x.Amount))
