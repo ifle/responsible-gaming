@@ -34,19 +34,20 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
                 var depositLimit = await _depositLimitQuery.GetByCustomerId(setDepositLimit.CustomerId);
                 if (depositLimit != null)
                 {
-                    depositLimit.ApplyNewLimit(setDepositLimit.ToDepositLimit());
+                    depositLimit.Modify(setDepositLimit.Amount, depositLimit.PeriodInDays, depositLimit.StartDate, depositLimit.EndDate, depositLimit.Author);
                 }
                 else
                 {
                     depositLimit = setDepositLimit.ToDepositLimit();
                 }
                 _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
+                await _dbContext.SaveChangesAsync();
 
                 //Log 
                 _dbContext.Set<Log>().Add(depositLimit.ToLog());
-
-                //Commit
                 await _dbContext.SaveChangesAsync();
+
+                //Commit                
                 dbContextTransaction.Commit();
             }
             _log.Info(setDepositLimit.SerializeAsKeyValues());

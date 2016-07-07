@@ -16,7 +16,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Responses
             EndDate = depositLimit.EndDate;
             Status = GetDepositLimitBuilder.BuildStatus(depositLimit.Status);
             Author = Author;
-            CreationTime = CreationTime;
+            ModificationTime = ModificationTime;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Requests
                        StartDate = StartDate,
                        EndDate = EndDate,
                        Author = Author,
-                       CreationTime = CreationTime
+                       ModificationTime = CreationTime
                    };
         }
     }

@@ -7,6 +7,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
     public class Log
     {
         public int LogId { get; set; }
+        public int LimitId { get; set; }
         public string CustomerId { get; set; }
         public int LimitTypeId { get; set; }
         public decimal Limit { get; set; }
@@ -14,6 +15,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string Author { get; set; }
-        public DateTime CreationTime { get; set; }
+        public DateTime ModificationTime { get; set; }
     }
 }

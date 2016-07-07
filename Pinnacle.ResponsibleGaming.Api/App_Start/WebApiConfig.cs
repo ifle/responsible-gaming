@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Newtonsoft.Json;
 using Pinnacle.ResponsibleGaming.Api._Common.Binders;
 using Pinnacle.ResponsibleGaming.Api._Common.Filters;
 using Pinnacle.ResponsibleGaming.Application.Requests;
@@ -13,6 +14,7 @@ namespace Pinnacle.ResponsibleGaming.Api
             config.Filters.Add(new ValidateRequestAttribute());
             config.Filters.Add(new ExceptionHandlingAttribute());
             config.ParameterBindingRules.Insert(0, descriptor => descriptor.ParameterType.IsSubclassOf(typeof(CustomerRequest)) ? new BodyAndUriParameterBinding(descriptor) : null);
+            config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
 
             // Web API routes
             config.MapHttpAttributeRoutes();

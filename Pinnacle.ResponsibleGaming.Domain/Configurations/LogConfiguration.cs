@@ -1,4 +1,6 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.Data.Entity.ModelConfiguration;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Configurations
@@ -11,6 +13,10 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
             HasKey(x => x.LogId);
 
             //Properties
+            Property(t => t.LimitId)
+              .HasColumnType("int")
+              .IsRequired();
+
             Property(t => t.CustomerId)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(50)
@@ -42,7 +48,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
                 .HasMaxLength(50)
                 .IsRequired();
 
-            Property(t => t.CreationTime)
+            Property(t => t.ModificationTime)
                 .HasColumnType("datetime2")
                 .IsRequired();
         }

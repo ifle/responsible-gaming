@@ -1,4 +1,5 @@
-﻿using Pinnacle.ResponsibleGaming.Domain.Messages;
+﻿using System;
+using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
 using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
 
@@ -8,29 +9,25 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
     {
         public decimal Amount { get; set; }
 
-        public void ApplyNewLimit(DepositLimit depositLimit)
+        public void Modify(decimal amount, int? periodInDays, DateTime startDate, DateTime? endDate, string author)
         {
-            if (!DepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.Amount, Amount)) { throw new ConflictException(DepositLimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
-            if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(depositLimit.Amount, Amount, depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }          
-            if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
-            Map(depositLimit);
-        }
+            if (!DepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(amount, Amount)) { throw new ConflictException(DepositLimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
+            if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(amount, Amount, periodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }          
+            if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(periodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
 
-        private void Map(DepositLimit depositLimit)
-        {
-            CustomerId = depositLimit.CustomerId;
-            Amount = depositLimit.Amount;
-            PeriodInDays = depositLimit.PeriodInDays;
-            StartDate = depositLimit.StartDate;
-            EndDate = depositLimit.EndDate;
-            Author = depositLimit.Author;
-            CreationTime = depositLimit.CreationTime;
+            Amount = amount;
+            PeriodInDays = periodInDays;
+            StartDate = startDate;
+            EndDate = endDate;
+            Author = author;
+            ModificationTime = DateTime.Now;
         }
 
         public Log ToLog()
         {
             return new Log
             {
+                LimitId = LimitId,
                 CustomerId = CustomerId,
                 LimitTypeId = (int)LimitType.DepositLimit,
                 Limit = Amount,
@@ -38,7 +35,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
                 StartDate = StartDate,
                 EndDate = EndDate,
                 Author = Author,
-                CreationTime = CreationTime
+                ModificationTime = ModificationTime
             };
         }
     }

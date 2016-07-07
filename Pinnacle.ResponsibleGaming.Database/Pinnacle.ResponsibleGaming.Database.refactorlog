@@ -35,4 +35,53 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="LogId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="0326737b-2e3a-4f0f-a951-401cfb848810" ChangeDateTime="07/07/2016 09:54:31">
+    <Property Name="ElementName" Value="[dbo].[Log].[LogId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Log]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="554f2336-c474-44cf-836d-43b85e9111a7" ChangeDateTime="07/07/2016 09:54:39">
+    <Property Name="ElementName" Value="[dbo].[Limit].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Limit]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LimitId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="62c47fd9-d752-43d4-a299-350b7187d57a" ChangeDateTime="07/07/2016 09:54:48">
+    <Property Name="ElementName" Value="[dbo].[Log].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Log]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LimitId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4dad33d9-2aae-4440-a027-e8da3fa1b0ae" ChangeDateTime="07/07/2016 10:07:11">
+    <Property Name="ElementName" Value="[dbo].[Limit].[CreationTime]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Limit]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ModificationTime" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d56c0402-f249-42d6-bfb3-0ec367a26911" ChangeDateTime="07/07/2016 11:04:59">
+    <Property Name="ElementName" Value="[dbo].[Log].[CreationTime]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Log]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ModificationTime" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ee3e8cc0-e803-4641-b8f3-e5cb7925d184" ChangeDateTime="07/07/2016 11:18:03">
+    <Property Name="ElementName" Value="[dbo].[Log].[LimitId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Log]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LogId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="910daefd-2bc8-44d4-8f92-c5b7089ae7c8" ChangeDateTime="07/07/2016 11:33:38">
+    <Property Name="ElementName" Value="[dbo].[Limit].[IX_Limit_CustomerIdANDLimitTy]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[Limit]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_Limit_CustomerId_LimitTypeId]" />
+  </Operation>
 </Operations>

@@ -11,7 +11,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
             ToTable("Limit");
 
             //Key
-            HasKey(x => x.CustomerId);
+            HasKey(x => x.LimitId);
 
             //Properties
             Property(t => t.CustomerId)
@@ -36,7 +36,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
                 .HasMaxLength(50)
                 .IsRequired();
 
-            Property(t => t.CreationTime)
+            Property(t => t.ModificationTime)
                 .HasColumnType("datetime2")
                 .IsRequired();
 
