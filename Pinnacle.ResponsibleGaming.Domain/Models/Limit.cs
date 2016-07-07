@@ -23,13 +23,13 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
         }
         public bool IsRecurring => PeriodInDays.HasValue;
 
-        public void Disable(string author, DateTime creationTime)
+        public void Disable(string author)
         {
             const int coolingOffPeriodInDays = 1;
 
             EndDate = DateTime.Now.AddDays(coolingOffPeriodInDays);
             Author = author;
-            ModificationTime = creationTime;
+            ModificationTime = DateTime.Now;
         }
     }
 }

@@ -20,6 +20,14 @@ namespace Pinnacle.ResponsibleGaming.Api._Common.Filters
                                    };
                 return;
             }
+            if (actionContext.Exception is NotFoundException)
+            {
+                actionContext.Response = new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent(actionContext.Exception.Message)
+                };
+                return;
+            }
 
             _log.Error(actionContext.Exception);
         }

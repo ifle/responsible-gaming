@@ -1,12 +1,10 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Reflection;
 using System.Threading.Tasks;
 using log4net;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application._Common.Extensions;
-using Pinnacle.ResponsibleGaming.Domain.Models;
-using Pinnacle.ResponsibleGaming.Domain.Queries;
+using Pinnacle.ResponsibleGaming.Domain.Services;
 
 namespace Pinnacle.ResponsibleGaming.Application.Handlers
 {
@@ -14,38 +12,36 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
     {
         private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly DbContext _dbContext;
-        private readonly DepositLimitQuery _depositLimitQuery;
+        private readonly DepositLimitService _depositLimitService;
+        private readonly LogService _logService;
 
         public DisableDepositLimitHandler(
             DbContext dbContext,
-            DepositLimitQuery depositLimitQuery
+            DepositLimitService depositLimitService,
+            LogService logService
 
             )
         {
             _dbContext = dbContext;
-            _depositLimitQuery = depositLimitQuery;
+            _depositLimitService = depositLimitService;
+            _logService = logService;
         }
 
-        public async Task<bool> Handle(DisableDepositLimit disableDepositLimit)
+        public async Task Handle(DisableDepositLimit disableDepositLimit)
         {
             using (var dbContextTransaction = _dbContext.Database.BeginTransaction())
             {
-                //Limit
-                var depositLimit = await _depositLimitQuery.GetByCustomerId(disableDepositLimit.CustomerId);
-                if(depositLimit == null) return false;
-                depositLimit.Disable(disableDepositLimit.Author, disableDepositLimit.CreationTime);
-                _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
+                //Disable deposit limit
+                var depositLimit = await _depositLimitService.DisableDepositLimit(disableDepositLimit.CustomerId, disableDepositLimit.Author);
 
-                //Log 
-                _dbContext.Set<Log>().Add(depositLimit.ToLog());
+                //Add log entry
+                var log = depositLimit.ToLog();
+                await _logService.AddLog(log);
 
-                //Commit
-                await _dbContext.SaveChangesAsync();
+                //Commit                
                 dbContextTransaction.Commit();
             }
             _log.Info(disableDepositLimit.SerializeAsKeyValues());
-
-            return true;
         }
     }
 }

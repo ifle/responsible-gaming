@@ -3,6 +3,7 @@ using Microsoft.Practices.Unity;
 using System.Web.Http;
 using Pinnacle.ResponsibleGaming.Application.Handlers;
 using Pinnacle.ResponsibleGaming.Domain.Queries;
+using Pinnacle.ResponsibleGaming.Domain.Services;
 using Pinnacle.ResponsibleGaming.Persistence.Contexts;
 using Unity.WebApi;
 
@@ -19,11 +20,26 @@ namespace Pinnacle.ResponsibleGaming.Api
 
             // e.g. container.RegisterType<ITestService, TestService>();
 
+
+
+
+            //Contexts
             container.RegisterType<DbContext, MainContext>(new HierarchicalLifetimeManager());
-            container.RegisterType<DepositLimitQuery, DepositLimitQuery>();
+
+            //Handlers
             container.RegisterType<GetDepositLimitHandler, GetDepositLimitHandler>();
             container.RegisterType<SetDepositLimitHandler, SetDepositLimitHandler>();
             container.RegisterType<DisableDepositLimitHandler, DisableDepositLimitHandler>();
+
+            //Services
+            container.RegisterType<DepositLimitService, DepositLimitService>();
+            container.RegisterType<LogService, LogService>();
+
+            //Queries
+            container.RegisterType<DepositLimitQuery, DepositLimitQuery>();
+
+
+           
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

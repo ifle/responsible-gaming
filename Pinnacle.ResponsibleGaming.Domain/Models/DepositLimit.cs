@@ -9,7 +9,20 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
     {
         public decimal Amount { get; set; }
 
-        public void Modify(decimal amount, int? periodInDays, DateTime startDate, DateTime? endDate, string author)
+        public DepositLimit()
+        {
+        }
+        public DepositLimit(string customerId, decimal amount, int? periodInDays, DateTime? startDate, DateTime? endDate, string author)
+        {
+            CustomerId = customerId;
+            Amount = amount;
+            PeriodInDays = periodInDays;
+            StartDate = startDate ?? DateTime.Now;
+            EndDate = endDate;
+            Author = author;
+        }
+
+        public void Modify(decimal amount, int? periodInDays, DateTime? startDate, DateTime? endDate, string author)
         {
             if (!DepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(amount, Amount)) { throw new ConflictException(DepositLimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
             if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(amount, Amount, periodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }          
@@ -17,7 +30,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
 
             Amount = amount;
             PeriodInDays = periodInDays;
-            StartDate = startDate;
+            StartDate = startDate??DateTime.Now;
             EndDate = endDate;
             Author = author;
             ModificationTime = DateTime.Now;

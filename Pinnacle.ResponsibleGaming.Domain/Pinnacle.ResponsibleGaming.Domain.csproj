@@ -66,6 +66,9 @@
     <Compile Include="Queries\DepositLimitQuery.cs" />
     <Compile Include="Queries\LimitQuery.cs" />
     <Compile Include="Rules\DepositLimitRules.cs" />
+    <Compile Include="Services\LogService.cs" />
+    <Compile Include="Services\DepositLimitService.cs" />
+    <Compile Include="_Common\Exceptions\NotFoundException.cs" />
     <Compile Include="_Common\Exceptions\ConflictException.cs" />
     <Compile Include="Models\DepositLimit.cs" />
     <Compile Include="Models\LimitStatus.cs" />

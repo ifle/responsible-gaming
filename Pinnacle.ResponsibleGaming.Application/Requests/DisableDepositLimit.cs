@@ -1,8 +1,5 @@
-﻿using System;
-using FluentValidation.Attributes;
-using Newtonsoft.Json;
+﻿using FluentValidation.Attributes;
 using Pinnacle.ResponsibleGaming.Application.Validators;
-using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Application.Requests
 {
@@ -10,13 +7,5 @@ namespace Pinnacle.ResponsibleGaming.Application.Requests
     public  class DisableDepositLimit : CustomerRequest
     {
         public string Author { get; set; }
-        [JsonIgnore]
-        public DateTime CreationTime { get; set; }
-
-        public DisableDepositLimit()
-        {
-            var now = DateTime.Now;
-            CreationTime = now;
-        }
     }
 }
