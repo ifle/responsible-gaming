@@ -15,6 +15,7 @@ namespace Pinnacle.ResponsibleGaming.Api
             config.Filters.Add(new ExceptionHandlingAttribute());
             config.ParameterBindingRules.Insert(0, descriptor => descriptor.ParameterType.IsSubclassOf(typeof(CustomerRequest)) ? new BodyAndUriParameterBinding(descriptor) : null);
             config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

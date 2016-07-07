@@ -16,13 +16,9 @@ namespace Pinnacle.ResponsibleGaming.Domain.Queries
         {
             _dbContext = dbContext;
         }
-        public async Task<T> GetByCustomerId(string customerId)
+        public async Task<T> GetActiveLimitByCustomerId(string customerId)
         {
-            return await _dbContext.Set<Limit>().OfType<T>().FirstOrDefaultAsync(x => x.CustomerId == customerId);
-        }
-        public async Task<T> GetCurrentActiveAsync(string customerId)
-        {
-            return await _dbContext.Set<Limit>().OfType<T>().FirstOrDefaultAsync(LimitExpressions.IsActiveCustomerLimit<T>(customerId));
+            return await _dbContext.Set<Limit>().OfType<T>().FirstOrDefaultAsync(LimitExpressions.IsActiveLimit<T>(customerId));
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             //Check if customer exists
             if(false) throw new NotFoundException(DepositLimitMessages.CustomerNotFound);
 
-            var depositLimit = await _depositLimitQuery.GetByCustomerId(customerId);
+            var depositLimit = await _depositLimitQuery.GetActiveLimitByCustomerId(customerId);
             depositLimit?.Modify(amount, periodInDays, startDate, endDate, author);
 
             depositLimit = new DepositLimit(customerId, amount, periodInDays, startDate, endDate, author);
@@ -37,7 +37,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
         }
         public async Task<DepositLimit> DisableDepositLimit(string customerId, string author)
         {
-            var depositLimit = await _depositLimitQuery.GetByCustomerId(customerId);
+            var depositLimit = await _depositLimitQuery.GetActiveLimitByCustomerId(customerId);
             if (depositLimit == null) throw new NotFoundException(DepositLimitMessages.CustomerNotFound);
 
             depositLimit.Disable(author);
@@ -50,7 +50,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             //Check if customer exists
             if (false) throw new NotFoundException(DepositLimitMessages.CustomerNotFound);
 
-            var depositLimit = await _depositLimitQuery.GetByCustomerId(customerId);
+            var depositLimit = await _depositLimitQuery.GetActiveLimitByCustomerId(customerId);
             return depositLimit;
         }
     }
