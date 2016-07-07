@@ -18,6 +18,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         {
             var depositLimit = await _depositLimitQuery.GetByCustomerId(getDepositLimit.CustomerId);
             if (depositLimit == null) return null;
+
             var getDepositLimitResult = new GetDepositLimitResponse(depositLimit);
             return getDepositLimitResult;
         }

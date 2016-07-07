@@ -44,5 +44,14 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
             return depositLimit;
         }
+
+        public async Task<DepositLimit> GetDepositLimit(string customerId)
+        {
+            //Check if customer exists
+            if (false) throw new NotFoundException(DepositLimitMessages.CustomerNotFound);
+
+            var depositLimit = await _depositLimitQuery.GetByCustomerId(customerId);
+            return depositLimit;
+        }
     }
 }

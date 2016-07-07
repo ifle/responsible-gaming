@@ -28,9 +28,7 @@ namespace Pinnacle.ResponsibleGaming.Api.Controllers
         public async Task<IHttpActionResult> Get(string customerId)
         {
             var request = new GetDepositLimit {CustomerId = customerId};
-            var getDepositLimitResponse = await _getDepositLimitHandler.Handle(request);
-            if (getDepositLimitResponse == null) return NotFound();
-            return Ok(getDepositLimitResponse);
+            return Ok(await _getDepositLimitHandler.Handle(request));
         }
 
         [HttpPut]
