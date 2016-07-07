@@ -39,6 +39,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
         {
             var depositLimit = await _depositLimitQuery.GetByCustomerId(customerId);
             if (depositLimit == null) throw new NotFoundException(DepositLimitMessages.CustomerNotFound);
+
             depositLimit.Disable(author);
             _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
             return depositLimit;

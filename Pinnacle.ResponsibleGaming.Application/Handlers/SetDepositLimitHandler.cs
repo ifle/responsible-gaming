@@ -32,7 +32,13 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             using (var dbContextTransaction = _dbContext.Database.BeginTransaction())
             {
                 //Set deposit limit
-                var depositLimit =  await _depositLimitService.SetDepositLimit(setDepositLimit.CustomerId, setDepositLimit.Amount, setDepositLimit.PeriodInDays, setDepositLimit.StartDate, setDepositLimit.EndDate, setDepositLimit.Author);
+                var depositLimit =  await _depositLimitService.SetDepositLimit(
+                    setDepositLimit.CustomerId,
+                    setDepositLimit.Amount,
+                    setDepositLimit.PeriodInDays,
+                    setDepositLimit.StartDate,
+                    setDepositLimit.EndDate,
+                    setDepositLimit.Author);
 
                 //Add log entry
                 var log = depositLimit.ToLog();
