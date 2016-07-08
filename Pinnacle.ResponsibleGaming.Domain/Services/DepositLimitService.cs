@@ -25,9 +25,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             var depositLimit = await GetDepositLimit(customerId);
             depositLimit?.Modify(amount, periodInDays, startDate, endDate, author);
 
-            depositLimit = new DepositLimit(customerId, amount, periodInDays, startDate, endDate, author);
             _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
-
             await _dbContext.SaveChangesAsync();
 
             return depositLimit;
