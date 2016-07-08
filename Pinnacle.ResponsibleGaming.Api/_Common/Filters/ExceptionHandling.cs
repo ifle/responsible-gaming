@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Reflection;
 using System.Web.Http.Filters;
+using Elmah;
 using log4net;
 using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
 
@@ -29,6 +30,7 @@ namespace Pinnacle.ResponsibleGaming.Api._Common.Filters
                 return;
             }
 
+            ErrorSignal.FromCurrentContext().Raise(actionContext.Exception);
             _log.Error(actionContext.Exception);
         }
     }
