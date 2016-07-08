@@ -68,6 +68,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Transactions\DefaultTransaction.cs" />
+    <Compile Include="Transactions\DisableDepositLimitTransaction.cs" />
+    <Compile Include="Transactions\SetDepositLimitTransaction.cs" />
     <Compile Include="Handlers\DisableDepositLimitHandler.cs" />
     <Compile Include="Messages\SetDepositLimitMessages.cs" />
     <Compile Include="Handlers\SetDepositLimitHandler.cs" />

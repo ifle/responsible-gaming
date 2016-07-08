@@ -1,27 +1,23 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
-using Pinnacle.ResponsibleGaming.Domain.Queries;
+using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Services
 {
     public class DepositLimitService
     {
-        private readonly DbContext _dbContext;
-        private readonly DepositLimitQuery _depositLimitQuery;
+        private readonly DepositLimitRepository _depositLimitRepository;
 
-        public DepositLimitService(DbContext dbContext, DepositLimitQuery depositLimitQuery)
+        public DepositLimitService(DepositLimitRepository depositLimitRepository)
         {
-            _dbContext = dbContext;
-            _depositLimitQuery = depositLimitQuery;
+            _depositLimitRepository = depositLimitRepository;
         }
 
-        public async Task<DepositLimit> SetDepositLimit(DepositLimit depositLimit)
+        public async Task<DepositLimit> Set(DepositLimit depositLimit)
         {
-            var currentDepositLimit = await GetDepositLimit(depositLimit.CustomerId);
+            var currentDepositLimit = await Get(depositLimit.CustomerId);
             if (currentDepositLimit != null)
             {
                 currentDepositLimit.Modify(depositLimit);
@@ -31,26 +27,25 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
                 currentDepositLimit = depositLimit;
             }
 
-            _dbContext.Set<Limit>().AddOrUpdate(currentDepositLimit);
-            await _dbContext.SaveChangesAsync();
+            await _depositLimitRepository.Upsert(currentDepositLimit);
 
             return currentDepositLimit;
         }
-        public async Task<DepositLimit> DisableDepositLimit(string customerId, string author)
+        public async Task<DepositLimit> Disable(string customerId, string author)
         {
-            var depositLimit = await _depositLimitQuery.GetActiveLimitByCustomerId(customerId);
+            var depositLimit = await _depositLimitRepository.GetActiveByCustomerId(customerId);
             if (depositLimit == null) throw new NotFoundException(DepositLimitMessages.DepositLimitNotFound);
 
             depositLimit.Disable(author);
-            _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
+            await _depositLimitRepository.Upsert(depositLimit);
             return depositLimit;
         }
-        public async Task<DepositLimit> GetDepositLimit(string customerId)
+        public async Task<DepositLimit> Get(string customerId)
         {
             //Check if customer exists
             if (false) throw new NotFoundException(DepositLimitMessages.CustomerNotFound);
 
-            var depositLimit = await _depositLimitQuery.GetActiveLimitByCustomerId(customerId);
+            var depositLimit = await _depositLimitRepository.GetActiveByCustomerId(customerId);
             return depositLimit;
         }
     }

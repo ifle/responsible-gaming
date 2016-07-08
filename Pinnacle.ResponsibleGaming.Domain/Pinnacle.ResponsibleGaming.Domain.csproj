@@ -65,8 +65,10 @@
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\Log.cs" />
-    <Compile Include="Queries\DepositLimitQuery.cs" />
-    <Compile Include="Queries\LimitQuery.cs" />
+    <Compile Include="Repositories\EventRepository.cs" />
+    <Compile Include="Repositories\LogRepository.cs" />
+    <Compile Include="Repositories\DepositLimitRepository.cs" />
+    <Compile Include="Repositories\LimitRepository.cs" />
     <Compile Include="Rules\DepositLimitRules.cs" />
     <Compile Include="Services\DepositLimitService.cs" />
     <Compile Include="Services\EventService.cs" />

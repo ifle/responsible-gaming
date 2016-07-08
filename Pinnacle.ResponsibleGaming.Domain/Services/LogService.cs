@@ -1,22 +1,21 @@
-﻿using System.Data.Entity;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Domain.Repositories;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Services
 {
     public class LogService
     {
-        private readonly DbContext _dbContext;
+        private readonly LogRepository _logRepository;
 
-        public LogService(DbContext dbContext)
+        public LogService(LogRepository logRepository)
         {
-            _dbContext = dbContext;
+            _logRepository = logRepository;
         }
 
-        public async Task AddLog(Log log)
+        public async Task Add(Log log)
         {
-            _dbContext.Set<Log>().Add(log);
-            await _dbContext.SaveChangesAsync();
+            await _logRepository.Insert(log);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using log4net;
 using Pinnacle.ResponsibleGaming.Application.Requests;
+using Pinnacle.ResponsibleGaming.Application.Transactions;
 using Pinnacle.ResponsibleGaming.Application._Common.Extensions;
 using Pinnacle.ResponsibleGaming.Domain.Services;
 
@@ -11,39 +12,41 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
     public class DisableDepositLimitHandler
     {
         private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly DbContext _dbContext;
+        private DisableDepositLimitTransaction _disableDepositLimitTransaction;
         private readonly DepositLimitService _depositLimitService;
         private readonly LogService _logService;
 
         public DisableDepositLimitHandler(
-            DbContext dbContext,
+           DisableDepositLimitTransaction disableDepositLimitTransaction,
             DepositLimitService depositLimitService,
             LogService logService
 
             )
         {
-            _dbContext = dbContext;
+            _disableDepositLimitTransaction = disableDepositLimitTransaction;
             _depositLimitService = depositLimitService;
             _logService = logService;
         }
 
         public async Task Handle(DisableDepositLimit disableDepositLimit)
         {
-            using (var dbContextTransaction = _dbContext.Database.BeginTransaction())
-            {
-                //Disable deposit limit
-                var depositLimit = await _depositLimitService.DisableDepositLimit(
+            //Begin transaction
+            _disableDepositLimitTransaction.Begin();
+
+            //Disable deposit limit
+            var depositLimit = await _depositLimitService.Disable(
                     disableDepositLimit.CustomerId,
                     disableDepositLimit.Author
                     );
 
-                //Add log entry
-                var log = depositLimit.ToLog();
-                await _logService.AddLog(log);
+            //Add log entry
+            var log = depositLimit.ToLog();
+            await _logService.Add(log);
 
-                //Commit                
-                dbContextTransaction.Commit();
-            }
+            //Commit                
+            _disableDepositLimitTransaction.Commit();
+
+            //Log
             _log.Info(disableDepositLimit.SerializeAsKeyValues());
         }
     }
