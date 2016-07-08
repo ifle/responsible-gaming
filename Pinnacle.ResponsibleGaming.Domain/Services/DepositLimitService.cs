@@ -20,15 +20,16 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             _depositLimitQuery = depositLimitQuery;
         }
 
-        public async Task<DepositLimit> SetDepositLimit(string customerId, decimal amount, int? periodInDays, DateTime? startDate, DateTime? endDate, string author)
+        public async Task<DepositLimit> SetDepositLimit(DepositLimit depositLimit)
         {
-            var depositLimit = await GetDepositLimit(customerId);
-            depositLimit?.Modify(amount, periodInDays, startDate, endDate, author);
+            var currentDepositLimit = await GetDepositLimit(depositLimit.CustomerId);
 
-            _dbContext.Set<Limit>().AddOrUpdate(depositLimit);
+            currentDepositLimit?.Modify(depositLimit);
+
+            _dbContext.Set<Limit>().AddOrUpdate(currentDepositLimit);
             await _dbContext.SaveChangesAsync();
 
-            return depositLimit;
+            return currentDepositLimit;
         }
         public async Task<DepositLimit> DisableDepositLimit(string customerId, string author)
         {

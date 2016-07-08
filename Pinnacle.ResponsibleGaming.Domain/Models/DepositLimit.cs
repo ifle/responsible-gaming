@@ -25,19 +25,18 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
             ModificationTime = now;
         }
 
-        public void Modify(decimal amount, int? periodInDays, DateTime? startDate, DateTime? endDate, string author)
+        public void Modify(DepositLimit depositLimit)
         {
-            if (!DepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(amount, Amount)) { throw new ConflictException(DepositLimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
-            if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(amount, Amount, periodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }
-            if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(periodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
+            if (!DepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.Amount, Amount)) { throw new ConflictException(DepositLimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
+            if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(depositLimit.Amount, Amount, depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }
+            if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
 
             var now = DateTime.Now;
 
-            Amount = amount;
-            PeriodInDays = periodInDays;
-            StartDate = startDate ?? now;
-            EndDate = endDate;
-            Author = author;
+            Amount = depositLimit.Amount;
+            PeriodInDays = depositLimit.PeriodInDays;
+            EndDate = depositLimit.EndDate;
+            Author = depositLimit.Author;
             ModificationTime = now;
         }
 
