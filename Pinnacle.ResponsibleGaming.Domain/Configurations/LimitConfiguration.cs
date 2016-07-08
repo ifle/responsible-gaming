@@ -40,10 +40,10 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
                 .HasColumnType("datetime2")
                 .IsRequired();
 
-
             //Ignore
             Ignore(x => x.Status);
             Ignore(x => x.IsRecurring);
+            Ignore(x => x.Events);
         }
     }
 }

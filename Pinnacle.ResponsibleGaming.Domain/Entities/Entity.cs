@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 
 namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {
     public class Entity
     {
-        [NotMapped]
+        [JsonIgnore]
         public List<Event> Events { get; set; }
 
         public Entity()
