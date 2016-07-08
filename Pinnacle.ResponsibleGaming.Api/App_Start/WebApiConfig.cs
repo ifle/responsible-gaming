@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Pinnacle.ResponsibleGaming.Api._Common.Binders;
 using Pinnacle.ResponsibleGaming.Api._Common.Filters;
-using Pinnacle.ResponsibleGaming.Application.Requests;
+using Pinnacle.ResponsibleGaming.Application._Common;
 
 namespace Pinnacle.ResponsibleGaming.Api
 {
@@ -13,7 +13,7 @@ namespace Pinnacle.ResponsibleGaming.Api
             // Web API configuration and services
             config.Filters.Add(new ValidateRequestAttribute());
             config.Filters.Add(new ExceptionHandlingAttribute());
-            config.ParameterBindingRules.Insert(0, descriptor => descriptor.ParameterType.IsSubclassOf(typeof(CustomerRequest)) ? new BodyAndUriParameterBinding(descriptor) : null);
+            config.ParameterBindingRules.Insert(0, descriptor => descriptor.ParameterType.IsSubclassOf(typeof(Request)) ? new BodyAndUriParameterBinding(descriptor) : null);
             config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
 

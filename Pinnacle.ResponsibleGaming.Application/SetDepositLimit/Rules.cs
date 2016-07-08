@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Pinnacle.ResponsibleGaming.Application.Rules
+namespace Pinnacle.ResponsibleGaming.Application.SetDepositLimit
 {
     public static class SetDepositLimitRules
     {

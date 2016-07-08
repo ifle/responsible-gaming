@@ -1,8 +1,8 @@
 ﻿
 
-namespace Pinnacle.ResponsibleGaming.Application.Messages
+namespace Pinnacle.ResponsibleGaming.Application.SetDepositLimit
 {
-    public static class SetDepositLimitMessages
+    public static class Messages
     {
         public const string CustomerIdMustBeProvided = "The customer ID must be provided";
         public const string AmountMustBePositive = "The amount must be a positive";

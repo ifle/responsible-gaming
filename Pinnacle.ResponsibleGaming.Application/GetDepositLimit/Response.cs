@@ -1,10 +1,10 @@
 ﻿using Pinnacle.ResponsibleGaming.Domain.Entities;
 
-namespace Pinnacle.ResponsibleGaming.Application.Responses
+namespace Pinnacle.ResponsibleGaming.Application.GetDepositLimit
 {
-    public class GetDepositLimitResponse : DepositLimit
+    public class Response : DepositLimit
     {
-        public GetDepositLimitResponse(DepositLimit depositLimit)
+        public Response(DepositLimit depositLimit)
             :base(
                  depositLimit.CustomerId,
                  depositLimit.Amount,

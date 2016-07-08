@@ -1,10 +1,9 @@
-﻿using System.Data.Entity;
-using Pinnacle.ResponsibleGaming.Application.Contexts;
+﻿using Pinnacle.ResponsibleGaming.Application.SetDepositLimit;
 
 
 namespace Pinnacle.ResponsibleGaming.Persistence.Contexts
 {
-    public class SetDepositLimitContext : Context, ISetDepositLimitContext
+    public class SetDepositLimitContext : Context, IContext
     {
     }
 }

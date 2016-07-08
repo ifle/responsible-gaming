@@ -1,41 +1,39 @@
 ﻿using System.Reflection;
 using System.Threading.Tasks;
 using log4net;
-using Pinnacle.ResponsibleGaming.Application.Requests;
-using Pinnacle.ResponsibleGaming.Application.Contexts;
 using Pinnacle.ResponsibleGaming.Application._Common.Extensions;
 using Pinnacle.ResponsibleGaming.Domain.Services;
 
-namespace Pinnacle.ResponsibleGaming.Application.Handlers
+namespace Pinnacle.ResponsibleGaming.Application.DisableDepositLimit
 {
-    public class DisableDepositLimitHandler
+    public class Handler
     {
         private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private IDisableDepositLimitContext _disableDepositLimitContext;
+        private IContext _context;
         private readonly DepositLimitService _depositLimitService;
         private readonly LogService _logService;
 
-        public DisableDepositLimitHandler(
-           IDisableDepositLimitContext disableDepositLimitContext,
+        public Handler(
+           IContext context,
             DepositLimitService depositLimitService,
             LogService logService
 
             )
         {
-            _disableDepositLimitContext = disableDepositLimitContext;
+            _context = context;
             _depositLimitService = depositLimitService;
             _logService = logService;
         }
 
-        public async Task Handle(DisableDepositLimit disableDepositLimit)
+        public async Task Handle(Request request)
         {
             //Begin transaction
-            _disableDepositLimitContext.BeginTransaction();
+            _context.BeginTransaction();
 
             //Disable deposit limit
             var depositLimit = await _depositLimitService.Disable(
-                    disableDepositLimit.CustomerId,
-                    disableDepositLimit.Author
+                    request.CustomerId,
+                    request.Author
                     );
 
             //Add log entry
@@ -43,10 +41,10 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             await _logService.Add(log);
 
             //Commit                
-            _disableDepositLimitContext.Commit();
+            _context.Commit();
 
             //Log
-            _log.Info(disableDepositLimit.SerializeAsKeyValues());
+            _log.Info(request.SerializeAsKeyValues());
         }
     }
 }

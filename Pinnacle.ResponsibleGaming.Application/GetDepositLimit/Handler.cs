@@ -1,25 +1,23 @@
 ﻿using System.Threading.Tasks;
-using Pinnacle.ResponsibleGaming.Application.Requests;
-using Pinnacle.ResponsibleGaming.Application.Responses;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 
-namespace Pinnacle.ResponsibleGaming.Application.Handlers
+namespace Pinnacle.ResponsibleGaming.Application.GetDepositLimit
 {
-    public class GetDepositLimitHandler
+    public class Handler
     {
         private readonly IDepositLimitRepository _depositLimitRepository;
 
-        public GetDepositLimitHandler(IDepositLimitRepository depositLimitRepository)
+        public Handler(IDepositLimitRepository depositLimitRepository)
         {
             _depositLimitRepository = depositLimitRepository;
         }
 
-        public async Task<GetDepositLimitResponse> Handle(GetDepositLimit getDepositLimit)
+        public async Task<Response> Handle(Request getDepositLimit)
         {
             var depositLimit = await _depositLimitRepository.GetActiveByCustomerId(getDepositLimit.CustomerId);
             if (depositLimit == null) return null;
 
-            var getDepositLimitResult = new GetDepositLimitResponse(depositLimit);
+            var getDepositLimitResult = new Response(depositLimit);
             return getDepositLimitResult;
         }
     }
