@@ -9,5 +9,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Messages
         public const string PeriodMustBeMoreRestrictiveThanTheCurrentOne = "The period must be more restrictive";
 
         public const string CustomerNotFound = "Customer not found";
+        public const string DepositLimitNotFound = "Deposit limit not found";
     }
 }
