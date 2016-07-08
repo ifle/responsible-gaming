@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Expressions;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
-using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Queries

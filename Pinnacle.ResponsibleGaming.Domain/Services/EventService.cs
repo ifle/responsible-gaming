@@ -1,21 +1,22 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Services
 {
-    public class LogService
+    public class EventService
     {
         private readonly DbContext _dbContext;
 
-        public LogService(DbContext dbContext)
+        public EventService(DbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task AddLog(Log log)
+        public async Task AddEvents(List<Event> events)
         {
-            _dbContext.Set<Log>().Add(log);
+            _dbContext.Set<Event>().AddRange(events);
             await _dbContext.SaveChangesAsync();
         }
     }

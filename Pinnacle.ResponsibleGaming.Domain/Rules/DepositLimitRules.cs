@@ -1,4 +1,4 @@
-﻿using Pinnacle.ResponsibleGaming.Domain.Models;
+﻿using Pinnacle.ResponsibleGaming.Domain.Entities;
 
 
 

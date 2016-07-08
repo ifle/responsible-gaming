@@ -2,7 +2,7 @@
 using System.Data.Entity.Migrations;
 using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
-using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Queries;
 using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
 

@@ -1,7 +1,7 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace Pinnacle.ResponsibleGaming.Domain.Models
+
+namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {
     public class Event
     {
@@ -14,6 +14,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
         {
             Name = @event.GetType().Name;
             Json = JsonConvert.SerializeObject(@event);
+            Sent = false;
         }
 
     }

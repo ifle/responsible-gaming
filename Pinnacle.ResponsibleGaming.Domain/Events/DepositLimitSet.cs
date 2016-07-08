@@ -1,16 +1,12 @@
 ﻿using System;
 
 
-
-namespace Pinnacle.ResponsibleGaming.Domain.Models
+namespace Pinnacle.ResponsibleGaming.Domain.Events
 {
-    public class Log
+    public class DepositLimitSet
     {
-        public int LogId { get; set; }
-        public int LimitId { get; set; }
         public string CustomerId { get; set; }
-        public int LimitTypeId { get; set; }
-        public decimal Limit { get; set; }
+        public decimal Amount { get; set; }
         public int? PeriodInDays { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }

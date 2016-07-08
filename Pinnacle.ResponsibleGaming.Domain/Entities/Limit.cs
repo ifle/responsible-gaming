@@ -1,9 +1,9 @@
 ﻿using System;
 using Pinnacle.ResponsibleGaming.Domain.Expressions;
 
-namespace Pinnacle.ResponsibleGaming.Domain.Models
+namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {
-    public abstract class Limit
+    public abstract class Limit: Entity
     {
         public int LimitId { get; set; }
         public string CustomerId { get; set; }
@@ -22,14 +22,5 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
             }
         }
         public bool IsRecurring => PeriodInDays.HasValue;
-
-        public void Disable(string author)
-        {
-            const int coolingOffPeriodInDays = 1;
-
-            EndDate = DateTime.Now.AddDays(coolingOffPeriodInDays);
-            Author = author;
-            ModificationTime = DateTime.Now;
-        }
     }
 }

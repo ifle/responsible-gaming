@@ -1,7 +1,7 @@
 ﻿using System;
 using FluentValidation.Attributes;
 using Pinnacle.ResponsibleGaming.Application.Validators;
-using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Domain.Entities;
 
 
 namespace Pinnacle.ResponsibleGaming.Application.Requests
