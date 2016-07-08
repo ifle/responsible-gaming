@@ -30,7 +30,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             {
                 currentDepositLimit = depositLimit;
             }
-           
 
             _dbContext.Set<Limit>().AddOrUpdate(currentDepositLimit);
             await _dbContext.SaveChangesAsync();
