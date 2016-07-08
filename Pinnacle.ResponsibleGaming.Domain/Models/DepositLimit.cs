@@ -14,26 +14,31 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
         }
         public DepositLimit(string customerId, decimal amount, int? periodInDays, DateTime? startDate, DateTime? endDate, string author)
         {
+            var now = DateTime.Now;
+
             CustomerId = customerId;
             Amount = amount;
             PeriodInDays = periodInDays;
-            StartDate = startDate ?? DateTime.Now;
+            StartDate = startDate ?? now;
             EndDate = endDate;
             Author = author;
+            ModificationTime = now;
         }
 
         public void Modify(decimal amount, int? periodInDays, DateTime? startDate, DateTime? endDate, string author)
         {
             if (!DepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(amount, Amount)) { throw new ConflictException(DepositLimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
-            if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(amount, Amount, periodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }          
+            if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(amount, Amount, periodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }
             if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(periodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
+
+            var now = DateTime.Now;
 
             Amount = amount;
             PeriodInDays = periodInDays;
-            StartDate = startDate??DateTime.Now;
+            StartDate = startDate ?? now;
             EndDate = endDate;
             Author = author;
-            ModificationTime = DateTime.Now;
+            ModificationTime = now;
         }
 
         public Log ToLog()
