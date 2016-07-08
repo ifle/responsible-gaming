@@ -15,7 +15,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Configurations
                 });
 
             //Key
-            HasKey(x => x.CustomerId);
+            HasKey(x => x.LimitId);
 
             //Properties
             Property(t => t.Amount)
