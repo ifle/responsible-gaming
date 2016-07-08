@@ -1,12 +1,13 @@
 ﻿using System;
 using FluentValidation.Attributes;
+using Pinnacle.ResponsibleGaming.Application.Validators;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 
 
-namespace Pinnacle.ResponsibleGaming.Application.SetDepositLimit
+namespace Pinnacle.ResponsibleGaming.Application.Requests
 {
     [Validator(typeof(SetDepositLimitValidator))]
-    public  class Request : _Common.Request
+    public  class SetDepositLimit : CustomerRequest
     {
         public decimal Amount { get; set; }
         public int? PeriodInDays { get; set; }

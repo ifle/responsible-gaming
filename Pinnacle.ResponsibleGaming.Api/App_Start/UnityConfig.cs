@@ -1,6 +1,8 @@
 using System.Data.Entity;
 using Microsoft.Practices.Unity;
 using System.Web.Http;
+using Pinnacle.ResponsibleGaming.Application.Handlers;
+using Pinnacle.ResponsibleGaming.Application.Contexts;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain.Services;
 using Pinnacle.ResponsibleGaming.Persistence.Contexts;
@@ -27,13 +29,13 @@ namespace Pinnacle.ResponsibleGaming.Api
             container.RegisterType<DbContext, Context>(new HierarchicalLifetimeManager());
 
             //Handlers
-            container.RegisterType<Application.GetDepositLimit.Handler, Application.GetDepositLimit.Handler>();
-            container.RegisterType<Application.SetDepositLimit.Handler, Application.SetDepositLimit.Handler>();
-            container.RegisterType<Application.DisableDepositLimit.Handler, Application.DisableDepositLimit.Handler>();
+            container.RegisterType<GetDepositLimitHandler, GetDepositLimitHandler>();
+            container.RegisterType<SetDepositLimitHandler, SetDepositLimitHandler>();
+            container.RegisterType<DisableDepositLimitHandler, DisableDepositLimitHandler>();
 
             //Transactions
-            container.RegisterType<Application.SetDepositLimit.IContext, SetDepositLimitContext>();
-            container.RegisterType<Application.DisableDepositLimit.IContext, DisableDepositLimitContext>();
+            container.RegisterType<ISetDepositLimitContext, SetDepositLimitContext>();
+            container.RegisterType<IDisableDepositLimitContext, DisableDepositLimitContext>();
 
             //Services
             container.RegisterType<DepositLimitService, DepositLimitService>();
