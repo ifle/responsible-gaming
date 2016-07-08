@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
@@ -23,8 +22,15 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
         public async Task<DepositLimit> SetDepositLimit(DepositLimit depositLimit)
         {
             var currentDepositLimit = await GetDepositLimit(depositLimit.CustomerId);
-
-            currentDepositLimit?.Modify(depositLimit);
+            if (currentDepositLimit != null)
+            {
+                currentDepositLimit.Modify(depositLimit);
+            }
+            else
+            {
+                currentDepositLimit = depositLimit;
+            }
+           
 
             _dbContext.Set<Limit>().AddOrUpdate(currentDepositLimit);
             await _dbContext.SaveChangesAsync();
