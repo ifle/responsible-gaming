@@ -1,20 +1,23 @@
-﻿using System.Data.Entity;
+﻿using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Pinnacle.ResponsibleGaming.Domain.Configurations;
+using Pinnacle.ResponsibleGaming.Persistence.Configurations;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 
 namespace Pinnacle.ResponsibleGaming.Persistence.Contexts
 {
-    public  class MainContext: DbContext
+    public  class Context: DbContext
     {
+        private DbContextTransaction _dbContextTransaction;
+
         public DbSet<Limit> Limits { get; set; }
         public DbSet<Log> Logs { get; set; }
         public DbSet<Event> Events { get; set; }
 
-        public MainContext()
+        public Context()
             : base("name=MainSqlServer")
         {
-            Database.SetInitializer<MainContext>(null);
+            Database.SetInitializer<Context>(null);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -27,6 +30,21 @@ namespace Pinnacle.ResponsibleGaming.Persistence.Contexts
             modelBuilder.Configurations.Add(new LogConfiguration());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public void BeginTransaction()
+        {
+            _dbContextTransaction = Database.BeginTransaction();
+        }
+
+        public void BeginTransaction(IsolationLevel isolationLevel)
+        {
+            _dbContextTransaction = Database.BeginTransaction(isolationLevel);
+        }
+
+        public void Commit()
+        {
+            _dbContextTransaction.Commit();
         }
     }
 }

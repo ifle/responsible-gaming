@@ -7,9 +7,9 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
 {
     public class GetDepositLimitHandler
     {
-        private readonly DepositLimitRepository _depositLimitRepository;
+        private readonly IDepositLimitRepository _depositLimitRepository;
 
-        public GetDepositLimitHandler(DepositLimitRepository depositLimitRepository)
+        public GetDepositLimitHandler(IDepositLimitRepository depositLimitRepository)
         {
             _depositLimitRepository = depositLimitRepository;
         }

@@ -6,9 +6,9 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
 {
     public class LogService
     {
-        private readonly LogRepository _logRepository;
+        private readonly ILogRepository _logRepository;
 
-        public LogService(LogRepository logRepository)
+        public LogService(ILogRepository logRepository)
         {
             _logRepository = logRepository;
         }

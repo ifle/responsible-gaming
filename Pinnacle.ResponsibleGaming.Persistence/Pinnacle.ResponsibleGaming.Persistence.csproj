@@ -49,14 +49,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contexts\MainContext.cs" />
+    <Compile Include="Configurations\DepositLimitConfiguration.cs" />
+    <Compile Include="Configurations\LimitConfiguration.cs" />
+    <Compile Include="Configurations\LogConfiguration.cs" />
+    <Compile Include="Configurations\SelfExclusionConfiguration.cs" />
+    <Compile Include="Contexts\DisableDepositLimitContext.cs" />
+    <Compile Include="Contexts\Context.cs" />
+    <Compile Include="Contexts\SetDepositLimitContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DepositLimitRepository.cs" />
+    <Compile Include="Repositories\EventRepository.cs" />
+    <Compile Include="Repositories\LimitRepository.cs" />
+    <Compile Include="Repositories\LogRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Application\Pinnacle.ResponsibleGaming.Application.csproj">
+      <Project>{f39b93a6-28a8-4ae3-a5dc-28188465b33b}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>

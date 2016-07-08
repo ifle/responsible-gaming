@@ -7,9 +7,9 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
 {
     public class EventService
     {
-        private readonly EventRepository _eventRepository;
+        private readonly IEventRepository _eventRepository;
 
-        public EventService(EventRepository eventRepository)
+        public EventService(IEventRepository eventRepository)
         {
             _eventRepository = eventRepository;
         }

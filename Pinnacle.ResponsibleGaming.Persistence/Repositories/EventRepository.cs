@@ -2,10 +2,11 @@
 using System.Data.Entity;
 using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Domain.Repositories;
 
-namespace Pinnacle.ResponsibleGaming.Domain.Repositories
+namespace Pinnacle.ResponsibleGaming.Persistence.Repositories
 {
-    public class EventRepository
+    public class EventRepository : IEventRepository
     {
         private readonly DbContext _dbContext;
 

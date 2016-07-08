@@ -1,10 +1,11 @@
 ﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Domain.Repositories;
 
-namespace Pinnacle.ResponsibleGaming.Domain.Repositories
+namespace Pinnacle.ResponsibleGaming.Persistence.Repositories
 {
-    public class LogRepository 
+    public class LogRepository : ILogRepository
     {
         private readonly DbContext _dbContext;
 

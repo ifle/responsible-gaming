@@ -8,9 +8,9 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
 {
     public class DepositLimitService
     {
-        private readonly DepositLimitRepository _depositLimitRepository;
+        private readonly IDepositLimitRepository _depositLimitRepository;
 
-        public DepositLimitService(DepositLimitRepository depositLimitRepository)
+        public DepositLimitService(IDepositLimitRepository depositLimitRepository)
         {
             _depositLimitRepository = depositLimitRepository;
         }

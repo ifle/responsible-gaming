@@ -2,10 +2,11 @@ using System.Data.Entity;
 using Microsoft.Practices.Unity;
 using System.Web.Http;
 using Pinnacle.ResponsibleGaming.Application.Handlers;
-using Pinnacle.ResponsibleGaming.Application.Transactions;
+using Pinnacle.ResponsibleGaming.Application.Contexts;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain.Services;
 using Pinnacle.ResponsibleGaming.Persistence.Contexts;
+using Pinnacle.ResponsibleGaming.Persistence.Repositories;
 using Unity.WebApi;
 
 namespace Pinnacle.ResponsibleGaming.Api
@@ -25,7 +26,7 @@ namespace Pinnacle.ResponsibleGaming.Api
 
 
             //Contexts
-            container.RegisterType<DbContext, MainContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<DbContext, Context>(new HierarchicalLifetimeManager());
 
             //Handlers
             container.RegisterType<GetDepositLimitHandler, GetDepositLimitHandler>();
@@ -33,19 +34,21 @@ namespace Pinnacle.ResponsibleGaming.Api
             container.RegisterType<DisableDepositLimitHandler, DisableDepositLimitHandler>();
 
             //Transactions
-            container.RegisterType<SetDepositLimitTransaction, SetDepositLimitTransaction>();
-            container.RegisterType<DisableDepositLimitTransaction, DisableDepositLimitTransaction>();
+            container.RegisterType<ISetDepositLimitContext, SetDepositLimitContext>();
+            container.RegisterType<IDisableDepositLimitContext, DisableDepositLimitContext>();
 
             //Services
             container.RegisterType<DepositLimitService, DepositLimitService>();
             container.RegisterType<LogService, LogService>();
             container.RegisterType<EventService, EventService>();
 
-            //Queries
-            container.RegisterType<DepositLimitRepository, DepositLimitRepository>();
+            //Repositories
+            container.RegisterType<IDepositLimitRepository, DepositLimitRepository>();
+            container.RegisterType<ILogRepository, LogRepository>();
+            container.RegisterType<IEventRepository, EventRepository>();
 
 
-           
+
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

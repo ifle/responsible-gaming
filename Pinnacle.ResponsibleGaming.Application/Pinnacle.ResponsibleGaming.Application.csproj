@@ -33,14 +33,6 @@
     <OutputPath>bin\Integration\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="FluentValidation, Version=6.3.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.6.3.4-alpha\lib\Net45\FluentValidation.dll</HintPath>
       <Private>True</Private>
@@ -68,9 +60,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Transactions\DefaultTransaction.cs" />
-    <Compile Include="Transactions\DisableDepositLimitTransaction.cs" />
-    <Compile Include="Transactions\SetDepositLimitTransaction.cs" />
+    <Compile Include="Contexts\IContext.cs" />
+    <Compile Include="Contexts\IDisableDepositLimitContext.cs" />
+    <Compile Include="Contexts\ISetDepositLimitContext.cs" />
     <Compile Include="Handlers\DisableDepositLimitHandler.cs" />
     <Compile Include="Messages\SetDepositLimitMessages.cs" />
     <Compile Include="Handlers\SetDepositLimitHandler.cs" />

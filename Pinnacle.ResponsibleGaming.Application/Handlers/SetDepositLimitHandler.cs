@@ -1,9 +1,8 @@
-﻿using System.Data.Entity;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Threading.Tasks;
 using log4net;
 using Pinnacle.ResponsibleGaming.Application.Requests;
-using Pinnacle.ResponsibleGaming.Application.Transactions;
+using Pinnacle.ResponsibleGaming.Application.Contexts;
 using Pinnacle.ResponsibleGaming.Application._Common.Extensions;
 using Pinnacle.ResponsibleGaming.Domain.Services;
 
@@ -12,20 +11,20 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
     public class SetDepositLimitHandler
     {
         private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly SetDepositLimitTransaction _setDepositLimitTransaction;
+        private readonly ISetDepositLimitContext _setDepositLimitContext;
         private readonly DepositLimitService _depositLimitService;
         private readonly LogService _logService;
         private readonly EventService _eventService;
 
         public SetDepositLimitHandler(
-            SetDepositLimitTransaction setDepositLimitTransaction,
+            ISetDepositLimitContext setDepositLimitContext,
             DepositLimitService depositLimitService,
             LogService logService,
             EventService eventService
 
             )
         {
-            _setDepositLimitTransaction = setDepositLimitTransaction;
+            _setDepositLimitContext = setDepositLimitContext;
             _depositLimitService = depositLimitService;
             _logService = logService;
             _eventService = eventService;
@@ -34,7 +33,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         public async Task Handle(SetDepositLimit setDepositLimit)
         {
             //Begin transaction
-            _setDepositLimitTransaction.Begin();
+            _setDepositLimitContext.BeginTransaction();
 
             //Set deposit limit
             var depositLimit = await _depositLimitService.Set(setDepositLimit.ToDepositLimit());
@@ -47,7 +46,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             await _eventService.Add(depositLimit.Events);
 
             //Commit                
-            _setDepositLimitTransaction.Commit();
+            _setDepositLimitContext.Commit();
 
             //Log
             _log.Info(setDepositLimit.SerializeAsKeyValues());

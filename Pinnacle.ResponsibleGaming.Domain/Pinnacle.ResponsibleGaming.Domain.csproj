@@ -33,14 +33,6 @@
     <OutputPath>bin\Integration\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -56,19 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configurations\DepositLimitConfiguration.cs" />
-    <Compile Include="Configurations\LogConfiguration.cs" />
-    <Compile Include="Configurations\LimitConfiguration.cs" />
-    <Compile Include="Configurations\SelfExclusionConfiguration.cs" />
     <Compile Include="Events\DepositLimitSet.cs" />
     <Compile Include="Messages\DepositLimitMessages.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\Log.cs" />
-    <Compile Include="Repositories\EventRepository.cs" />
-    <Compile Include="Repositories\LogRepository.cs" />
-    <Compile Include="Repositories\DepositLimitRepository.cs" />
-    <Compile Include="Repositories\LimitRepository.cs" />
+    <Compile Include="Repositories\IDepositLimitRepository.cs" />
+    <Compile Include="Repositories\IEventRepository.cs" />
+    <Compile Include="Repositories\ILogRepository.cs" />
     <Compile Include="Rules\DepositLimitRules.cs" />
     <Compile Include="Services\DepositLimitService.cs" />
     <Compile Include="Services\EventService.cs" />
