@@ -1,24 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
+using Pinnacle.ResponsibleGaming.Infrastructure.Contexts;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
 {
     public class EventRepository : IEventRepository
     {
-        private readonly DbContext _dbContext;
+        private readonly Context _context;
 
-        public EventRepository(DbContext dbContext)
+        public EventRepository(Context context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
         public async Task Insert(Event @event)
         {
-            _dbContext.Set<Event>().Add(@event);
-            await _dbContext.SaveChangesAsync();
+            _context.Events.Add(@event);
+            await _context.SaveChangesAsync();
         }
     }
 }
