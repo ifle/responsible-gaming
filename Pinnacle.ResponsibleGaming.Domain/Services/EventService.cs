@@ -14,9 +14,9 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             _eventRepository = eventRepository;
         }
 
-        public async Task Add(List<Event> events)
+        public async Task Add(Event @event)
         {
-           await _eventRepository.Insert(events);
+           await _eventRepository.Insert(@event);
         }
     }
 }

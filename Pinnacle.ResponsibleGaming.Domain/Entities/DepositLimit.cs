@@ -1,5 +1,4 @@
 ﻿using System;
-using Pinnacle.ResponsibleGaming.Domain.Events;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
 using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
@@ -17,18 +16,13 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         {
             var now = DateTime.Now;
 
-            var depositLimitSet = new DepositLimitSet
-            {
-                CustomerId = customerId,
-                Amount = amount,
-                PeriodInDays = periodInDays,
-                StartDate = startDate ?? now,
-                EndDate = endDate,
-                Author = author,
-                ModificationTime = now
-            };
-
-            ApplyEvent(depositLimitSet);
+            CustomerId = customerId;
+            Amount = amount;
+            PeriodInDays = periodInDays;
+            StartDate = startDate ?? now;
+            EndDate = endDate;
+            Author = author;
+            ModificationTime = now;
         }
 
         public void Modify(DepositLimit depositLimit)
@@ -37,48 +31,20 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
             if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(depositLimit.Amount, Amount, depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }
             if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
 
-            var depositLimitSet = new DepositLimitSet
-            {
-                CustomerId = CustomerId,
-                Amount = depositLimit.Amount,
-                PeriodInDays = depositLimit.PeriodInDays,
-                StartDate = StartDate,
-                EndDate = depositLimit.EndDate,
-                Author = depositLimit.Author,
-                ModificationTime = depositLimit.ModificationTime
-            };
+            var now = DateTime.Now;
 
-            ApplyEvent(depositLimitSet);
+            Amount = depositLimit.Amount;
+            PeriodInDays = depositLimit.PeriodInDays;
+            EndDate = depositLimit.EndDate;
+            Author = depositLimit.Author;
+            ModificationTime = now;
         }
         public void Disable(string author)
         {
             const int coolingOffPeriodInDays = 1;
 
-            var depositLimitSet = new DepositLimitSet
-            {
-                CustomerId = CustomerId,
-                Amount = Amount,
-                PeriodInDays = PeriodInDays,
-                StartDate = StartDate,
-                EndDate = DateTime.Now.AddDays(coolingOffPeriodInDays),
-                Author = author,
-                ModificationTime = DateTime.Now
-            };
-
-            ApplyEvent(depositLimitSet);
-        }
-
-        public void ApplyEvent(DepositLimitSet depositLimitSet)
-        {
-            CustomerId = depositLimitSet.CustomerId;
-            Amount = depositLimitSet.Amount;
-            PeriodInDays = depositLimitSet.PeriodInDays;
-            StartDate = depositLimitSet.StartDate;
-            EndDate = depositLimitSet.EndDate;
-            Author = depositLimitSet.Author;
-            ModificationTime = depositLimitSet.ModificationTime;
-
-            Events.Add(new Event(depositLimitSet));
+            EndDate = DateTime.Now.AddDays(coolingOffPeriodInDays);
+            Author = author;
         }
     }
 }

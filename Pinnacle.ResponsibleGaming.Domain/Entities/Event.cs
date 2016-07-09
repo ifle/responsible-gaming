@@ -16,6 +16,5 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
             Json = JsonConvert.SerializeObject(@event);
             Sent = false;
         }
-
     }
 }

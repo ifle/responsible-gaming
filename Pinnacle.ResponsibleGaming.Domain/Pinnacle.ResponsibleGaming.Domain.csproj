@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="Events\DepositLimitSet.cs" />
     <Compile Include="Messages\DepositLimitMessages.cs" />
-    <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Repositories\IDepositLimitRepository.cs" />

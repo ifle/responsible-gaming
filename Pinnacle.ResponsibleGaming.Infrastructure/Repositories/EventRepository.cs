@@ -15,9 +15,9 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task Insert(List<Event> events)
+        public async Task Insert(Event @event)
         {
-            _dbContext.Set<Event>().AddRange(events);
+            _dbContext.Set<Event>().Add(@event);
             await _dbContext.SaveChangesAsync();
         }
     }

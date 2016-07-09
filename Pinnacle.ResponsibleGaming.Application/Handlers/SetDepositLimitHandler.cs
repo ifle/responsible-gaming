@@ -37,14 +37,16 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             _setDepositLimitContext.BeginTransaction();
 
             //Set deposit limit
-            var depositLimit = await _depositLimitService.Set(setDepositLimit.ToDepositLimit());
+            var depositLimit = setDepositLimit.ToDepositLimit();
+            depositLimit = await _depositLimitService.Set(depositLimit);
 
             //Add log entry
             var log = new Log(depositLimit);
             await _logService.Add(log);
 
             //Add events
-            await _eventService.Add(depositLimit.Events);
+            var @event = new Event(depositLimit);
+            await _eventService.Add(@event);
 
             //Commit                
             _setDepositLimitContext.Commit();
