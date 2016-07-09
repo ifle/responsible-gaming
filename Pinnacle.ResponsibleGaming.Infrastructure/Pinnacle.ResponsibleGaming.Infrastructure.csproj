@@ -58,7 +58,6 @@
     <Compile Include="Contexts\SetDepositLimitContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DepositLimitRepository.cs" />
-    <Compile Include="Repositories\EventRepository.cs" />
     <Compile Include="Repositories\LimitRepository.cs" />
     <Compile Include="Repositories\LogRepository.cs" />
   </ItemGroup>

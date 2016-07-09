@@ -123,7 +123,6 @@
     <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\Event.sql" />
     <Build Include="Tables\Limit.sql" />
     <Build Include="Tables\LimitType.sql" />
     <Build Include="Tables\Log.sql" />
