@@ -6,6 +6,7 @@ using Pinnacle.ResponsibleGaming.Application.Contexts;
 using Pinnacle.ResponsibleGaming.Application._Framework.Extensions;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Services;
+using Pinnacle.ResponsibleGaming.Events;
 
 namespace Pinnacle.ResponsibleGaming.Application.Handlers
 {
@@ -44,8 +45,8 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             var log = new Log(depositLimit);
             await _logService.Add(log);
 
-            //Add events
-            var @event = new Event(depositLimit);
+            //Add event
+            var @event = new Event(new LimitSet(depositLimit));
             await _eventService.Add(@event);
 
             //Commit                

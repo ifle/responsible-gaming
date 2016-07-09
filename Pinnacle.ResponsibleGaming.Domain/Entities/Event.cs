@@ -12,8 +12,14 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
 
         public Event(object @event)
         {
+
             Name = @event.GetType().Name;
-            Json = JsonConvert.SerializeObject(@event);
+            Json = JsonConvert.SerializeObject(@event,
+                            Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
             Sent = false;
         }
     }
