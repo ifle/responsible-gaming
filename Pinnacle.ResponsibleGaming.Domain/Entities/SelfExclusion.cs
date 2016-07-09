@@ -1,6 +1,5 @@
-﻿
+﻿using Newtonsoft.Json;
 
-using Newtonsoft.Json;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {
