@@ -21,15 +21,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         [JsonProperty(Order = 8)]
         public DateTime ModificationTime { get; set; }
         [JsonProperty(Order = 9)]
-        public LimitStatus Status
-        {
-            get
-            {
-                if (LimitExpressions.IsActiveLimit<Limit>().Compile()(this))
-                    return LimitStatus.Active;
-                return LimitStatus.Expired;
-            }
-        }
+        public LimitStatus Status => LimitExpressions.IsActiveLimit<Limit>().Compile()(this) ? LimitStatus.Active : LimitStatus.Expired;
         [JsonProperty(Order = 10)]
         public bool IsRecurring => PeriodInDays.HasValue;
     }
