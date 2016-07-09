@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using Newtonsoft.Json;
-using Pinnacle.ResponsibleGaming.Api._Common.Binders;
-using Pinnacle.ResponsibleGaming.Api._Common.Filters;
+using Pinnacle.ResponsibleGaming.Api._Framework.Binders;
+using Pinnacle.ResponsibleGaming.Api._Framework.Filters;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 
 namespace Pinnacle.ResponsibleGaming.Api

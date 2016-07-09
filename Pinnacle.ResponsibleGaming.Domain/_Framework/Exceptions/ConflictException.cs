@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Pinnacle.ResponsibleGaming.Domain._Common.Exceptions
+namespace Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions
 {
     public class ConflictException: Exception
     {

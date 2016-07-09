@@ -2,7 +2,7 @@
 using Pinnacle.ResponsibleGaming.Domain.Events;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
-using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
+using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {

@@ -75,7 +75,7 @@
     <Compile Include="Requests\GetDepositLimit.cs" />
     <Compile Include="Rules\SetDepositLimitRules.cs" />
     <Compile Include="Validators\SetDepositLimitValidator.cs" />
-    <Compile Include="_Common\Extensions\ObjectExtensions.cs" />
+    <Compile Include="_Framework\Extensions\ObjectExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using log4net;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application.Contexts;
-using Pinnacle.ResponsibleGaming.Application._Common.Extensions;
+using Pinnacle.ResponsibleGaming.Application._Framework.Extensions;
 using Pinnacle.ResponsibleGaming.Domain.Services;
 
 namespace Pinnacle.ResponsibleGaming.Application.Handlers

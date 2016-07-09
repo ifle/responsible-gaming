@@ -60,8 +60,8 @@
     <Compile Include="Services\DepositLimitService.cs" />
     <Compile Include="Services\EventService.cs" />
     <Compile Include="Services\LogService.cs" />
-    <Compile Include="_Common\Exceptions\NotFoundException.cs" />
-    <Compile Include="_Common\Exceptions\ConflictException.cs" />
+    <Compile Include="_Framework\Exceptions\NotFoundException.cs" />
+    <Compile Include="_Framework\Exceptions\ConflictException.cs" />
     <Compile Include="Entities\DepositLimit.cs" />
     <Compile Include="Entities\LimitStatus.cs" />
     <Compile Include="Entities\LimitType.cs" />

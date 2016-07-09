@@ -12,7 +12,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Metadata;
 using System.Web.Http.Validation;
 
-namespace Pinnacle.ResponsibleGaming.Api._Common.Binders
+namespace Pinnacle.ResponsibleGaming.Api._Framework.Binders
 {
     public class BodyAndUriParameterBinding : HttpParameterBinding
     {

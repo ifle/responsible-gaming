@@ -4,9 +4,9 @@ using System.Reflection;
 using System.Web.Http.Filters;
 using Elmah;
 using log4net;
-using Pinnacle.ResponsibleGaming.Domain._Common.Exceptions;
+using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
 
-namespace Pinnacle.ResponsibleGaming.Api._Common.Filters
+namespace Pinnacle.ResponsibleGaming.Api._Framework.Filters
 {
     public class ExceptionHandlingAttribute : ExceptionFilterAttribute
     {
