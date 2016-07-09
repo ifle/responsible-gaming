@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 
-namespace Pinnacle.ResponsibleGaming.Persistence.Configurations
+namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
 {
     public class LimitConfiguration : EntityTypeConfiguration<Limit>
     {

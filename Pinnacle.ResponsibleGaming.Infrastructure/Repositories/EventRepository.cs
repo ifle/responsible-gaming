@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 
-namespace Pinnacle.ResponsibleGaming.Persistence.Repositories
+namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
 {
     public class EventRepository : IEventRepository
     {

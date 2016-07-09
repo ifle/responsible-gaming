@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7535DF46-DA7E-4E8B-91A9-8AE7D336A8BD}</ProjectGuid>
+    <ProjectGuid>{FA9DC9A8-AE81-4B53-AC8B-28551387DB71}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pinnacle.ResponsibleGaming.Events</RootNamespace>
-    <AssemblyName>Pinnacle.ResponsibleGaming.Events</AssemblyName>
+    <RootNamespace>Pinnacle.ResponsibleGaming.Infrastructure</RootNamespace>
+    <AssemblyName>Pinnacle.ResponsibleGaming.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,8 +49,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DepositLimitSet.cs" />
+    <Compile Include="Configurations\DepositLimitConfiguration.cs" />
+    <Compile Include="Configurations\LimitConfiguration.cs" />
+    <Compile Include="Configurations\LogConfiguration.cs" />
+    <Compile Include="Configurations\SelfExclusionConfiguration.cs" />
+    <Compile Include="Contexts\DisableDepositLimitContext.cs" />
+    <Compile Include="Contexts\Context.cs" />
+    <Compile Include="Contexts\SetDepositLimitContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DepositLimitRepository.cs" />
+    <Compile Include="Repositories\EventRepository.cs" />
+    <Compile Include="Repositories\LimitRepository.cs" />
+    <Compile Include="Repositories\LogRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Application\Pinnacle.ResponsibleGaming.Application.csproj">
+      <Project>{f39b93a6-28a8-4ae3-a5dc-28188465b33b}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
+      <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

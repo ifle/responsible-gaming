@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Expressions;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 
-namespace Pinnacle.ResponsibleGaming.Persistence.Repositories
+namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
 {
     public abstract class LimitRepository<T> where T : Limit
     {

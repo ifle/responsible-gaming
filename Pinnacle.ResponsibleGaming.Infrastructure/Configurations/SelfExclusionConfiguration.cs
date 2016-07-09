@@ -1,24 +1,24 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 
-namespace Pinnacle.ResponsibleGaming.Persistence.Configurations
+namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
 {
-    public class DepositLimitConfiguration : EntityTypeConfiguration<DepositLimit>
+    public class SelfExclusionConfiguration : EntityTypeConfiguration<SelfExclusion>
     {
-        public DepositLimitConfiguration()
+        public SelfExclusionConfiguration()
         {
             //Map
             Map(x =>
                 {
                     x.ToTable("Limit");
-                    x.Requires("LimitTypeId").HasValue((int)LimitType.DepositLimit);
+                    x.Requires("LimitTypeId").HasValue((int)LimitType.SelfExclusion);
                 });
 
             //Key
-            HasKey(x => x.LimitId);
+            HasKey(x => x.CustomerId);
 
             //Properties
-            Property(t => t.Amount)
+            Property(t => t.TimeInDays)
                 .HasColumnName("Limit")
                 .HasColumnType("decimal")
                 .IsRequired();

@@ -5,8 +5,8 @@ using Pinnacle.ResponsibleGaming.Application.Handlers;
 using Pinnacle.ResponsibleGaming.Application.Contexts;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain.Services;
-using Pinnacle.ResponsibleGaming.Persistence.Contexts;
-using Pinnacle.ResponsibleGaming.Persistence.Repositories;
+using Pinnacle.ResponsibleGaming.Infrastructure.Contexts;
+using Pinnacle.ResponsibleGaming.Infrastructure.Repositories;
 using Unity.WebApi;
 
 namespace Pinnacle.ResponsibleGaming.Api

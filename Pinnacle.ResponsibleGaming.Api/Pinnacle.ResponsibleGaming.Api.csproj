@@ -236,9 +236,9 @@
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Persistence\Pinnacle.ResponsibleGaming.Persistence.csproj">
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Infrastructure\Pinnacle.ResponsibleGaming.Infrastructure.csproj">
       <Project>{fa9dc9a8-ae81-4b53-ac8b-28551387db71}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Persistence</Name>
+      <Name>Pinnacle.ResponsibleGaming.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

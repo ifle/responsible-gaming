@@ -1,10 +1,10 @@
 ﻿using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Pinnacle.ResponsibleGaming.Persistence.Configurations;
+using Pinnacle.ResponsibleGaming.Infrastructure.Configurations;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 
-namespace Pinnacle.ResponsibleGaming.Persistence.Contexts
+namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 {
     public  class Context: DbContext
     {
