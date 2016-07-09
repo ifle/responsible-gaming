@@ -80,5 +80,21 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
 
             Events.Add(new Event(depositLimitSet));
         }
+
+        public Log ToLog()
+        {
+            return new Log
+            {
+                LimitId = LimitId,
+                CustomerId = CustomerId,
+                LimitTypeId = (int)LimitType.DepositLimit,
+                Limit = Amount,
+                PeriodInDays = PeriodInDays,
+                StartDate = StartDate,
+                EndDate = EndDate,
+                Author = Author,
+                ModificationTime = ModificationTime
+            };
+        }
     }
 }

@@ -16,18 +16,5 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         public DateTime? EndDate { get; set; }
         public string Author { get; set; }
         public DateTime ModificationTime { get; set; }
-
-        public Log(DepositLimit depositLimit)
-        {
-            LimitId = depositLimit.LimitId;
-            CustomerId = depositLimit.CustomerId;
-            LimitTypeId = (int)LimitType.DepositLimit;
-            Limit = depositLimit.Amount;
-            PeriodInDays = depositLimit.PeriodInDays;
-            StartDate = depositLimit.StartDate;
-            EndDate = depositLimit.EndDate;
-            Author = depositLimit.Author;
-            ModificationTime = depositLimit.ModificationTime;
-        }
     }
 }
