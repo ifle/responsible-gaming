@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FA9DC9A8-AE81-4B53-AC8B-28551387DB71}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{DB10393E-C842-470D-8DAD-9FBAA1E3516A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pinnacle.ResponsibleGaming.Infrastructure</RootNamespace>
-    <AssemblyName>Pinnacle.ResponsibleGaming.Infrastructure</AssemblyName>
+    <RootNamespace>Pinnacle.ResponsibleGaming.Publisher</RootNamespace>
+    <AssemblyName>Pinnacle.ResponsibleGaming.Publisher</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,20 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EasyNetQ, Version=0.59.0.434, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EasyNetQ.0.59.0.434\lib\net45\EasyNetQ.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RabbitMQ.Client, Version=3.6.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
-      <HintPath>..\packages\RabbitMQ.Client.3.6.0\lib\net45\RabbitMQ.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -57,36 +52,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hubs\RabbitHub.cs" />
-    <Compile Include="Configurations\DepositLimitConfiguration.cs" />
-    <Compile Include="Configurations\LimitConfiguration.cs" />
-    <Compile Include="Configurations\LogConfiguration.cs" />
-    <Compile Include="Configurations\SelfExclusionConfiguration.cs" />
-    <Compile Include="Contexts\DisableDepositLimitContext.cs" />
-    <Compile Include="Contexts\Context.cs" />
-    <Compile Include="Contexts\SetDepositLimitContext.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\DepositLimitRepository.cs" />
-    <Compile Include="Repositories\EventRepository.cs" />
-    <Compile Include="Repositories\LimitRepository.cs" />
-    <Compile Include="Repositories\LogRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Application\Pinnacle.ResponsibleGaming.Application.csproj">
-      <Project>{f39b93a6-28a8-4ae3-a5dc-28188465b33b}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
-      <Project>{9ea8c8f3-719f-486a-9088-6fe166df27d9}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Events</Name>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Infrastructure\Pinnacle.ResponsibleGaming.Infrastructure.csproj">
+      <Project>{fa9dc9a8-ae81-4b53-ac8b-28551387db71}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

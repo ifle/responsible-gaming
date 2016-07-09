@@ -10,6 +10,8 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         public string Json { get; set; }
         public bool Sent { get; set; }
 
+        public Event() { }
+
         public Event(object @event)
         {
 
