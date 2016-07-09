@@ -48,10 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events\DepositLimitSet.cs" />
     <Compile Include="Messages\DepositLimitMessages.cs" />
     <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Repositories\IDepositLimitRepository.cs" />
     <Compile Include="Repositories\IEventRepository.cs" />
@@ -60,6 +58,7 @@
     <Compile Include="Services\DepositLimitService.cs" />
     <Compile Include="Services\EventService.cs" />
     <Compile Include="Services\LogService.cs" />
+    <Compile Include="Updaters\DepositLimitUpdater.cs" />
     <Compile Include="_Framework\Exceptions\NotFoundException.cs" />
     <Compile Include="_Framework\Exceptions\ConflictException.cs" />
     <Compile Include="Entities\DepositLimit.cs" />

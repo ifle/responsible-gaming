@@ -4,6 +4,7 @@ using log4net;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application.Contexts;
 using Pinnacle.ResponsibleGaming.Application._Framework.Extensions;
+using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Services;
 
 namespace Pinnacle.ResponsibleGaming.Application.Handlers
@@ -39,7 +40,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
                     );
 
             //Add log entry
-            var log = depositLimit.ToLog();
+            var log = new Log(depositLimit);
             await _logService.Add(log);
 
             //Commit                
