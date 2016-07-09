@@ -38,16 +38,16 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
             if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
 
             var depositLimitSet = new DepositLimitSet
-                                  {
-                                      CustomerId = CustomerId,
-                                      Amount = depositLimit.Amount,
-                                      PeriodInDays = depositLimit.PeriodInDays,
-                                      StartDate = StartDate,
-                                      EndDate = depositLimit.EndDate,
-                                      Author = depositLimit.Author,
-                                      ModificationTime = depositLimit.ModificationTime
-                                  };
-           
+            {
+                CustomerId = CustomerId,
+                Amount = depositLimit.Amount,
+                PeriodInDays = depositLimit.PeriodInDays,
+                StartDate = StartDate,
+                EndDate = depositLimit.EndDate,
+                Author = depositLimit.Author,
+                ModificationTime = depositLimit.ModificationTime
+            };
+
             ApplyEvent(depositLimitSet);
         }
         public void Disable(string author)
@@ -79,22 +79,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
             ModificationTime = depositLimitSet.ModificationTime;
 
             Events.Add(new Event(depositLimitSet));
-        }
-
-        public Log ToLog()
-        {
-            return new Log
-            {
-                LimitId = LimitId,
-                CustomerId = CustomerId,
-                LimitTypeId = (int)LimitType.DepositLimit,
-                Limit = Amount,
-                PeriodInDays = PeriodInDays,
-                StartDate = StartDate,
-                EndDate = EndDate,
-                Author = Author,
-                ModificationTime = ModificationTime
-            };
         }
     }
 }
