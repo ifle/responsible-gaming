@@ -21,7 +21,7 @@ namespace Pinnacle.ResponsibleGaming.Publisher
                     foreach (var @event in events)
                     {
                         rabbitHub.Publish(@event);
-                        Console.Write("Event published!" + " (" + @event.Name + ")");
+                        Console.Write("Event published!");
                         Console.WriteLine();
                         @event.Sent = true;
                         context.SaveChanges();
