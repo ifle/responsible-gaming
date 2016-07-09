@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
 using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
@@ -7,6 +8,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {
     public class DepositLimit : Limit
     {
+        [JsonProperty(Order = 3)]
         public decimal Amount { get; set; }
 
         public DepositLimit()
