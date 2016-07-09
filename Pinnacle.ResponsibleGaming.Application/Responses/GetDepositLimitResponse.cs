@@ -6,6 +6,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Responses
     {
         public GetDepositLimitResponse(DepositLimit depositLimit)
         {
+            LimitId = depositLimit.LimitId;
             CustomerId = depositLimit.CustomerId;
             Amount = depositLimit.Amount;
             PeriodInDays = depositLimit.PeriodInDays;
