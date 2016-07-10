@@ -28,15 +28,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         Task<HttpOperationResponse<object>> GetWithHttpMessagesAsync(string customerId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='customerId'>
         /// </param>
-        /// <param name='requestamount'>
-        /// </param>
-        /// <param name='requestperiodInDays'>
-        /// </param>
-        /// <param name='requeststartDate'>
-        /// </param>
-        /// <param name='requestendDate'>
-        /// </param>
-        /// <param name='requestauthor'>
+        /// <param name='request'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -44,10 +36,10 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> SetWithHttpMessagesAsync(string customerId, double? requestamount = default(double?), int? requestperiodInDays = default(int?), DateTime? requeststartDate = default(DateTime?), DateTime? requestendDate = default(DateTime?), string requestauthor = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> SetWithHttpMessagesAsync(string customerId, SetDepositLimit request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='customerId'>
         /// </param>
-        /// <param name='requestauthor'>
+        /// <param name='request'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -55,6 +47,6 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> DisableWithHttpMessagesAsync(string customerId, string requestauthor = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> DisableWithHttpMessagesAsync(string customerId, DisableDepositLimit request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

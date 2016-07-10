@@ -48,8 +48,9 @@ namespace Pinnacle.ResponsibleGaming.Api.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, Type = typeof(ModelStateDictionary))]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NoContent)]
-        public async Task<IHttpActionResult> Set([FromUri]string customerId, SetDepositLimit request)
+        public async Task<IHttpActionResult> Set([FromUri]string customerId, [FromBody]SetDepositLimit request)
         {
+            request.CustomerId = customerId;
             await _setDepositLimitHandler.Handle(request);
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -60,8 +61,9 @@ namespace Pinnacle.ResponsibleGaming.Api.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, Type = typeof(ModelStateDictionary))]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NoContent)]
-        public async Task<IHttpActionResult> Disable([FromUri]string customerId, DisableDepositLimit request)
+        public async Task<IHttpActionResult> Disable([FromUri]string customerId, [FromBody]DisableDepositLimit request)
         {
+            request.CustomerId = customerId;
             await _disableDepositLimitHandler.Handle(request);
             return StatusCode(HttpStatusCode.NoContent);
         }

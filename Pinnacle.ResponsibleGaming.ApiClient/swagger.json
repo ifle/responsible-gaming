@@ -33,7 +33,7 @@
       "put": {
         "tags": [ "DepositLimit" ],
         "operationId": "DepositLimit_Set",
-        "consumes": [ ],
+        "consumes": [ "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded" ],
         "produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
         "parameters": [
           {
@@ -43,38 +43,10 @@
             "type": "string"
           },
           {
-            "name": "request.amount",
-            "in": "query",
-            "required": false,
-            "type": "number",
-            "format": "double"
-          },
-          {
-            "name": "request.periodInDays",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "request.startDate",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "date-time"
-          },
-          {
-            "name": "request.endDate",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "date-time"
-          },
-          {
-            "name": "request.author",
-            "in": "query",
-            "required": false,
-            "type": "string"
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/SetDepositLimit" }
           }
         ],
         "responses": {
@@ -98,7 +70,7 @@
       "delete": {
         "tags": [ "DepositLimit" ],
         "operationId": "DepositLimit_Disable",
-        "consumes": [ ],
+        "consumes": [ "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded" ],
         "produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
         "parameters": [
           {
@@ -108,10 +80,10 @@
             "type": "string"
           },
           {
-            "name": "request.author",
-            "in": "query",
-            "required": false,
-            "type": "string"
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/DisableDepositLimit" }
           }
         ],
         "responses": {

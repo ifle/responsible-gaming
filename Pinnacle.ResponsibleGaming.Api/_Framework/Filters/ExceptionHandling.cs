@@ -17,6 +17,7 @@ namespace Pinnacle.ResponsibleGaming.Api._Framework.Filters
             {
                 actionContext.Response = new HttpResponseMessage(HttpStatusCode.Conflict)
                                    {
+                                       ReasonPhrase = actionContext.Exception.Message,
                                        Content = new StringContent(actionContext.Exception.Message)
                                    };
                 return;
@@ -25,6 +26,7 @@ namespace Pinnacle.ResponsibleGaming.Api._Framework.Filters
             {
                 actionContext.Response = new HttpResponseMessage(HttpStatusCode.NotFound)
                 {
+                    ReasonPhrase = actionContext.Exception.Message,
                     Content = new StringContent(actionContext.Exception.Message)
                 };
                 return;

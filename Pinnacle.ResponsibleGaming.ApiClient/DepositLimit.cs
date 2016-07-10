@@ -160,15 +160,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
 
         /// <param name='customerId'>
         /// </param>
-        /// <param name='requestamount'>
-        /// </param>
-        /// <param name='requestperiodInDays'>
-        /// </param>
-        /// <param name='requeststartDate'>
-        /// </param>
-        /// <param name='requestendDate'>
-        /// </param>
-        /// <param name='requestauthor'>
+        /// <param name='request'>
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -179,11 +171,15 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<object>> SetWithHttpMessagesAsync(string customerId, double? requestamount = default(double?), int? requestperiodInDays = default(int?), DateTime? requeststartDate = default(DateTime?), DateTime? requestendDate = default(DateTime?), string requestauthor = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<object>> SetWithHttpMessagesAsync(string customerId, SetDepositLimit request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (customerId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "customerId");
+            }
+            if (request == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "request");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -193,11 +189,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("customerId", customerId);
-                tracingParameters.Add("requestamount", requestamount);
-                tracingParameters.Add("requestperiodInDays", requestperiodInDays);
-                tracingParameters.Add("requeststartDate", requeststartDate);
-                tracingParameters.Add("requestendDate", requestendDate);
-                tracingParameters.Add("requestauthor", requestauthor);
+                tracingParameters.Add("request", request);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Set", tracingParameters);
             }
@@ -205,31 +197,6 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new Uri(new Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "deposit-limit/{customerId}").ToString();
             _url = _url.Replace("{customerId}", Uri.EscapeDataString(customerId));
-            List<string> _queryParameters = new List<string>();
-            if (requestamount != null)
-            {
-                _queryParameters.Add(string.Format("request.amount={0}", Uri.EscapeDataString(SafeJsonConvert.SerializeObject(requestamount, this.Client.SerializationSettings).Trim('"'))));
-            }
-            if (requestperiodInDays != null)
-            {
-                _queryParameters.Add(string.Format("request.periodInDays={0}", Uri.EscapeDataString(SafeJsonConvert.SerializeObject(requestperiodInDays, this.Client.SerializationSettings).Trim('"'))));
-            }
-            if (requeststartDate != null)
-            {
-                _queryParameters.Add(string.Format("request.startDate={0}", Uri.EscapeDataString(SafeJsonConvert.SerializeObject(requeststartDate, this.Client.SerializationSettings).Trim('"'))));
-            }
-            if (requestendDate != null)
-            {
-                _queryParameters.Add(string.Format("request.endDate={0}", Uri.EscapeDataString(SafeJsonConvert.SerializeObject(requestendDate, this.Client.SerializationSettings).Trim('"'))));
-            }
-            if (requestauthor != null)
-            {
-                _queryParameters.Add(string.Format("request.author={0}", Uri.EscapeDataString(requestauthor)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += "?" + string.Join("&", _queryParameters);
-            }
             // Create HTTP transport objects
             HttpRequestMessage _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
@@ -250,6 +217,12 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
 
             // Serialize Request
             string _requestContent = null;
+            if(request != null)
+            {
+                _requestContent = SafeJsonConvert.SerializeObject(request, this.Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Send Request
             if (_shouldTrace)
             {
@@ -330,7 +303,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
 
         /// <param name='customerId'>
         /// </param>
-        /// <param name='requestauthor'>
+        /// <param name='request'>
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -341,11 +314,15 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<object>> DisableWithHttpMessagesAsync(string customerId, string requestauthor = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<object>> DisableWithHttpMessagesAsync(string customerId, DisableDepositLimit request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (customerId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "customerId");
+            }
+            if (request == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "request");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -355,7 +332,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("customerId", customerId);
-                tracingParameters.Add("requestauthor", requestauthor);
+                tracingParameters.Add("request", request);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Disable", tracingParameters);
             }
@@ -363,15 +340,6 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new Uri(new Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "deposit-limit/{customerId}").ToString();
             _url = _url.Replace("{customerId}", Uri.EscapeDataString(customerId));
-            List<string> _queryParameters = new List<string>();
-            if (requestauthor != null)
-            {
-                _queryParameters.Add(string.Format("request.author={0}", Uri.EscapeDataString(requestauthor)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += "?" + string.Join("&", _queryParameters);
-            }
             // Create HTTP transport objects
             HttpRequestMessage _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
@@ -392,6 +360,12 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
 
             // Serialize Request
             string _requestContent = null;
+            if(request != null)
+            {
+                _requestContent = SafeJsonConvert.SerializeObject(request, this.Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Send Request
             if (_shouldTrace)
             {

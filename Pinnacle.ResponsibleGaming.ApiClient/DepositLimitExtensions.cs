@@ -48,19 +48,11 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             /// </param>
             /// <param name='customerId'>
             /// </param>
-            /// <param name='requestamount'>
+            /// <param name='request'>
             /// </param>
-            /// <param name='requestperiodInDays'>
-            /// </param>
-            /// <param name='requeststartDate'>
-            /// </param>
-            /// <param name='requestendDate'>
-            /// </param>
-            /// <param name='requestauthor'>
-            /// </param>
-            public static object Set(this IDepositLimit operations, string customerId, double? requestamount = default(double?), int? requestperiodInDays = default(int?), DateTime? requeststartDate = default(DateTime?), DateTime? requestendDate = default(DateTime?), string requestauthor = default(string))
+            public static object Set(this IDepositLimit operations, string customerId, SetDepositLimit request)
             {
-                return Task.Factory.StartNew(s => ((IDepositLimit)s).SetAsync(customerId, requestamount, requestperiodInDays, requeststartDate, requestendDate, requestauthor), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IDepositLimit)s).SetAsync(customerId, request), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -68,22 +60,14 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             /// </param>
             /// <param name='customerId'>
             /// </param>
-            /// <param name='requestamount'>
-            /// </param>
-            /// <param name='requestperiodInDays'>
-            /// </param>
-            /// <param name='requeststartDate'>
-            /// </param>
-            /// <param name='requestendDate'>
-            /// </param>
-            /// <param name='requestauthor'>
+            /// <param name='request'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> SetAsync(this IDepositLimit operations, string customerId, double? requestamount = default(double?), int? requestperiodInDays = default(int?), DateTime? requeststartDate = default(DateTime?), DateTime? requestendDate = default(DateTime?), string requestauthor = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> SetAsync(this IDepositLimit operations, string customerId, SetDepositLimit request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.SetWithHttpMessagesAsync(customerId, requestamount, requestperiodInDays, requeststartDate, requestendDate, requestauthor, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.SetWithHttpMessagesAsync(customerId, request, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -94,11 +78,11 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             /// </param>
             /// <param name='customerId'>
             /// </param>
-            /// <param name='requestauthor'>
+            /// <param name='request'>
             /// </param>
-            public static object Disable(this IDepositLimit operations, string customerId, string requestauthor = default(string))
+            public static object Disable(this IDepositLimit operations, string customerId, DisableDepositLimit request)
             {
-                return Task.Factory.StartNew(s => ((IDepositLimit)s).DisableAsync(customerId, requestauthor), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IDepositLimit)s).DisableAsync(customerId, request), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -106,14 +90,14 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             /// </param>
             /// <param name='customerId'>
             /// </param>
-            /// <param name='requestauthor'>
+            /// <param name='request'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> DisableAsync(this IDepositLimit operations, string customerId, string requestauthor = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> DisableAsync(this IDepositLimit operations, string customerId, DisableDepositLimit request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DisableWithHttpMessagesAsync(customerId, requestauthor, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.DisableWithHttpMessagesAsync(customerId, request, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
