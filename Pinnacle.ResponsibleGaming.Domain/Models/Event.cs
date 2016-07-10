@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 
-namespace Pinnacle.ResponsibleGaming.Domain.Entities
+namespace Pinnacle.ResponsibleGaming.Domain.Models
 {
     public class Event
     {

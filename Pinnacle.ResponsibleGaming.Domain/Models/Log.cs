@@ -2,7 +2,7 @@
 
 
 
-namespace Pinnacle.ResponsibleGaming.Domain.Entities
+namespace Pinnacle.ResponsibleGaming.Domain.Models
 {
     public class Log
     {

@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Pinnacle.ResponsibleGaming.Infrastructure.Configurations;
-using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 {

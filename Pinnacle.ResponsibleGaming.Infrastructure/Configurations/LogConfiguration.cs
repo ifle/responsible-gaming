@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.ModelConfiguration;
-using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
 {

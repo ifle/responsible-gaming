@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
 {

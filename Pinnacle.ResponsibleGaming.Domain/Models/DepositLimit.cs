@@ -4,7 +4,7 @@ using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
 using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
 
-namespace Pinnacle.ResponsibleGaming.Domain.Entities
+namespace Pinnacle.ResponsibleGaming.Domain.Models
 {
     public class DepositLimit : Limit
     {

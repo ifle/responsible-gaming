@@ -1,6 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
-using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Domain.Models;
 
 
 namespace Pinnacle.ResponsibleGaming.Events

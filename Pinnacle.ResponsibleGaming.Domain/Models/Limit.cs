@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Pinnacle.ResponsibleGaming.Domain.Expressions;
 
-namespace Pinnacle.ResponsibleGaming.Domain.Entities
+namespace Pinnacle.ResponsibleGaming.Domain.Models
 {
     public abstract class Limit
     {

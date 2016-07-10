@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Expressions
 {

@@ -49,8 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Messages\DepositLimitMessages.cs" />
-    <Compile Include="Entities\Event.cs" />
-    <Compile Include="Entities\Log.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Repositories\IDepositLimitRepository.cs" />
     <Compile Include="Repositories\IEventRepository.cs" />
     <Compile Include="Repositories\ILogRepository.cs" />
@@ -60,11 +60,11 @@
     <Compile Include="Services\LogService.cs" />
     <Compile Include="_Framework\Exceptions\NotFoundException.cs" />
     <Compile Include="_Framework\Exceptions\ConflictException.cs" />
-    <Compile Include="Entities\DepositLimit.cs" />
-    <Compile Include="Entities\LimitStatus.cs" />
-    <Compile Include="Entities\LimitType.cs" />
-    <Compile Include="Entities\Limit.cs" />
-    <Compile Include="Entities\SelfExclusion.cs" />
+    <Compile Include="Models\DepositLimit.cs" />
+    <Compile Include="Models\LimitStatus.cs" />
+    <Compile Include="Models\LimitType.cs" />
+    <Compile Include="Models\Limit.cs" />
+    <Compile Include="Models\SelfExclusion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Expressions\LimitExpressions.cs" />
   </ItemGroup>

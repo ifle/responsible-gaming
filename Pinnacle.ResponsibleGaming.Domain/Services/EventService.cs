@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Domain.Models;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Services
