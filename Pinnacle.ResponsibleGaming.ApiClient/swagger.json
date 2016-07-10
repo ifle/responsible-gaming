@@ -57,10 +57,7 @@
           "204": { "description": "NoContent" },
           "400": {
             "description": "BadRequest",
-            "schema": {
-              "type": "object",
-              "additionalProperties": { "$ref": "#/definitions/ModelState" }
-            }
+            "schema": { "$ref": "#/definitions/ValidationResponse" }
           },
           "404": { "description": "NotFound" },
           "409": { "description": "Conflict" }
@@ -94,10 +91,7 @@
           "204": { "description": "NoContent" },
           "400": {
             "description": "BadRequest",
-            "schema": {
-              "type": "object",
-              "additionalProperties": { "$ref": "#/definitions/ModelState" }
-            }
+            "schema": { "$ref": "#/definitions/ValidationResponse" }
           },
           "404": { "description": "NotFound" },
           "409": { "description": "Conflict" }
@@ -133,44 +127,16 @@
         "Author": { "type": "string" }
       }
     },
-    "ModelState": {
+    "ValidationResponse": {
       "type": "object",
       "properties": {
-        "Value": { "$ref": "#/definitions/ValueProviderResult" },
-        "Errors": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/ModelError" },
-          "readOnly": true
-        }
-      }
-    },
-    "ValueProviderResult": {
-      "type": "object",
-      "properties": {
-        "AttemptedValue": {
-          "type": "string",
-          "readOnly": true
-        },
-        "Culture": {
-          "type": "string",
-          "readOnly": true
-        },
-        "RawValue": {
-          "$ref": "#/definitions/Object",
-          "readOnly": true
-        }
-      }
-    },
-    "ModelError": {
-      "type": "object",
-      "properties": {
-        "Exception": {
-          "$ref": "#/definitions/Object",
-          "readOnly": true
-        },
-        "ErrorMessage": {
-          "type": "string",
-          "readOnly": true
+        "Message": { "type": "string" },
+        "ModelState": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
         }
       }
     },

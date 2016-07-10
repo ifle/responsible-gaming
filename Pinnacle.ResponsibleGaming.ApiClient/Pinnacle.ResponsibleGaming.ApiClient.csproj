@@ -60,6 +60,7 @@
     <Compile Include="Models\SetDepositLimit.cs" />
     <Compile Include="PinnacleResponsibleGamingApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidationResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="generate.bat" />

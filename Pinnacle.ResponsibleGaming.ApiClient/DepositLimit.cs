@@ -2,8 +2,6 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
-using System.Web.Http.ModelBinding;
-
 namespace Pinnacle.ResponsibleGaming.ApiClient
 {
     using System;
@@ -282,7 +280,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = SafeJsonConvert.DeserializeObject<IDictionary<string, ModelState>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = SafeJsonConvert.DeserializeObject<ValidationResponse>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -425,7 +423,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = SafeJsonConvert.DeserializeObject<IDictionary<string, ModelState>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = SafeJsonConvert.DeserializeObject<ValidationResponse>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

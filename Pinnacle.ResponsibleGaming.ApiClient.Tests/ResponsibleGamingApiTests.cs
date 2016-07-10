@@ -33,6 +33,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient.Tests
                             .DepositLimit
                             .SetWithHttpMessagesAsync("testuser", setDepositLimitRequest);
 
+            Assert.IsNotNull(response.Result.Body);
             Assert.IsTrue(response.Result.Response.StatusCode == HttpStatusCode.BadRequest);
         }
       
