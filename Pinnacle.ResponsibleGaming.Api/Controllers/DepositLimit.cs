@@ -3,6 +3,7 @@ using System.Web.Http;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application.Handlers;
 using Pinnacle.ResponsibleGaming.Api.Constants;
+using Pinnacle.ResponsibleGaming.Api.Links;
 
 namespace Pinnacle.ResponsibleGaming.Api.Controllers
 {
@@ -28,7 +29,12 @@ namespace Pinnacle.ResponsibleGaming.Api.Controllers
         public async Task<IHttpActionResult> Get(string customerId)
         {
             var request = new GetDepositLimit {CustomerId = customerId};
-            return Ok(await _getDepositLimitHandler.Handle(request));
+            var response = await _getDepositLimitHandler.Handle(request);
+            if (response == null) return NotFound();
+
+            response.Links.Add(DepositLimitLinks.Get.CreateLink(new {customerId}));
+
+            return Ok(response);
         }
 
         [HttpPut]

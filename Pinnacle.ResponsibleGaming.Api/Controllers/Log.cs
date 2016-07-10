@@ -2,7 +2,7 @@
 
 namespace Pinnacle.ResponsibleGaming.Api.Controllers
 {
-    public  class LogController : ApiController
+    public  class Log : ApiController
     {
         
     }

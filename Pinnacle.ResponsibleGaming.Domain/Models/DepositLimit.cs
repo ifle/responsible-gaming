@@ -8,7 +8,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
 {
     public class DepositLimit : Limit
     {
-        [JsonProperty(Order = 3)]
         public decimal Amount { get; set; }
 
         public DepositLimit()

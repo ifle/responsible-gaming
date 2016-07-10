@@ -10,23 +10,27 @@ namespace Pinnacle.ResponsibleGaming.Publisher
     {
         static void Main(string[] args)
         {
-            var context = new Context();
-            var rabbitHub = new RabbitHub();
-
-            Console.WriteLine("Listenting...");
-            Console.WriteLine();
-            while (true)
+            using (var context = new Context())
             {
-                var events = context.Events.Where(x => x.Sent == false).ToList();
-                foreach (var @event in events)
+                using (var rabbitHub = new RabbitHub())
                 {
-                    rabbitHub.Publish(@event);
-                    @event.Sent = true;
-                    context.SaveChanges();
-                    Console.Write("Event published!");
+
+                    Console.WriteLine("Listenting...");
                     Console.WriteLine();
+                    while (true)
+                    {
+                        var events = context.Events.Where(x => x.Sent == false).ToList();
+                        foreach (var @event in events)
+                        {
+                            rabbitHub.Publish(@event);
+                            @event.Sent = true;
+                            context.SaveChanges();
+                            Console.Write("Event published!");
+                            Console.WriteLine();
+                        }
+                        Thread.Sleep(1000);
+                    }
                 }
-                Thread.Sleep(1000);
             }
         }
     }

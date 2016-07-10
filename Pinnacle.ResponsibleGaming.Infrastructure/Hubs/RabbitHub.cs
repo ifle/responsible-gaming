@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
 using EasyNetQ;
 using EasyNetQ.Loggers;
 using EasyNetQ.Topology;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Hubs
 {
-    public class RabbitHub
+    public class RabbitHub: IDisposable
     {
         private IBus _bus;
         private IExchange _exchange;
