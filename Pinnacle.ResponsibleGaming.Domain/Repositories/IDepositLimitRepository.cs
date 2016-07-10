@@ -6,6 +6,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Repositories
     public interface IDepositLimitRepository
     {
         Task<DepositLimit> GetActiveByCustomerId(string customerId);
-        Task Upsert(DepositLimit t);
+        Task Upsert(DepositLimit depositLimit);
     }
 }
