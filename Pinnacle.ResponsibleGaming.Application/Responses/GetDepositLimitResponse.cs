@@ -6,7 +6,6 @@ namespace Pinnacle.ResponsibleGaming.Application.Responses
 {
     public class GetDepositLimitResponse: Representation
     {
-        public int LimitId { get; set; }
         public string CustomerId { get; set; }
         public decimal Amount { get; set; }
         public int? PeriodInDays { get; set; }
@@ -19,7 +18,6 @@ namespace Pinnacle.ResponsibleGaming.Application.Responses
 
         public GetDepositLimitResponse(DepositLimit depositLimit)
         {
-            LimitId = depositLimit.LimitId;
             CustomerId = depositLimit.CustomerId;
             Amount = depositLimit.Amount;
             PeriodInDays = depositLimit.PeriodInDays;
