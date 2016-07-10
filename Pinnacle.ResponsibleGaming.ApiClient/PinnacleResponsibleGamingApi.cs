@@ -20,7 +20,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
     using Newtonsoft.Json;
     using Models;
 
-    public partial class ResponsibleGamingApi : ServiceClient<ResponsibleGamingApi>, IResponsibleGamingApi
+    public partial class PinnacleResponsibleGamingApi : ServiceClient<PinnacleResponsibleGamingApi>, IPinnacleResponsibleGamingApi
     {
         /// <summary>
         /// The base URI of the service.
@@ -48,7 +48,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public ResponsibleGamingApi(params DelegatingHandler[] handlers) : base(handlers)
+        public PinnacleResponsibleGamingApi(params DelegatingHandler[] handlers) : base(handlers)
         {
             this.Initialize();
         }
@@ -62,7 +62,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public ResponsibleGamingApi(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        public PinnacleResponsibleGamingApi(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             this.Initialize();
         }
@@ -76,7 +76,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public ResponsibleGamingApi(Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        public PinnacleResponsibleGamingApi(Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -97,7 +97,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public ResponsibleGamingApi(Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public PinnacleResponsibleGamingApi(Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -116,7 +116,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         private void Initialize()
         {
             this.DepositLimit = new DepositLimit(this);
-            this.BaseUri = new Uri("http://responsible-gaming.azurewebsites.net");
+            this.BaseUri = new Uri("http://localhost:46046");
             SerializationSettings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,

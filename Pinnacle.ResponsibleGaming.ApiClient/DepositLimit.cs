@@ -2,6 +2,8 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
+using System.Web.Http.ModelBinding;
+
 namespace Pinnacle.ResponsibleGaming.ApiClient
 {
     using System;
@@ -22,7 +24,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
     /// <summary>
     /// DepositLimit operations.
     /// </summary>
-    public partial class DepositLimit : IServiceOperations<ResponsibleGamingApi>, IDepositLimit
+    public partial class DepositLimit : IServiceOperations<PinnacleResponsibleGamingApi>, IDepositLimit
     {
         /// <summary>
         /// Initializes a new instance of the DepositLimit class.
@@ -30,7 +32,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <param name='client'>
         /// Reference to the service client.
         /// </param>
-        public DepositLimit(ResponsibleGamingApi client)
+        public DepositLimit(PinnacleResponsibleGamingApi client)
         {
             if (client == null) 
             {
@@ -42,7 +44,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <summary>
         /// Gets a reference to the PinnacleResponsibleGamingApi
         /// </summary>
-        public ResponsibleGamingApi Client { get; private set; }
+        public PinnacleResponsibleGamingApi Client { get; private set; }
 
         /// <param name='customerId'>
         /// </param>
@@ -110,7 +112,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 404)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -168,8 +170,6 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// </param>
         /// <param name='requestauthor'>
         /// </param>
-        /// <param name='requestcustomerId'>
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -179,7 +179,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<object>> SetWithHttpMessagesAsync(string customerId, double? requestamount = default(double?), int? requestperiodInDays = default(int?), DateTime? requeststartDate = default(DateTime?), DateTime? requestendDate = default(DateTime?), string requestauthor = default(string), string requestcustomerId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<object>> SetWithHttpMessagesAsync(string customerId, double? requestamount = default(double?), int? requestperiodInDays = default(int?), DateTime? requeststartDate = default(DateTime?), DateTime? requestendDate = default(DateTime?), string requestauthor = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (customerId == null)
             {
@@ -198,7 +198,6 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
                 tracingParameters.Add("requeststartDate", requeststartDate);
                 tracingParameters.Add("requestendDate", requestendDate);
                 tracingParameters.Add("requestauthor", requestauthor);
-                tracingParameters.Add("requestcustomerId", requestcustomerId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Set", tracingParameters);
             }
@@ -226,10 +225,6 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             if (requestauthor != null)
             {
                 _queryParameters.Add(string.Format("request.author={0}", Uri.EscapeDataString(requestauthor)));
-            }
-            if (requestcustomerId != null)
-            {
-                _queryParameters.Add(string.Format("request.customerId={0}", Uri.EscapeDataString(requestcustomerId)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -269,7 +264,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 204 && (int)_statusCode != 400 && (int)_statusCode != 404 && (int)_statusCode != 409)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -308,6 +303,24 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
                     throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            // Deserialize Response
+            if ((int)_statusCode == 400)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = SafeJsonConvert.DeserializeObject<IDictionary<string, ModelState>>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);
@@ -319,8 +332,6 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// </param>
         /// <param name='requestauthor'>
         /// </param>
-        /// <param name='requestcustomerId'>
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -330,7 +341,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<object>> DisableWithHttpMessagesAsync(string customerId, string requestauthor = default(string), string requestcustomerId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<object>> DisableWithHttpMessagesAsync(string customerId, string requestauthor = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (customerId == null)
             {
@@ -345,7 +356,6 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("customerId", customerId);
                 tracingParameters.Add("requestauthor", requestauthor);
-                tracingParameters.Add("requestcustomerId", requestcustomerId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Disable", tracingParameters);
             }
@@ -357,10 +367,6 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             if (requestauthor != null)
             {
                 _queryParameters.Add(string.Format("request.author={0}", Uri.EscapeDataString(requestauthor)));
-            }
-            if (requestcustomerId != null)
-            {
-                _queryParameters.Add(string.Format("request.customerId={0}", Uri.EscapeDataString(requestcustomerId)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -400,7 +406,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 204 && (int)_statusCode != 400 && (int)_statusCode != 404 && (int)_statusCode != 409)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -428,6 +434,24 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
                 try
                 {
                     _result.Body = SafeJsonConvert.DeserializeObject<object>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 400)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = SafeJsonConvert.DeserializeObject<IDictionary<string, ModelState>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

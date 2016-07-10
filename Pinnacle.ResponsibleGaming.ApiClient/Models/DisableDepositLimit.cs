@@ -21,21 +21,15 @@ namespace Pinnacle.ResponsibleGaming.ApiClient.Models
         /// <summary>
         /// Initializes a new instance of the DisableDepositLimit class.
         /// </summary>
-        public DisableDepositLimit(string author = default(string), string customerId = default(string))
+        public DisableDepositLimit(string author = default(string))
         {
             Author = author;
-            CustomerId = customerId;
         }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "Author")]
         public string Author { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "CustomerId")]
-        public string CustomerId { get; set; }
 
     }
 }

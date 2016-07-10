@@ -38,27 +38,23 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
         /// </param>
         /// <param name='requestauthor'>
         /// </param>
-        /// <param name='requestcustomerId'>
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> SetWithHttpMessagesAsync(string customerId, double? requestamount = default(double?), int? requestperiodInDays = default(int?), DateTime? requeststartDate = default(DateTime?), DateTime? requestendDate = default(DateTime?), string requestauthor = default(string), string requestcustomerId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> SetWithHttpMessagesAsync(string customerId, double? requestamount = default(double?), int? requestperiodInDays = default(int?), DateTime? requeststartDate = default(DateTime?), DateTime? requestendDate = default(DateTime?), string requestauthor = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='customerId'>
         /// </param>
         /// <param name='requestauthor'>
         /// </param>
-        /// <param name='requestcustomerId'>
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> DisableWithHttpMessagesAsync(string customerId, string requestauthor = default(string), string requestcustomerId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> DisableWithHttpMessagesAsync(string customerId, string requestauthor = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

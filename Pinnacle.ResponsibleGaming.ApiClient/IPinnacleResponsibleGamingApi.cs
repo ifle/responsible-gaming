@@ -15,7 +15,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient
 
     /// <summary>
     /// </summary>
-    public partial interface IResponsibleGamingApi : IDisposable
+    public partial interface IPinnacleResponsibleGamingApi : IDisposable
     {
         /// <summary>
         /// The base URI of the service.

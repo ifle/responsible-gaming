@@ -1,9 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
+using System.Web.Http.Results;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application.Handlers;
 using Pinnacle.ResponsibleGaming.Api.Constants;
 using Pinnacle.ResponsibleGaming.Api.Links;
+using Swashbuckle.Swagger.Annotations;
 
 namespace Pinnacle.ResponsibleGaming.Api.Controllers
 {
@@ -26,6 +30,7 @@ namespace Pinnacle.ResponsibleGaming.Api.Controllers
 
         [HttpGet]
         [Route(ResourceNames.DepositLimit)]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
         public async Task<IHttpActionResult> Get(string customerId)
         {
             var request = new GetDepositLimit {CustomerId = customerId};
@@ -39,18 +44,26 @@ namespace Pinnacle.ResponsibleGaming.Api.Controllers
 
         [HttpPut]
         [Route(ResourceNames.DepositLimit)]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
+        [SwaggerResponse(HttpStatusCode.BadRequest, Type = typeof(ModelStateDictionary))]
+        [SwaggerResponse(HttpStatusCode.Conflict)]
+        [SwaggerResponse(HttpStatusCode.NoContent)]
         public async Task<IHttpActionResult> Set([FromUri]string customerId, SetDepositLimit request)
         {
             await _setDepositLimitHandler.Handle(request);
-            return Ok();
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         [HttpDelete]
         [Route(ResourceNames.DepositLimit)]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
+        [SwaggerResponse(HttpStatusCode.BadRequest, Type = typeof(ModelStateDictionary))]
+        [SwaggerResponse(HttpStatusCode.Conflict)]
+        [SwaggerResponse(HttpStatusCode.NoContent)]
         public async Task<IHttpActionResult> Disable([FromUri]string customerId, DisableDepositLimit request)
         {
             await _disableDepositLimitHandler.Handle(request);
-            return Ok();
+            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }

@@ -4,7 +4,7 @@
     "version": "v1",
     "title": "Pinnacle.ResponsibleGaming.Api"
   },
-  "host": "responsible-gaming.azurewebsites.net",
+  "host": "localhost:46046",
   "schemes": [ "http" ],
   "paths": {
     "/deposit-limit/{customerId}": {
@@ -25,7 +25,8 @@
           "200": {
             "description": "OK",
             "schema": { "$ref": "#/definitions/Object" }
-          }
+          },
+          "404": { "description": "NotFound" }
         },
         "deprecated": false
       },
@@ -74,19 +75,23 @@
             "in": "query",
             "required": false,
             "type": "string"
-          },
-          {
-            "name": "request.customerId",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": { "$ref": "#/definitions/Object" }
-          }
+          },
+          "204": { "description": "NoContent" },
+          "400": {
+            "description": "BadRequest",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "$ref": "#/definitions/ModelState" }
+            }
+          },
+          "404": { "description": "NotFound" },
+          "409": { "description": "Conflict" }
         },
         "deprecated": false
       },
@@ -107,19 +112,23 @@
             "in": "query",
             "required": false,
             "type": "string"
-          },
-          {
-            "name": "request.customerId",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": { "$ref": "#/definitions/Object" }
-          }
+          },
+          "204": { "description": "NoContent" },
+          "400": {
+            "description": "BadRequest",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "$ref": "#/definitions/ModelState" }
+            }
+          },
+          "404": { "description": "NotFound" },
+          "409": { "description": "Conflict" }
         },
         "deprecated": false
       }
@@ -149,16 +158,53 @@
           "format": "date-time",
           "type": "string"
         },
-        "Author": { "type": "string" },
-        "CustomerId": { "type": "string" }
+        "Author": { "type": "string" }
+      }
+    },
+    "ModelState": {
+      "type": "object",
+      "properties": {
+        "Value": { "$ref": "#/definitions/ValueProviderResult" },
+        "Errors": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ModelError" },
+          "readOnly": true
+        }
+      }
+    },
+    "ValueProviderResult": {
+      "type": "object",
+      "properties": {
+        "AttemptedValue": {
+          "type": "string",
+          "readOnly": true
+        },
+        "Culture": {
+          "type": "string",
+          "readOnly": true
+        },
+        "RawValue": {
+          "$ref": "#/definitions/Object",
+          "readOnly": true
+        }
+      }
+    },
+    "ModelError": {
+      "type": "object",
+      "properties": {
+        "Exception": {
+          "$ref": "#/definitions/Object",
+          "readOnly": true
+        },
+        "ErrorMessage": {
+          "type": "string",
+          "readOnly": true
+        }
       }
     },
     "DisableDepositLimit": {
       "type": "object",
-      "properties": {
-        "Author": { "type": "string" },
-        "CustomerId": { "type": "string" }
-      }
+      "properties": { "Author": { "type": "string" } }
     }
   }
 }

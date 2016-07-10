@@ -21,14 +21,13 @@ namespace Pinnacle.ResponsibleGaming.ApiClient.Models
         /// <summary>
         /// Initializes a new instance of the SetDepositLimit class.
         /// </summary>
-        public SetDepositLimit(double? amount = default(double?), int? periodInDays = default(int?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), string author = default(string), string customerId = default(string))
+        public SetDepositLimit(double? amount = default(double?), int? periodInDays = default(int?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), string author = default(string))
         {
             Amount = amount;
             PeriodInDays = periodInDays;
             StartDate = startDate;
             EndDate = endDate;
             Author = author;
-            CustomerId = customerId;
         }
 
         /// <summary>
@@ -55,11 +54,6 @@ namespace Pinnacle.ResponsibleGaming.ApiClient.Models
         /// </summary>
         [JsonProperty(PropertyName = "Author")]
         public string Author { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "CustomerId")]
-        public string CustomerId { get; set; }
 
     }
 }
