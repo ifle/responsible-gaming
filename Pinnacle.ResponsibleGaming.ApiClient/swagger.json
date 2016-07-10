@@ -1,0 +1,164 @@
+﻿{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Pinnacle.ResponsibleGaming.Api"
+  },
+  "host": "responsible-gaming.azurewebsites.net",
+  "schemes": [ "http" ],
+  "paths": {
+    "/deposit-limit/{customerId}": {
+      "get": {
+        "tags": [ "DepositLimit" ],
+        "operationId": "DepositLimit_Get",
+        "consumes": [ ],
+        "produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Object" }
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [ "DepositLimit" ],
+        "operationId": "DepositLimit_Set",
+        "consumes": [ ],
+        "produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "request.amount",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "request.periodInDays",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "request.startDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "request.endDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "request.author",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "request.customerId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Object" }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [ "DepositLimit" ],
+        "operationId": "DepositLimit_Disable",
+        "consumes": [ ],
+        "produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "request.author",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "request.customerId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Object" }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "Object": {
+      "type": "object",
+      "properties": { }
+    },
+    "SetDepositLimit": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "PeriodInDays": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StartDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "EndDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Author": { "type": "string" },
+        "CustomerId": { "type": "string" }
+      }
+    },
+    "DisableDepositLimit": {
+      "type": "object",
+      "properties": {
+        "Author": { "type": "string" },
+        "CustomerId": { "type": "string" }
+      }
+    }
+  }
+}
