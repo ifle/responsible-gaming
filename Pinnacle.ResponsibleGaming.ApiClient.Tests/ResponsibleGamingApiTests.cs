@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Net;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Pinnacle.ResponsibleGaming.ApiClient.Models;
 
 namespace Pinnacle.ResponsibleGaming.ApiClient.Tests
@@ -17,8 +18,27 @@ namespace Pinnacle.ResponsibleGaming.ApiClient.Tests
             
             Assert.IsNotNull(depositLimit);
         }
+
         [TestMethod]
-        public void SetDepositLimit()
+        // ReSharper disable once InconsistentNaming
+        public void SetDepositLimit_BadRequest()
+        {
+            var setDepositLimitRequest = new SetDepositLimit
+            {
+                Amount = 100,
+                PeriodInDays = 7
+            };
+            var responsibleGamingApi = new PinnacleResponsibleGamingApi();
+            var response = responsibleGamingApi
+                            .DepositLimit
+                            .SetWithHttpMessagesAsync("testuser", setDepositLimitRequest);
+
+            Assert.IsTrue(response.Result.Response.StatusCode == HttpStatusCode.BadRequest);
+        }
+      
+        [TestMethod]
+        // ReSharper disable once InconsistentNaming
+        public void SetDepositLimit_Conflict()
         {
             var setDepositLimitRequest= new SetDepositLimit
                                         {
@@ -31,6 +51,7 @@ namespace Pinnacle.ResponsibleGaming.ApiClient.Tests
                             .DepositLimit
                             .SetWithHttpMessagesAsync("testuser", setDepositLimitRequest);
 
+            Assert.IsTrue(response.Result.Response.StatusCode == HttpStatusCode.Conflict);
             Assert.AreEqual("The limit must be more restrictive", response.Result.Response.ReasonPhrase);
         }
     }
