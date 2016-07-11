@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Models;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 
