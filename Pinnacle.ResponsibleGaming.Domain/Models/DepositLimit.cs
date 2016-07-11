@@ -32,13 +32,11 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
             if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(depositLimit.Amount, Amount, depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }
             if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
 
-            var now = DateTime.Now;
-
             Amount = depositLimit.Amount;
             PeriodInDays = depositLimit.PeriodInDays;
             EndDate = depositLimit.EndDate;
             Author = depositLimit.Author;
-            ModificationTime = now;
+            ModificationTime = depositLimit.ModificationTime;
         }
         public void Disable(string author)
         {
