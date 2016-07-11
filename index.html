@@ -76,7 +76,7 @@ As described in the onion architecture or any domain-centric solution, this is t
 <p>Imagine that there are a total of two developers collaborating in the project. One is the domain expert and the other knows how the application must behave (this includes knowing the intents of the user along the application).</p>
 
 <p>Developer A, while developing the Domain layer, needs to make sure that no business rule is violated.<br>
-If arule is violated, a custom exception of the type <strong>ConflictException</strong> must be thrown.<br>
+If a rule is violated, a custom exception of the type <strong>ConflictException</strong> must be thrown.<br>
 Ultimately, this exception will be transformed by the API into a Http Error Code of type <strong>409 Conflict</strong></p>
 
 <p>Developer B, while developing the Application layer, needs to make sure that requests are properly formed. This includes standard validations like making sure the properties are well formatted and satisfy an specific range. The goal is to never let entities from the next layer be in an invalid state.<br>
