@@ -67,7 +67,6 @@
     <Compile Include="Contexts\SetDepositLimitContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DepositLimitRepository.cs" />
-    <Compile Include="Repositories\EventRepository.cs" />
     <Compile Include="Repositories\LimitRepository.cs" />
     <Compile Include="Repositories\LogRepository.cs" />
   </ItemGroup>
@@ -83,10 +82,6 @@
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
-      <Project>{9ea8c8f3-719f-486a-9088-6fe166df27d9}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
