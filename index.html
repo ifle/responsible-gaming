@@ -63,10 +63,10 @@ There, you can also see that each resource can support multiple Http Verbs (GET,
 <p>The <strong>Application layer</strong> does all the work around <strong>intents</strong>.<br>
 Intents are reflected as requests in the code. There could be as many requests as the application requires.</p>
 
-<p>The <strong>Domain layer</strong> does all the work around <strong>entities</strong>.<br>
+<p>The <strong>Domain layer</strong> does all the work around <strong>models</strong>.<br>
 As described in the onion architecture or any domain-centric solution, this is the layer where all the other layers start from.</p>
 
-<p>The <strong>Infrastructure layer</strong> does the integration with infrastructure matters (databases, queues, files, etc).<br></p>
+<p>The <strong>Infrastructure layer</strong> does the integration with infrastructure matters. These could be databases, queues, files and so on.<br></p>
 
 <h2>
 <a id="validation" class="anchor" href="#validation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validation</h2>
@@ -76,11 +76,11 @@ As described in the onion architecture or any domain-centric solution, this is t
 <p>Imagine that there are a total of two developers collaborating in the project. One is the domain expert and the other knows how the application must behave (this includes knowing the intents of the user along the application).</p>
 
 <p>Developer A, while developing the Domain layer, needs to make sure that no business rule is violated.<br>
-If any rule is violated, a custom exception of the type <strong>ConflictException</strong> will be thrown.<br>
+If arule is violated, a custom exception of the type <strong>ConflictException</strong> must be thrown.<br>
 Ultimately, this exception will be transformed by the API into a Http Error Code of type <strong>409 Conflict</strong></p>
 
 <p>Developer B, while developing the Application layer, needs to make sure that requests are properly formed. This includes standard validations like making sure the properties are well formatted and satisfy an specific range. The goal is to never let entities from the next layer be in an invalid state.<br>
-<strong>FluentValidation</strong> enormously helps with these type of validations. Something that I like is that it allows the validation to happen even before the request reaches the controller.<br>
+<strong>FluentValidation</strong> enormously helps with these type of validations. Something that I like from this library is that it allows the validation to happen even before the request reaches the controller.<br>
 In this case, the API transforms these validations into <strong>400 Bad request</strong></p>
 
 <p>If you are wondering why 409 is preferred over 400 in the Domain, the reasoning is that 400 explicitly says in its description that the request is malformed and, therefore, should not be re-sent without modifications. However, 409  says that the conflict is intrinsic to the current state and, therefore, could go away. 
