@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.- Rest Api (Resources)", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.- Application (Requests)", "2.- Application (Requests)", "{C42B21A1-F725-44D6-AFA7-4896266942E8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.- Domain (Entities)", "3.- Domain (Entities)", "{468E6C5C-5BD9-49E4-A5A6-F243C5608EBC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.- Domain (Models)", "3.- Domain (Models)", "{468E6C5C-5BD9-49E4-A5A6-F243C5608EBC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.- Infrastructure", "4.- Infrastructure", "{F82E0C04-0365-4266-BA6A-3BB4012A5483}"
 EndProject
