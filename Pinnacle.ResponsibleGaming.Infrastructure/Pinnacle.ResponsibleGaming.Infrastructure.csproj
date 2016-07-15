@@ -53,7 +53,9 @@
     <Compile Include="Configurations\LimitConfiguration.cs" />
     <Compile Include="Configurations\LogConfiguration.cs" />
     <Compile Include="Configurations\SelfExclusionConfiguration.cs" />
+    <Compile Include="Contexts\DisableDepositLimitContext.cs" />
     <Compile Include="Contexts\Context.cs" />
+    <Compile Include="Contexts\SetDepositLimitContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DepositLimitRepository.cs" />
     <Compile Include="Repositories\LimitRepository.cs" />
