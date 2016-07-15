@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contexts\IContext.cs" />
+    <Compile Include="Contexts\IDisableDepositLimitContext.cs" />
+    <Compile Include="Contexts\ISetDepositLimitContext.cs" />
     <Compile Include="Handlers\DisableDepositLimitHandler.cs" />
     <Compile Include="Messages\SetDepositLimitMessages.cs" />
     <Compile Include="Handlers\SetDepositLimitHandler.cs" />
