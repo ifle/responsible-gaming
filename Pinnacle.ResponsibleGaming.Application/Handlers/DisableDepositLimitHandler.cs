@@ -13,20 +13,20 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
     public class DisableDepositLimitHandler
     {
         private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly IContext _context;
+        private readonly IDisableDepositLimitContext _disableDepositLimitContext;
         private readonly DepositLimitService _depositLimitService;
         private readonly LogService _logService;
         private readonly EventService _eventService;
 
         public DisableDepositLimitHandler(
-           IContext context,
+           IDisableDepositLimitContext disableDepositLimitContext,
            DepositLimitService depositLimitService,
            LogService logService,
            EventService eventService
 
             )
         {
-            _context = context;
+            _disableDepositLimitContext = disableDepositLimitContext;
             _depositLimitService = depositLimitService;
             _logService = logService;
             _eventService = eventService;
@@ -35,7 +35,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         public async Task Handle(DisableDepositLimit disableDepositLimit)
         {
             //Begin transaction
-            _context.BeginTransaction();
+            _disableDepositLimitContext.BeginTransaction();
 
             //Disable deposit limit
             var depositLimit = await _depositLimitService.Disable(disableDepositLimit.CustomerId,disableDepositLimit.Author);
@@ -49,7 +49,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             await _eventService.Add(@event);
 
             //Commit                
-            _context.Commit();
+            _disableDepositLimitContext.Commit();
 
             //Log
             _log.Info(disableDepositLimit.SerializeAsKeyValues());

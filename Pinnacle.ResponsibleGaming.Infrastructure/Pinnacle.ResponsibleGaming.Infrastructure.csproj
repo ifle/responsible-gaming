@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contexts\DisableDepositLimitContext.cs" />
+    <Compile Include="Contexts\SetDepositLimitContext.cs" />
     <Compile Include="Hubs\RabbitHub.cs" />
     <Compile Include="Configurations\DepositLimitConfiguration.cs" />
     <Compile Include="Configurations\LimitConfiguration.cs" />
