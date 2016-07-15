@@ -7,7 +7,7 @@ using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 {
-    public  class Context: DbContext, ISetDepositLimitContext, IDisableDepositLimitContext
+    public  class Context: DbContext, IContext
     {
         private DbContextTransaction _dbContextTransaction;
 
