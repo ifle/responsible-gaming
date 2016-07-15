@@ -26,15 +26,13 @@ namespace Pinnacle.ResponsibleGaming.Api
 
             //Contexts
             container.RegisterType<Context, Context>(new HierarchicalLifetimeManager());
+            container.RegisterType<ISetDepositLimitContext, SetDepositLimitContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<IDisableDepositLimitContext, DisableDepositLimitContext>(new HierarchicalLifetimeManager());
 
             //Handlers
             container.RegisterType<GetDepositLimitHandler, GetDepositLimitHandler>();
             container.RegisterType<SetDepositLimitHandler, SetDepositLimitHandler>();
             container.RegisterType<DisableDepositLimitHandler, DisableDepositLimitHandler>();
-
-            //Transactions
-            container.RegisterType<ISetDepositLimitContext, SetDepositLimitContext>();
-            container.RegisterType<IDisableDepositLimitContext, DisableDepositLimitContext>();
 
             //Services
             container.RegisterType<DepositLimitService, DepositLimitService>();
