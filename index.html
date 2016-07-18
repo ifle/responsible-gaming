@@ -71,7 +71,7 @@ As described in the onion architecture or any domain-centric solution, this is t
 
 <p>Validation intrinsically affects two layers: The Application layer and the Domain layer.</p>
 
-<p>Imagine that there are a total of two developers collaborating in the project. One is the domain expert and focuses on the domain layer while the other cares about covering all intents in the application layer.</p>
+<p>Imagine that there are a total of two developers collaborating in the project. One is the domain expert and focuses on the domain layer while the other cares about covering all the user intents in the application layer.</p>
 
 <p>Developer A, when building the Domain layer, needs to make sure that no business rule is violated.<br>
 If a rule is violated, a custom exception of the type <strong>ConflictException</strong> must be thrown.<br>
@@ -81,7 +81,7 @@ Ultimately, this exception will be transformed by the API into a Http Error Code
 <strong>FluentValidation</strong> enormously helps with these type of validations. Something that I like from this library is that it allows the validation to happen even before the request reaches the controller.<br>
 In this case, the API transforms these validations into <strong>400 Bad request</strong></p>
 
-<p>If you are wondering why 409 is preferred over 400 in the Domain, the reasoning is that 400 explicitly says in its description that the request is malformed and, therefore, should not be re-sent without modifications. However, 409  says that the conflict is intrinsic to the current state and, therefore, could go away. 
+<p>If you are wondering why 409 is preferred over 400 in the Domain layer, the reasoning is that 400 explicitly says in its description that the request is malformed and, therefore, should not be re-sent without modifications. However, 409  says that the conflict is intrinsic to the current state and, therefore, could go away. 
 This leaves us with the following basic Http Codes:</p>
 
 <table>
