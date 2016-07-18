@@ -40,25 +40,23 @@
 <a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
 
 <p>This project is meant for those who want to create an API with DDD principles in mind.<br>
-It is separated in layers and, within each layer, the single responsibilities are grouped in folders.</p>
+It is separated in layers and, within each layer, single responsibilities are grouped in folders.</p>
 
 <h2>
 <a id="scope-of-the-project" class="anchor" href="#scope-of-the-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scope of the project</h2>
 
-<p>Even though this project just serves as an example, it is always important to provide with some context.</p>
+<p>Even though this project is just an example, it is always important to provide with some context.</p>
 
-<p>The project initially arose as a need to regulate compulsive gambling. Basically, it allows customers to create <strong>deposit limits</strong> and <strong>self-exclusions</strong> within a period of time.<br> 
-For example, imagine that a customer wants to limit the amount of money he can deposit in his account to a maximum of 100USD per week. Or imagine that this customer directly prefers to not be able to login in his account losing therefore the chance to see what's going on in the page.<br>
-Or imagine that he doesn't even want to receive marketing campaigns in his mailbox.<br></p>
+<p>The project arose as a need to regulate compulsive gambling. Basically, it allows customers to create <strong>deposit limits</strong> and <strong>self-exclusions</strong> within a period of time.<br> 
+For example, imagine that a customer wants to limit the amount of money that he can deposit in his account to a maximum of 100USD per week. Or imagine that this customer directly prefers to block his own account avoiding any chance to see whats happening in the page.</p>
 
-<p>You will agree with me that the ability for the customer to apply these rules definitely attenuates his impulses to gamble and promotes auto-control.</p>
+<p>The existence of these restrictions promote auto-control and attenuate impulses to gamble.</p>
 
 <h2>
 <a id="project-structure" class="anchor" href="#project-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project structure</h2>
 
 <p>The <strong>Api layer</strong> does all the work around <strong>resources</strong>.<br>
-If you look at the controllers, you will see that each controller represents a resource.<br>
-There, you can also see that each resource can support multiple Http Verbs (GET, POST, PUT, DELETE)</p>
+If you look at the controllers, you will see that each controller represents a resource.</p>
 
 <p>The <strong>Application layer</strong> does all the work around <strong>intents</strong>.<br>
 Intents are reflected as requests in the code. There could be as many requests as the application requires.</p>
@@ -66,7 +64,7 @@ Intents are reflected as requests in the code. There could be as many requests a
 <p>The <strong>Domain layer</strong> does all the work around <strong>models</strong>.<br>
 As described in the onion architecture or any domain-centric solution, this is the layer where all the other layers start from.</p>
 
-<p>The <strong>Infrastructure layer</strong> does the integration with infrastructure matters. These could be databases, queues, files and so on.<br></p>
+<p>The <strong>Infrastructure layer</strong> does the integration with infrastructure matters. Some examples are databases, queues, files and so on.<br></p>
 
 <h2>
 <a id="validation" class="anchor" href="#validation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validation</h2>
