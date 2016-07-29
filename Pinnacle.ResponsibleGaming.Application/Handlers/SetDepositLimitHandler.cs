@@ -37,14 +37,14 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             var depositLimit = setDepositLimit.ToDepositLimit();
             depositLimit = await _depositLimitService.Set(depositLimit);
 
-            //Add log
+            //Log deposit limit
             var log = new Log(depositLimit);
             await _logService.Add(log);
 
             //Commit                
             _setDepositLimitContext.Commit();
 
-            //Log
+            //Log deposit limit into Splunk
             _log.Info(setDepositLimit.SerializeAsKeyValues());
         }
     }
