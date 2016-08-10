@@ -14,5 +14,15 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
         public DateTime ModificationTime { get; set; }
         public LimitStatus Status => LimitExpressions.IsActiveLimit<Limit>().Compile()(this) ? LimitStatus.Active : LimitStatus.Expired;
         public bool IsRecurring => PeriodInDays.HasValue;
+
+
+        public void ApplyCoolingOffPeriod()
+        {
+            // For now, let's make the cooling-off period stastic
+            const int coolingOffPeriodInDays = 1;
+
+            // Apply coolng-off period
+            EndDate = DateTime.Now.AddDays(coolingOffPeriodInDays);
+        }
     }
 }
