@@ -27,10 +27,12 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
 
         public void Modify(DepositLimit depositLimit)
         {
+            // Apply business rules
             if (!DepositLimitRules.NewLimitMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.Amount, Amount)) { throw new ConflictException(DepositLimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
             if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(depositLimit.Amount, Amount, depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }
             if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
 
+            // Modify properties
             Amount = depositLimit.Amount;
             PeriodInDays = depositLimit.PeriodInDays;
             EndDate = depositLimit.EndDate;
@@ -39,9 +41,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
         }
         public void Disable(string author)
         {
-            const int coolingOffPeriodInDays = 1;
-
-            EndDate = DateTime.Now.AddDays(coolingOffPeriodInDays);
+            ApplyCoolingOffPeriod();
             Author = author;
         }
     }
