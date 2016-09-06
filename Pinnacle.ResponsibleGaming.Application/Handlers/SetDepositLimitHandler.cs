@@ -45,9 +45,11 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             var log = new Log(depositLimit);
             await _logService.Add(log);
 
-            //Add event
-            var @event = new Event(new LimitSet(depositLimit));
-            await _eventService.Add(@event);
+            //Add events
+            foreach (var @event in depositLimit.Events)
+            {
+                await _eventService.Add(@event);
+            }
 
             //Commit                
             _setDepositLimitContext.Commit();

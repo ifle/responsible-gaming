@@ -7,7 +7,7 @@ using Pinnacle.ResponsibleGaming.Domain.Models;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 {
-    public  class Context: DbContext
+    public class Context : DbContext
     {
         private DbContextTransaction _dbContextTransaction;
 
@@ -45,6 +45,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 
         public void Commit()
         {
+            SaveChanges();
             _dbContextTransaction.Commit();
         }
     }

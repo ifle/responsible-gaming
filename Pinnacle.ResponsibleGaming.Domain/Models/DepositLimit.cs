@@ -23,6 +23,8 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
             EndDate = endDate;
             Author = author;
             ModificationTime = now;
+
+            Events.Add(new Event(ToLimitSet()));
         }
 
         public void Modify(DepositLimit depositLimit)
@@ -38,11 +40,29 @@ namespace Pinnacle.ResponsibleGaming.Domain.Models
             EndDate = depositLimit.EndDate;
             Author = depositLimit.Author;
             ModificationTime = depositLimit.ModificationTime;
+
+            Events.Add(new Event(ToLimitSet()));
         }
         public void Disable(string author)
         {
             ApplyCoolingOffPeriod();
             Author = author;
+
+            Events.Add(new Event(ToLimitSet()));
+        }
+
+        public  Events.LimitSet ToLimitSet()
+        {
+            return new Events.LimitSet
+            {
+                LimitType = ResponsibleGaming.Events.LimitType.DepositLimit,
+                CustomerId = CustomerId,
+                Limit = Amount,
+                PeriodInDays = PeriodInDays,
+                StartDate = StartDate,
+                EndDate = EndDate
+            };
+
         }
     }
 }

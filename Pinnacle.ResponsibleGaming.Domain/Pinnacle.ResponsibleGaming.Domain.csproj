@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Messages\DepositLimitMessages.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Repositories\IDepositLimitRepository.cs" />
     <Compile Include="Repositories\IEventRepository.cs" />
@@ -72,6 +73,13 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
+      <Project>{9ea8c8f3-719f-486a-9088-6fe166df27d9}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Events</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

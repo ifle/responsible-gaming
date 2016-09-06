@@ -1,6 +1,5 @@
 ﻿using System;
 using Newtonsoft.Json;
-using Pinnacle.ResponsibleGaming.Domain.Models;
 
 
 namespace Pinnacle.ResponsibleGaming.Events
@@ -19,15 +18,5 @@ namespace Pinnacle.ResponsibleGaming.Events
         public DateTime StartDate { get; set; }
         [JsonProperty(Order = 6)]
         public DateTime? EndDate { get; set; }
-
-        public LimitSet(DepositLimit depositLimit)
-        {
-            LimitType = LimitType.DepositLimit;
-            CustomerId = depositLimit.CustomerId;
-            Limit = depositLimit.Amount;
-            PeriodInDays = depositLimit.PeriodInDays;
-            StartDate = depositLimit.StartDate;
-            EndDate = depositLimit.EndDate;
-        }
     }
 }

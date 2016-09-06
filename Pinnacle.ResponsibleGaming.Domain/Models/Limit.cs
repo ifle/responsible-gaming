@@ -3,7 +3,7 @@ using Pinnacle.ResponsibleGaming.Domain.Expressions;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Models
 {
-    public abstract class Limit
+    public abstract class Limit: Model
     {
         public int LimitId { get; set; }
         public string CustomerId { get; set; }
