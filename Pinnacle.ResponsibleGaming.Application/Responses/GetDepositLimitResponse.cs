@@ -1,5 +1,5 @@
 ﻿using System;
-using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Domain.Entities;
 using WebApi.Hal;
 
 namespace Pinnacle.ResponsibleGaming.Application.Responses

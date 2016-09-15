@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 
-namespace Pinnacle.ResponsibleGaming.Domain.Models
+namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {
     public class SelfExclusion : Limit
     {
