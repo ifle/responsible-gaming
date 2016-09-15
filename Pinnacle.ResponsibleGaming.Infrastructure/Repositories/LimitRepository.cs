@@ -3,7 +3,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Expressions;
-using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Infrastructure.Contexts;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories

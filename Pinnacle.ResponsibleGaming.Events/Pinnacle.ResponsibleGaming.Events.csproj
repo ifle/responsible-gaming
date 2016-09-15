@@ -44,8 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LimitSet.cs" />
-    <Compile Include="LimitType.cs" />
+    <Compile Include="DepositLimitSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

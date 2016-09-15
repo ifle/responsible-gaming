@@ -4,7 +4,7 @@ using log4net;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application.Contexts;
 using Pinnacle.ResponsibleGaming.Application._Framework.Extensions;
-using Pinnacle.ResponsibleGaming.Domain.Models;
+using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Services;
 using Pinnacle.ResponsibleGaming.Events;
 
