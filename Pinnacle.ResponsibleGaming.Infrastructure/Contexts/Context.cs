@@ -8,9 +8,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 {
     public  class Context: DbContext
     {
-        private DbContextTransaction _dbContextTransaction;
-
-        public DbSet<Limit> Limits { get; set; }
+         public DbSet<Limit> Limits { get; set; }
         public DbSet<Log> Logs { get; set; }
 
         public Context()
