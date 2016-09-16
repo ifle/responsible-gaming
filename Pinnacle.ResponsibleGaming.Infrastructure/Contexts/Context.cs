@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Pinnacle.ResponsibleGaming.Application.Contexts;
 using Pinnacle.ResponsibleGaming.Infrastructure.Configurations;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 
@@ -31,22 +30,6 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
             modelBuilder.Configurations.Add(new LogConfiguration());
 
             base.OnModelCreating(modelBuilder);
-        }
-
-        public void BeginTransaction()
-        {
-            _dbContextTransaction = Database.BeginTransaction();
-        }
-
-        public void BeginTransaction(IsolationLevel isolationLevel)
-        {
-            _dbContextTransaction = Database.BeginTransaction(isolationLevel);
-        }
-
-        public void Commit()
-        {
-            SaveChanges();
-            _dbContextTransaction.Commit();
         }
     }
 }
