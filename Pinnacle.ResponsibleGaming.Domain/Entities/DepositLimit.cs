@@ -2,6 +2,7 @@
 using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
 using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
+using Pinnacle.ResponsibleGaming.Events;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {
@@ -16,7 +17,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         {
             var now = DateTime.Now;
 
-            var depositLimitSet = new Events.DepositLimitSet
+            var depositLimitSet = new DepositLimitSet
             {
                 CustomerId = customerId,
                 Amount = amount,
@@ -40,7 +41,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
             if (!DepositLimitRules.PeriodAndLimitCannotBeChangedAtOnce(depositLimit.Amount, Amount, depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }
             if (!DepositLimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(depositLimit.PeriodInDays, PeriodInDays)) { throw new ConflictException(DepositLimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
 
-            var depositLimitSet = new Events.DepositLimitSet
+            var depositLimitSet = new DepositLimitSet
             {
                 CustomerId = depositLimit.CustomerId,
                 Amount = depositLimit.Amount,
@@ -56,7 +57,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         public void Disable(string author)
         {
             var now = DateTime.Now;
-            var depositLimitSet = new Events.DepositLimitSet
+            var depositLimitSet = new DepositLimitSet
             {
                 CustomerId = CustomerId,
                 Amount = Amount,
@@ -70,7 +71,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
             ApplyEvent(depositLimitSet);
         }
 
-        public void ApplyEvent(Events.DepositLimitSet depositLimitSet)
+        public void ApplyEvent(DepositLimitSet depositLimitSet)
         {
             Events.Add(new Event(depositLimitSet));
 
