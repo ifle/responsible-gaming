@@ -1,7 +1,7 @@
 using System.Data;
 
 
-namespace Pinnacle.ResponsibleGaming.Application.Contexts
+namespace Pinnacle.ResponsibleGaming.Application.Framework
 {
     public interface IContext
     {

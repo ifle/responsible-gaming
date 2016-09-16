@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using log4net;
 using Pinnacle.ResponsibleGaming.Application.Requests;
-using Pinnacle.ResponsibleGaming.Application.Contexts;
+using Pinnacle.ResponsibleGaming.Application.Framework;
 using Pinnacle.ResponsibleGaming.Application._Framework.Extensions;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Services;
@@ -12,18 +12,18 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
     public class SetDepositLimitHandler
     {
         private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly ISetDepositLimitContext _setDepositLimitContext;
+        private readonly IContext _context;
         private readonly DepositLimitService _depositLimitService;
         private readonly LogService _logService;
 
         public SetDepositLimitHandler(
-            ISetDepositLimitContext setDepositLimitContext,
+            IContext context,
             DepositLimitService depositLimitService,
             LogService logService
 
             )
         {
-            _setDepositLimitContext = setDepositLimitContext;
+            _context = context;
             _depositLimitService = depositLimitService;
             _logService = logService;
         }
@@ -31,7 +31,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         public async Task Handle(SetDepositLimit setDepositLimit)
         {
             //Begin transaction
-            _setDepositLimitContext.BeginTransaction();
+            _context.BeginTransaction();
 
             //Set deposit limit
             var depositLimit = setDepositLimit.ToDepositLimit();
@@ -42,7 +42,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             await _logService.Add(log);
 
             //Commit                
-            _setDepositLimitContext.Commit();
+            _context.Commit();
 
             //Log deposit limit into Splunk
             _log.Info(setDepositLimit.SerializeAsKeyValues());

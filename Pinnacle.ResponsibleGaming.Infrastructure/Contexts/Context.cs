@@ -3,10 +3,11 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Pinnacle.ResponsibleGaming.Infrastructure.Configurations;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Application.Framework;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 {
-    public  class Context: DbContext
+    public  class Context: DbContext, IContext
     {
         private DbContextTransaction _dbContextTransaction;
 
