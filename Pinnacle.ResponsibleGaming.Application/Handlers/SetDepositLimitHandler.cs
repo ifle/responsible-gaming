@@ -2,22 +2,22 @@
 using System.Threading.Tasks;
 using log4net;
 using Pinnacle.ResponsibleGaming.Application.Requests;
-using Pinnacle.ResponsibleGaming.Application.Framework;
 using Pinnacle.ResponsibleGaming.Application._Framework.Extensions;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Services;
+using System.Data.Entity;
 
 namespace Pinnacle.ResponsibleGaming.Application.Handlers
 {
     public class SetDepositLimitHandler
     {
         private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly IContext _context;
+        private readonly DbContext _context;
         private readonly DepositLimitService _depositLimitService;
         private readonly LogService _logService;
 
         public SetDepositLimitHandler(
-            IContext context,
+            DbContext context,
             DepositLimitService depositLimitService,
             LogService logService
 
@@ -31,18 +31,19 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         public async Task Handle(SetDepositLimit setDepositLimit)
         {
             //Begin transaction
-            _context.BeginTransaction();
+            using (var transaction = _context.Database.BeginTransaction())
+            {
+                //Set deposit limit
+                var depositLimit = setDepositLimit.ToDepositLimit();
+                depositLimit = await _depositLimitService.Set(depositLimit);
 
-            //Set deposit limit
-            var depositLimit = setDepositLimit.ToDepositLimit();
-            depositLimit = await _depositLimitService.Set(depositLimit);
+                //Log deposit limit
+                var log = new Log(depositLimit);
+                await _logService.Add(log);
 
-            //Log deposit limit
-            var log = new Log(depositLimit);
-            await _logService.Add(log);
-
-            //Commit                
-            _context.Commit();
+                //Commit                
+                transaction.Commit();
+            }
 
             //Log deposit limit into Splunk
             _log.Info(setDepositLimit.SerializeAsKeyValues());
