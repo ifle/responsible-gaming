@@ -14,18 +14,15 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private DbContext _context;
         private readonly DepositLimitService _depositLimitService;
-        private readonly LogService _logService;
 
         public DisableDepositLimitHandler(
            DbContext context,
-           DepositLimitService depositLimitService,
-           LogService logService
+           DepositLimitService depositLimitService
 
             )
         {
             _context = context;
             _depositLimitService = depositLimitService;
-            _logService = logService;
         }
 
         public async Task Handle(DisableDepositLimit disableDepositLimit)
@@ -35,10 +32,6 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             {
                 //Disable deposit limit
                 var depositLimit = await _depositLimitService.Disable(disableDepositLimit.CustomerId, disableDepositLimit.Author);
-
-                //Add log
-                var log = new Log(depositLimit);
-                await _logService.Add(log);
 
                 //Save changes
                 await _context.SaveChangesAsync();

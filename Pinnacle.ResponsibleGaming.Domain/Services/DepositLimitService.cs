@@ -9,10 +9,12 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
     public class DepositLimitService
     {
         private readonly IDepositLimitRepository _depositLimitRepository;
+        private readonly ILogRepository _logRepository;
 
-        public DepositLimitService(IDepositLimitRepository depositLimitRepository)
+        public DepositLimitService(IDepositLimitRepository depositLimitRepository, ILogRepository logRepository)
         {
             _depositLimitRepository = depositLimitRepository;
+            _logRepository = logRepository;
         }
 
         public async Task<DepositLimit> Set(DepositLimit depositLimit)
@@ -27,7 +29,11 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
                 currentDepositLimit = depositLimit;
             }
 
-            await _depositLimitRepository.Upsert(currentDepositLimit);
+            _depositLimitRepository.AddOrUpdate(currentDepositLimit);
+
+            //Log deposit limit
+            var log = new Log(depositLimit);
+            _logRepository.Add(log);
 
             return currentDepositLimit;
         }
@@ -37,7 +43,12 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             if (depositLimit == null) throw new NotFoundException(DepositLimitMessages.DepositLimitNotFound);
 
             depositLimit.Disable(author);
-            await _depositLimitRepository.Upsert(depositLimit);
+            _depositLimitRepository.AddOrUpdate(depositLimit);
+
+            //Log deposit limit
+            var log = new Log(depositLimit);
+            _logRepository.Add(log);
+
             return depositLimit;
         }
         public async Task<DepositLimit> Get(string customerId)
