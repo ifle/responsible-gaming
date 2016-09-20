@@ -14,7 +14,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task Insert(Log log)
+        public void Add(Log log)
         {
             _context.Set<Log>().Add(log);
         }
