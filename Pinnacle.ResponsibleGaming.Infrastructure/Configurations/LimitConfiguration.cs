@@ -11,13 +11,18 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
             ToTable("Limit");
 
             //Key
-            HasKey(x => x.LimitId);
+            HasKey(t => new { t.CustomerId, t.LimitType });
 
             //Properties
             Property(t => t.CustomerId)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(50)
                 .IsRequired();
+
+            Property(t => t.LimitType)
+              .HasColumnType("int")
+              .HasColumnName("LimitTypeId")
+              .IsRequired();
 
             Property(t => t.PeriodInDays)
                 .HasColumnType("int")
@@ -30,6 +35,11 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
             Property(t => t.EndDate)
                 .HasColumnType("datetime2")
                 .IsOptional();
+
+            Property(t => t.Value)
+               .HasColumnType("decimal")
+               .HasColumnName("Limit")
+               .IsRequired();
 
             Property(t => t.Author)
                 .HasColumnType("nvarchar")

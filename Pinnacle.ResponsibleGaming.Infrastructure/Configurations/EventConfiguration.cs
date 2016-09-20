@@ -11,7 +11,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
             ToTable("Event");
 
             //Key
-            HasKey(x => x.Id);
+            HasKey(x => x.EventId);
 
             //Properties
             Property(t => t.Name)

@@ -15,16 +15,16 @@ namespace Pinnacle.ResponsibleGaming.Application.Responses
         public string Status { get; set; }
         public bool IsRecurring { get; set; }
 
-        public GetDepositLimitResponse(DepositLimit depositLimit)
+        public GetDepositLimitResponse(Limit limit)
         {
-            Amount = depositLimit.Amount;
-            PeriodInDays = depositLimit.PeriodInDays;
-            StartDate = depositLimit.StartDate;
-            EndDate = depositLimit.EndDate;
-            Author = depositLimit.Author;
-            ModificationTime = depositLimit.ModificationTime;
-            Status = depositLimit.Status.ToString();
-            IsRecurring = depositLimit.IsRecurring;
+            Amount = limit.Value;
+            PeriodInDays = limit.PeriodInDays;
+            StartDate = limit.StartDate;
+            EndDate = limit.EndDate;
+            Author = limit.Author;
+            ModificationTime = limit.ModificationTime;
+            Status = limit.Status.ToString();
+            IsRecurring = limit.IsRecurring;
         }
     }
 }

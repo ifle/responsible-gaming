@@ -4,7 +4,7 @@
 
 namespace Pinnacle.ResponsibleGaming.Domain.Rules
 {
-    public static class DepositLimitRules
+    public static class LimitRules
     {
         public static bool PeriodAndAmountCannotBeChangedAtOnce(decimal newAmount, decimal currentAmount, int? newPeriod, int? currentPeriod)
         {

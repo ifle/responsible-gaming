@@ -5,7 +5,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {
     public class Event
     {
-        public int Id { get; set; }
+        public int EventId { get; set; }
         public string Name { get; set; }
         public string Json { get; set; }
         public bool Sent { get; set; }

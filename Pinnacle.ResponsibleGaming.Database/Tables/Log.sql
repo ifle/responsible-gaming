@@ -1,6 +1,5 @@
 ﻿CREATE TABLE [dbo].[Log] (
     [LogId]  INT           NOT NULL IDENTITY,
-	[LimitId] INT NOT NULL, 
 	[CustomerId]   NVARCHAR (50) NOT NULL,
     [LimitTypeId]  INT           NOT NULL,
     [Limit]        DECIMAL(18, 2)           NOT NULL,

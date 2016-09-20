@@ -13,17 +13,14 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
             HasKey(x => x.LogId);
 
             //Properties
-            Property(t => t.LimitId)
-              .HasColumnType("int")
-              .IsRequired();
-
             Property(t => t.CustomerId)
                 .HasColumnType("nvarchar")
                 .HasMaxLength(50)
                 .IsRequired();
 
-            Property(t => t.LimitTypeId)
+            Property(t => t.LimitType)
                .HasColumnType("int")
+               .HasColumnName("LimitTypeId")
                .IsRequired();
 
             Property(t => t.Limit)

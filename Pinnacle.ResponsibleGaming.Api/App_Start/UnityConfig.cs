@@ -33,10 +33,10 @@ namespace Pinnacle.ResponsibleGaming.Api
             container.RegisterType<DisableDepositLimitHandler, DisableDepositLimitHandler>();
 
             //Services
-            container.RegisterType<DepositLimitService, DepositLimitService>();
+            container.RegisterType<LimitService, LimitService>();
 
             //Repositories
-            container.RegisterType<IDepositLimitRepository, DepositLimitRepository>();
+            container.RegisterType<ILimitRepository, LimitRepository>();
             container.RegisterType<ILogRepository, LogRepository>();
             container.RegisterType<IEventRepository, EventRepository>();
 
