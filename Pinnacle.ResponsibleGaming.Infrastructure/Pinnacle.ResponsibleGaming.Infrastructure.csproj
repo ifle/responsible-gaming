@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\EventConfiguration.cs" />
     <Compile Include="Hubs\RabbitHub.cs" />
     <Compile Include="Configurations\DepositLimitConfiguration.cs" />
     <Compile Include="Configurations\LimitConfiguration.cs" />

@@ -5,6 +5,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Repositories
 {
     public interface IEventRepository
     {
-        Task Insert(Event @event);
+        void Add(Event @event);
     }
 }

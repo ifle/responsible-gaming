@@ -27,6 +27,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
             modelBuilder.Configurations.Add(new DepositLimitConfiguration());
             modelBuilder.Configurations.Add(new SelfExclusionConfiguration());
             modelBuilder.Configurations.Add(new LogConfiguration());
+            modelBuilder.Configurations.Add(new EventConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }        

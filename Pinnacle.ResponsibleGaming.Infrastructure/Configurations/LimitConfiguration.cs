@@ -43,6 +43,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
             //Ignore
             Ignore(x => x.Status);
             Ignore(x => x.IsRecurring);
+            Ignore(x => x.Events);
         }
     }
 }

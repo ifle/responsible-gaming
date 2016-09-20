@@ -10,11 +10,13 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
     {
         private readonly IDepositLimitRepository _depositLimitRepository;
         private readonly ILogRepository _logRepository;
+        private readonly IEventRepository _eventRepository;
 
-        public DepositLimitService(IDepositLimitRepository depositLimitRepository, ILogRepository logRepository)
+        public DepositLimitService(IDepositLimitRepository depositLimitRepository, ILogRepository logRepository, IEventRepository eventRepository)
         {
             _depositLimitRepository = depositLimitRepository;
             _logRepository = logRepository;
+            _eventRepository = eventRepository;
         }
 
         public async Task<DepositLimit> Set(DepositLimit depositLimit)
@@ -34,6 +36,13 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             //Log deposit limit
             var log = new Log(depositLimit);
             _logRepository.Add(log);
+
+            //Add events
+            foreach (var @event in depositLimit.Events)
+            {
+                _eventRepository.Add(@event);
+            }
+            depositLimit.Events.Clear();
 
             return currentDepositLimit;
         }

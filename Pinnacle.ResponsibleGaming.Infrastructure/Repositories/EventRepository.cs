@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Pinnacle.ResponsibleGaming.Domain.Entities;
+﻿using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Infrastructure.Contexts;
 
@@ -14,7 +13,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task Insert(Event @event)
+        public void Add(Event @event)
         {
             _context.Events.Add(@event);
         }
