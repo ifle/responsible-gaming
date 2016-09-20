@@ -40,6 +40,9 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
                 var log = new Log(depositLimit);
                 await _logService.Add(log);
 
+                //Save changes
+                await _context.SaveChangesAsync();
+
                 //Commit                
                 transaction.Commit();
             }                           
