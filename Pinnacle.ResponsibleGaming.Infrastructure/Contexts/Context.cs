@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Pinnacle.ResponsibleGaming.Infrastructure.Configurations;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
+using System.Threading.Tasks;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 {
@@ -28,6 +29,6 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
             modelBuilder.Configurations.Add(new LogConfiguration());
 
             base.OnModelCreating(modelBuilder);
-        }
+        }        
     }
 }

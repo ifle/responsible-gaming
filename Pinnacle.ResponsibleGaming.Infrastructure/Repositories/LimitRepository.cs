@@ -24,7 +24,6 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
         public async Task Upsert(T t)
         {
             _context.Limits.AddOrUpdate(t);
-            await _context.SaveChangesAsync();
         }
     }
 }
