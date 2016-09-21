@@ -1,6 +1,6 @@
 ﻿
 
-namespace Pinnacle.ResponsibleGaming.Application._Framework.Extensions
+namespace Pinnacle.ResponsibleGaming.Domain._Framework.Extensions
 {
     public static class ObjectExtensions
     {

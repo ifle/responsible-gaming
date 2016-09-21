@@ -1,13 +1,16 @@
-﻿using System.Threading.Tasks;
+﻿using System.Reflection;
+using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
+using Pinnacle.ResponsibleGaming.Domain._Framework.Extensions;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Services
 {
     public class LimitService
     {
+        private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly ILimitRepository _limitRepository;
         private readonly ILogRepository _logRepository;
         private readonly IEventRepository _eventRepository;
@@ -41,6 +44,8 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             foreach (var @event in limit.Events)
             {
                 _eventRepository.Add(@event);
+                //Log deposit limit into Splunk
+                _log.Info(@event.SerializeAsKeyValues());
             }
             limit.Events.Clear();
 

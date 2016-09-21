@@ -10,7 +10,6 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
 {
     public class SetDepositLimitHandler
     {
-        private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly DbContext _context;
         private readonly LimitService _limitService;
 
