@@ -11,7 +11,7 @@ namespace Pinnacle.ResponsibleGaming.Publisher
     {
         static void Main(string[] args)
         {
-            using (var context = new ResponsibleGamingContext())
+            using (var context = new MainContext())
             {
                 using (var rabbitHub = new RabbitHub())
                 {
