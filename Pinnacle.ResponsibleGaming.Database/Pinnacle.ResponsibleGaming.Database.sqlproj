@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Data.LimitType.sql" />
+    <None Include="Pinnacle.ResponsibleGaming.Database.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Pinnacle.ResponsibleGaming.Database.refactorlog" />

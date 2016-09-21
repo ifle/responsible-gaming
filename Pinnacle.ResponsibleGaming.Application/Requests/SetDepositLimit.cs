@@ -15,10 +15,11 @@ namespace Pinnacle.ResponsibleGaming.Application.Requests
         public DateTime? EndDate { get; set; }
         public string Author { get; set; }
 
-        public DepositLimit ToDepositLimit()
+        public Limit ToLimit()
         {
-            return new DepositLimit(
+            return new Limit(
                 CustomerId,
+                LimitType.DepositLimit, 
                 Amount,
                 PeriodInDays,
                 StartDate,

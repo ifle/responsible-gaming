@@ -30,6 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <Reference Include="EasyNetQ, Version=0.59.0.434, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyNetQ.0.59.0.434\lib\net45\EasyNetQ.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+>>>>>>> feature/with_messaging
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -38,6 +45,21 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+<<<<<<< HEAD
+=======
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=3.6.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.3.6.0\lib\net45\RabbitMQ.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+>>>>>>> feature/with_messaging
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -49,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Configurations\DepositLimitConfiguration.cs" />
     <Compile Include="Configurations\LimitConfiguration.cs" />
     <Compile Include="Configurations\LogConfiguration.cs" />
@@ -56,6 +79,14 @@
     <Compile Include="Contexts\Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DepositLimitRepository.cs" />
+=======
+    <Compile Include="Configurations\EventConfiguration.cs" />
+    <Compile Include="Hubs\RabbitHub.cs" />
+    <Compile Include="Configurations\LimitConfiguration.cs" />
+    <Compile Include="Configurations\LogConfiguration.cs" />
+    <Compile Include="Contexts\ResponsibleGamingContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+>>>>>>> feature/with_messaging
     <Compile Include="Repositories\LimitRepository.cs" />
     <Compile Include="Repositories\LogRepository.cs" />
   </ItemGroup>
@@ -64,14 +95,24 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Application\Pinnacle.ResponsibleGaming.Application.csproj">
       <Project>{f39b93a6-28a8-4ae3-a5dc-28188465b33b}</Project>
       <Name>Pinnacle.ResponsibleGaming.Application</Name>
     </ProjectReference>
+=======
+>>>>>>> feature/with_messaging
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>
     </ProjectReference>
+<<<<<<< HEAD
+=======
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
+      <Project>{9ea8c8f3-719f-486a-9088-6fe166df27d9}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Events</Name>
+    </ProjectReference>
+>>>>>>> feature/with_messaging
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

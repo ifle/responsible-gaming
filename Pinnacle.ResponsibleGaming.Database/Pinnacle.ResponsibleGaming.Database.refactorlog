@@ -84,4 +84,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[IX_Limit_CustomerId_LimitTypeId]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="81914494-27d0-4b76-891c-a3b045a1c106" ChangeDateTime="09/20/2016 16:20:02">
+    <Property Name="ElementName" Value="[dbo].[Limit].[Limit]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Limit]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Value" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b70d26ea-00fc-42e4-b035-acbe69b90b42" ChangeDateTime="09/20/2016 16:20:40">
+    <Property Name="ElementName" Value="[dbo].[Limit].[Value]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Limit]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Limit" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a0e9c4d6-a85b-4ec2-af9a-8c4c75e473f0" ChangeDateTime="09/20/2016 16:44:25">
+    <Property Name="ElementName" Value="[dbo].[Event].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Event]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventId" />
+  </Operation>
 </Operations>

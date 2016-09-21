@@ -1,5 +1,4 @@
 ﻿CREATE TABLE [dbo].[Limit] (
-    [LimitId] INT NOT NULL IDENTITY, 
     [CustomerId]   NVARCHAR (50) NOT NULL,
     [LimitTypeId]  INT           NOT NULL,
     [Limit]        DECIMAL(18, 2)           NOT NULL,
@@ -8,7 +7,7 @@
     [EndDate]      DATETIME2 (7) NULL,
 	[Author]       NVARCHAR (50) NOT NULL,
     [ModificationTime] DATETIME2 (7) NOT NULL, 
-    CONSTRAINT [PK_Limit] PRIMARY KEY CLUSTERED ([LimitId]) 
+    CONSTRAINT [PK_Limit] PRIMARY KEY CLUSTERED ([CustomerId], [LimitTypeId]) 
 );
 
 

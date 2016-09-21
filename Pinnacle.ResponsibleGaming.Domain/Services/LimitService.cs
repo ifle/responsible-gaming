@@ -1,0 +1,72 @@
+﻿using System.Threading.Tasks;
+using Pinnacle.ResponsibleGaming.Domain.Messages;
+using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.Domain.Repositories;
+using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
+
+namespace Pinnacle.ResponsibleGaming.Domain.Services
+{
+    public class LimitService
+    {
+        private readonly ILimitRepository _limitRepository;
+        private readonly ILogRepository _logRepository;
+
+        public LimitService(ILimitRepository limitRepository, ILogRepository logRepository)
+        {
+            _limitRepository = limitRepository;
+            _logRepository = logRepository;
+        }
+
+        public async Task<Limit> Set(Limit limit)
+        {
+            // Retrieve current limit
+            var currentDepositLimit = await Get(limit.CustomerId, limit.LimitType);
+
+            // Modify if it exists
+            if (currentDepositLimit != null)
+            {
+                currentDepositLimit.Modify(limit);
+            }
+            // Create if it is new
+            else
+            {
+                currentDepositLimit = limit;
+            }
+            _limitRepository.AddOrUpdate(currentDepositLimit);
+
+            //Log limit
+            var log = new Log(limit);
+            _logRepository.Add(log);
+
+            return currentDepositLimit;
+        }
+        public async Task<Limit> Disable(string customerId, LimitType limitType, string author)
+        {
+            // Retrieve current limit
+            var limit = await _limitRepository.Get(customerId, limitType);
+
+            // Throw NotFound if it doesn't exist
+            if (limit == null) throw new NotFoundException(LimitMessages.DepositLimitNotFound);
+
+            // Disable limit
+            limit.Disable(author);
+            _limitRepository.AddOrUpdate(limit);
+
+            //Log limit
+            var log = new Log(limit);
+            _logRepository.Add(log);
+
+            return limit;
+        }
+        public async Task<Limit> Get(string customerId, LimitType limitType)
+        {
+            // Throw NotFound if customer doesn't exist
+            if (false) throw new NotFoundException(LimitMessages.CustomerNotFound);
+
+            // Retrieve limit
+            var limit = await _limitRepository.Get(customerId, limitType);
+
+            return limit;
+        }
+    }
+}
