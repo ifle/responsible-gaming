@@ -1,15 +1,13 @@
 ﻿using System;
 
 
-
 namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {
     public class Log
     {
         public int LogId { get; set; }
-        public int LimitId { get; set; }
         public string CustomerId { get; set; }
-        public int LimitTypeId { get; set; }
+        public LimitType LimitType { get; set; }
         public decimal Limit { get; set; }
         public int? PeriodInDays { get; set; }
         public DateTime StartDate { get; set; }
@@ -17,17 +15,16 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         public string Author { get; set; }
         public DateTime ModificationTime { get; set; }
 
-        public Log(DepositLimit depositLimit)
+        public Log(Limit limit)
         {
-            LimitId = depositLimit.LimitId;
-            CustomerId = depositLimit.CustomerId;
-            LimitTypeId = (int)LimitType.DepositLimit;
-            Limit = depositLimit.Amount;
-            PeriodInDays = depositLimit.PeriodInDays;
-            StartDate = depositLimit.StartDate;
-            EndDate = depositLimit.EndDate;
-            Author = depositLimit.Author;
-            ModificationTime = depositLimit.ModificationTime;
+            CustomerId = limit.CustomerId;
+            LimitType = limit.LimitType;
+            Limit = limit.Value;
+            PeriodInDays = limit.PeriodInDays;
+            StartDate = limit.StartDate;
+            EndDate = limit.EndDate;
+            Author = limit.Author;
+            ModificationTime = limit.ModificationTime;
         }
     }
 }

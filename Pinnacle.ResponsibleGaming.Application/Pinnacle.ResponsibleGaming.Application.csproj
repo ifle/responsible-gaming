@@ -88,18 +88,12 @@
     <Compile Include="Requests\GetDepositLimit.cs" />
     <Compile Include="Rules\SetDepositLimitRules.cs" />
     <Compile Include="Validators\SetDepositLimitValidator.cs" />
-<<<<<<< HEAD
-    <Compile Include="_Framework\Extensions\ObjectExtensions.cs" />
-=======
->>>>>>> feature/with_messaging
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>
     </ProjectReference>
-<<<<<<< HEAD
-=======
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
       <Project>{9ea8c8f3-719f-486a-9088-6fe166df27d9}</Project>
       <Name>Pinnacle.ResponsibleGaming.Events</Name>
@@ -108,7 +102,6 @@
       <Project>{fa9dc9a8-ae81-4b53-ac8b-28551387db71}</Project>
       <Name>Pinnacle.ResponsibleGaming.Infrastructure</Name>
     </ProjectReference>
->>>>>>> feature/with_messaging
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

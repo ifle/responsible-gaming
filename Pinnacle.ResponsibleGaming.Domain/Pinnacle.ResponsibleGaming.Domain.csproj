@@ -33,13 +33,10 @@
     <OutputPath>bin\Integration\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
->>>>>>> feature/with_messaging
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -55,21 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Messages\DepositLimitMessages.cs" />
-    <Compile Include="Entities\Log.cs" />
-    <Compile Include="Repositories\IDepositLimitRepository.cs" />
-    <Compile Include="Repositories\ILogRepository.cs" />
-    <Compile Include="Rules\DepositLimitRules.cs" />
-    <Compile Include="Services\DepositLimitService.cs" />
-    <Compile Include="_Framework\Exceptions\NotFoundException.cs" />
-    <Compile Include="_Framework\Exceptions\ConflictException.cs" />
-    <Compile Include="Entities\DepositLimit.cs" />
-    <Compile Include="Entities\LimitStatus.cs" />
-    <Compile Include="Entities\LimitType.cs" />
-    <Compile Include="Entities\Limit.cs" />
-    <Compile Include="Entities\SelfExclusion.cs" />
-=======
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\Limit.cs" />
@@ -84,7 +66,6 @@
     <Compile Include="Services\LimitService.cs" />
     <Compile Include="_Framework\Exceptions\NotFoundException.cs" />
     <Compile Include="_Framework\Exceptions\ConflictException.cs" />
->>>>>>> feature/with_messaging
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Expressions\LimitExpressions.cs" />
   </ItemGroup>
@@ -92,8 +73,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-<<<<<<< HEAD
-=======
   <ItemGroup>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Events\Pinnacle.ResponsibleGaming.Events.csproj">
       <Project>{9ea8c8f3-719f-486a-9088-6fe166df27d9}</Project>
@@ -101,7 +80,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
->>>>>>> feature/with_messaging
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
