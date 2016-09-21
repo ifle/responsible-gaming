@@ -34,16 +34,6 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Hubs
             _bus.Advanced.Publish(_exchange, "", false, new Message<T>(@event));
         }
 
-        public void Consume()
-        {
-            _bus.Advanced.Consume(_queue, x => x
-                .Add<LimitSet>((message, info) =>
-                {
-                    Console.WriteLine("Limit set for {0}", message.Body.CustomerId);
-                })
-            );
-        }
-
         public void Dispose()
         {
             _bus.Advanced.Dispose();
