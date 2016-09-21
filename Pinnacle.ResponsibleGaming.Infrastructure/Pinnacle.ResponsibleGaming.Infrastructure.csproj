@@ -69,9 +69,8 @@
     <Compile Include="Hubs\RabbitHub.cs" />
     <Compile Include="Configurations\LimitConfiguration.cs" />
     <Compile Include="Configurations\LogConfiguration.cs" />
-    <Compile Include="Contexts\Context.cs" />
+    <Compile Include="Contexts\ResponsibleGamingContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\EventRepository.cs" />
     <Compile Include="Repositories\LimitRepository.cs" />
     <Compile Include="Repositories\LogRepository.cs" />
   </ItemGroup>
