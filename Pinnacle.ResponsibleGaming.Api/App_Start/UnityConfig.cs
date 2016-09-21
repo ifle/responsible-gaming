@@ -35,7 +35,6 @@ namespace Pinnacle.ResponsibleGaming.Api
             //Repositories
             container.RegisterType<ILimitRepository, LimitRepository>();
             container.RegisterType<ILogRepository, LogRepository>();
-            container.RegisterType<IEventRepository, EventRepository>();
 
 
 

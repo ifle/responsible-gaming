@@ -4,23 +4,19 @@ using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
-using Pinnacle.ResponsibleGaming.Domain._Framework.Extensions;
 using log4net;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Services
 {
     public class LimitService
     {
-        private readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly ILimitRepository _limitRepository;
         private readonly ILogRepository _logRepository;
-        private readonly IEventRepository _eventRepository;
 
-        public LimitService(ILimitRepository limitRepository, ILogRepository logRepository, IEventRepository eventRepository)
+        public LimitService(ILimitRepository limitRepository, ILogRepository logRepository)
         {
             _limitRepository = limitRepository;
             _logRepository = logRepository;
-            _eventRepository = eventRepository;
         }
 
         public async Task<Limit> Set(Limit limit)
@@ -44,15 +40,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             var log = new Log(limit);
             _logRepository.Add(log);
 
-            //Add events
-            foreach (var @event in limit.Events)
-            {
-                _eventRepository.Add(@event);
-                //Log into Splunk
-                _log.Info(@event.SerializeAsKeyValues());
-            }
-            limit.Events.Clear();
-
             return currentDepositLimit;
         }
         public async Task<Limit> Disable(string customerId, LimitType limitType, string author)
@@ -70,15 +57,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             //Log limit
             var log = new Log(limit);
             _logRepository.Add(log);
-
-            //Add events
-            foreach (var @event in limit.Events)
-            {
-                _eventRepository.Add(@event);
-                //Log into Splunk
-                _log.Info(@event.SerializeAsKeyValues());
-            }
-            limit.Events.Clear();
 
             return limit;
         }
