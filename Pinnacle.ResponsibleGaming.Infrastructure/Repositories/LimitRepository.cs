@@ -10,9 +10,9 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
 {
     public class LimitRepository : ILimitRepository
     {
-        private readonly ResponsibleGamingContext _context;
+        private readonly MainContext _context;
 
-        public LimitRepository(ResponsibleGamingContext context)
+        public LimitRepository(MainContext context)
         {
             _context = context;
         }

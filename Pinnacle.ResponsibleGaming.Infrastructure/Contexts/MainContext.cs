@@ -10,7 +10,7 @@ using log4net;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 {
-    public class ResponsibleGamingContext : DbContext
+    public class MainContext : DbContext
     {
         private ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -20,10 +20,10 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 
 
 
-        public ResponsibleGamingContext()
+        public MainContext()
             : base("name=MainSqlServer")
         {
-            Database.SetInitializer<ResponsibleGamingContext>(null);
+            Database.SetInitializer<MainContext>(null);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

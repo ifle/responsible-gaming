@@ -6,9 +6,9 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
 {
     public class LogRepository : ILogRepository
     {
-        private readonly ResponsibleGamingContext _context;
+        private readonly MainContext _context;
 
-        public LogRepository(ResponsibleGamingContext context)
+        public LogRepository(MainContext context)
         {
             _context = context;
         }

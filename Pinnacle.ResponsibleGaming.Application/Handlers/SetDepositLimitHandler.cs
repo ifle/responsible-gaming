@@ -7,11 +7,11 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
 {
     public class SetDepositLimitHandler
     {
-        private readonly ResponsibleGamingContext _context;
+        private readonly MainContext _context;
         private readonly LimitService _limitService;
 
         public SetDepositLimitHandler(
-            ResponsibleGamingContext context,
+            MainContext context,
             LimitService limitService
             )
         {
