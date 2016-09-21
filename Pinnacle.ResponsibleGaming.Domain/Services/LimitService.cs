@@ -1,10 +1,8 @@
-﻿using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
-using log4net;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Services
 {
