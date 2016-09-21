@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
+using Pinnacle.ResponsibleGaming.Events;
 using Pinnacle.ResponsibleGaming.Infrastructure.Contexts;
 using Pinnacle.ResponsibleGaming.Infrastructure.Hubs;
 
@@ -14,15 +15,14 @@ namespace Pinnacle.ResponsibleGaming.Publisher
             {
                 using (var rabbitHub = new RabbitHub())
                 {
-
-                    Console.WriteLine("Listenting...");
+                    Console.WriteLine("Publisher is listenting...");
                     Console.WriteLine();
                     while (true)
                     {
                         var events = context.Events.Where(x => x.Sent == false).ToList();
                         foreach (var @event in events)
                         {
-                            rabbitHub.Publish(@event);
+                            rabbitHub.Publish(@event.ToLimitSet());
                             @event.Sent = true;
                             context.SaveChanges();
                             Console.Write("Event published!");

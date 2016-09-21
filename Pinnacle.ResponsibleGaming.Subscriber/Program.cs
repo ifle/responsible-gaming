@@ -17,13 +17,15 @@ namespace Pinnacle.ResponsibleGaming.Subscriber
                 var queue = bus.Advanced.QueueDeclare("responsible-gaming # responsible-gaming");
                 using (var context = new ResponsibleGamingContext())
                 {
+                    Console.WriteLine("Subscriber is listenting...");
+                    Console.WriteLine();
                     bus.Advanced.Consume(queue, x => x
                         .Add<LimitSet>((message, info) =>
                         {
                             Console.WriteLine("Limit set for {0}", message.Body.CustomerId);
                         })
-                    );
-
+                        );
+                    Console.ReadKey();
                 }
             }          
         }

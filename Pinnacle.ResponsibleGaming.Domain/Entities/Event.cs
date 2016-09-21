@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Pinnacle.ResponsibleGaming.Events;
 
 
 namespace Pinnacle.ResponsibleGaming.Domain.Entities
@@ -23,6 +24,11 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
                                 NullValueHandling = NullValueHandling.Ignore
                             });
             Sent = false;
+        }
+
+        public LimitSet ToLimitSet()
+        {
+            return JsonConvert.DeserializeObject<LimitSet>(Json);
         }
     }
 }
