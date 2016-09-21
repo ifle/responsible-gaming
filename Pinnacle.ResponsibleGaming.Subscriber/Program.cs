@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using Pinnacle.ResponsibleGaming.Infrastructure.Contexts;
 using EasyNetQ;
+using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Events;
 
 namespace Pinnacle.ResponsibleGaming.Subscriber
@@ -22,7 +24,11 @@ namespace Pinnacle.ResponsibleGaming.Subscriber
                     bus.Advanced.Consume(queue, x => x
                         .Add<LimitSet>((message, info) =>
                         {
-                            Console.WriteLine("Limit set for {0}", message.Body.CustomerId);
+                            var limit = new Limit();
+                            limit.ApplyEvent(message.Body);
+                            context.Limits.AddOrUpdate(limit);
+                            context.SaveChanges();
+                            Console.WriteLine("Event processed!");
                         })
                         );
                     Console.ReadKey();
