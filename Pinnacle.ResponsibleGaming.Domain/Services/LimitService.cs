@@ -5,6 +5,7 @@ using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.Domain._Framework.Exceptions;
 using Pinnacle.ResponsibleGaming.Domain._Framework.Extensions;
+using log4net;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Services
 {
@@ -24,19 +25,22 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
 
         public async Task<Limit> Set(Limit limit)
         {
+            // Retrieve current limit
             var currentDepositLimit = await Get(limit.CustomerId, limit.LimitType);
+
+            // Modify if it exists
             if (currentDepositLimit != null)
             {
                 currentDepositLimit.Modify(limit);
             }
+            // Create if it is new
             else
             {
                 currentDepositLimit = limit;
             }
-
             _limitRepository.AddOrUpdate(currentDepositLimit);
 
-            //Log deposit limit
+            //Log limit
             var log = new Log(limit);
             _logRepository.Add(log);
 
@@ -44,7 +48,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             foreach (var @event in limit.Events)
             {
                 _eventRepository.Add(@event);
-                //Log deposit limit into Splunk
+                //Log into Splunk
                 _log.Info(@event.SerializeAsKeyValues());
             }
             limit.Events.Clear();
@@ -53,24 +57,39 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
         }
         public async Task<Limit> Disable(string customerId, LimitType limitType, string author)
         {
+            // Retrieve current limit
             var limit = await _limitRepository.Get(customerId, limitType);
+
+            // Throw NotFound if it doesn't exist
             if (limit == null) throw new NotFoundException(LimitMessages.DepositLimitNotFound);
 
+            // Disable limit
             limit.Disable(author);
             _limitRepository.AddOrUpdate(limit);
 
-            //Log deposit limit
+            //Log limit
             var log = new Log(limit);
             _logRepository.Add(log);
+
+            //Add events
+            foreach (var @event in limit.Events)
+            {
+                _eventRepository.Add(@event);
+                //Log into Splunk
+                _log.Info(@event.SerializeAsKeyValues());
+            }
+            limit.Events.Clear();
 
             return limit;
         }
         public async Task<Limit> Get(string customerId, LimitType limitType)
         {
-            //Check if customer exists
+            // Throw NotFound if customer doesn't exist
             if (false) throw new NotFoundException(LimitMessages.CustomerNotFound);
 
+            // Retrieve limit
             var limit = await _limitRepository.Get(customerId, limitType);
+
             return limit;
         }
     }

@@ -20,9 +20,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
             using (var context = new ResponsibleGamingContext())
             {
                 //Disable deposit limit
-                await
-                    _limitService.Disable(disableDepositLimit.CustomerId, LimitType.DepositLimit,
-                        disableDepositLimit.Author);
+                await _limitService.Disable(disableDepositLimit.CustomerId, LimitType.DepositLimit, disableDepositLimit.Author);
 
                 //Save changes
                 await context.SaveChangesAsync();
