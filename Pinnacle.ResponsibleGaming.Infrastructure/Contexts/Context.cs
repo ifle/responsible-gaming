@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
 {
-    public class Context : DbContext
+    public class ResponsibleGamingContext : DbContext
     {
         public DbSet<Limit> Limits { get; set; }
         public DbSet<Log> Logs { get; set; }
         public DbSet<Event> Events { get; set; }
 
-        public Context()
+        public ResponsibleGamingContext()
             : base("name=MainSqlServer")
         {
-            Database.SetInitializer<Context>(null);
+            Database.SetInitializer<ResponsibleGamingContext>(null);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

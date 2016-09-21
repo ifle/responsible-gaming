@@ -6,9 +6,9 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
 {
     public class EventRepository : IEventRepository
     {
-        private readonly Context _context;
+        private readonly ResponsibleGamingContext _context;
 
-        public EventRepository(Context context)
+        public EventRepository(ResponsibleGamingContext context)
         {
             _context = context;
         }

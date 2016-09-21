@@ -72,10 +72,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Application\Pinnacle.ResponsibleGaming.Application.csproj">
-      <Project>{f39b93a6-28a8-4ae3-a5dc-28188465b33b}</Project>
-      <Name>Pinnacle.ResponsibleGaming.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
       <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
       <Name>Pinnacle.ResponsibleGaming.Domain</Name>

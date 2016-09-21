@@ -98,6 +98,10 @@
       <Project>{9ea8c8f3-719f-486a-9088-6fe166df27d9}</Project>
       <Name>Pinnacle.ResponsibleGaming.Events</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Infrastructure\Pinnacle.ResponsibleGaming.Infrastructure.csproj">
+      <Project>{fa9dc9a8-ae81-4b53-ac8b-28551387db71}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
