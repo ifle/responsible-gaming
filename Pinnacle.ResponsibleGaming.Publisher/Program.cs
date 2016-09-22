@@ -19,7 +19,7 @@ namespace Pinnacle.ResponsibleGaming.Publisher
                     Console.WriteLine();
                     while (true)
                     {
-                        var events = context.Events.Where(x => x.Sent == false).ToList();
+                        var events = context.Events.Where(x => x.Sent == false).OrderBy(x=>x.EventId).ToList();
                         foreach (var @event in events)
                         {
                             rabbitHub.Publish(@event.ToLimitSet());
