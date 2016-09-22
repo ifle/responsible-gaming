@@ -52,7 +52,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
                 {
                     Events.Add(@event);
                     //Log into Splunk
-                    _log.Info(SerializeAsKeyValues(@event));
+                    _log.Info(SerializeAsKeyValues(@event.ToLimitSet()));
                 }
             }
 
