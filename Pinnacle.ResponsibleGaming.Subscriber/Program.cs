@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Data.Entity.Migrations;
-using System.Linq;
 using Pinnacle.ResponsibleGaming.Infrastructure.Contexts;
-using EasyNetQ;
-using Pinnacle.ResponsibleGaming.Domain.Entities;
 using Pinnacle.ResponsibleGaming.Events;
+using Pinnacle.ResponsibleGaming.Infrastructure.Hubs;
 using Pinnacle.ResponsibleGaming.Infrastructure.Repositories;
 
 namespace Pinnacle.ResponsibleGaming.Subscriber
@@ -13,26 +10,17 @@ namespace Pinnacle.ResponsibleGaming.Subscriber
     {
         static void Main(string[] args)
         {
-            const string rabbitMqConnectionString = "host=172.24.21.133;virtualHost=Customer;username=CustomerTeam.DefaultUser;password=admin";
-
-            using (var bus = RabbitHutch.CreateBus(rabbitMqConnectionString))
+            using (var bus = new RabbitHub())
             {
-                var queue = bus.Advanced.QueueDeclare("responsible-gaming # responsible-gaming");
                 using (var context = new MainContext())
                 {
                     var limitRepository = new LimitRepository(context);
                     Console.WriteLine("Subscriber is listenting...");
                     Console.WriteLine();
-                    bus.Advanced.Consume(queue, x => x
+                    bus.Consume( x => x
                         .Add<LimitSet>((message, info) =>
                         {
-                            var @event = message.Body;
-                            var limit =  limitRepository.Get(@event.CustomerId,(Domain.Entities.LimitType) @event.LimitType).Result;
-                            if (limit == null) limit = new Limit();
-                            limit.ApplyEvent(@event);
-                            context.Limits.AddOrUpdate(limit);
-                            context.SaveChanges();
-                            Console.WriteLine("Event processed!");
+                           Handler.Handle(message.Body);
                         })
                         .ThrowOnNoMatchingHandler = false
                         );

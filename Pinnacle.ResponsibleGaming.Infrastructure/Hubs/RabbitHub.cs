@@ -1,5 +1,6 @@
 ﻿using System;
 using EasyNetQ;
+using EasyNetQ.Consumer;
 using EasyNetQ.Loggers;
 using EasyNetQ.Topology;
 
@@ -31,6 +32,11 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Hubs
         public void Publish<T>(T @event) where T : class
         {
             _bus.Advanced.Publish(_exchange, "", false, new Message<T>(@event));
+        }
+
+        public void Consume(Action<IHandlerRegistration> handlers)
+        {
+            _bus.Advanced.Consume(_queue, handlers);
         }
 
         public void Dispose()
