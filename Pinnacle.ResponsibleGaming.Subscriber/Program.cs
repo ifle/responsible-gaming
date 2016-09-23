@@ -34,6 +34,7 @@ namespace Pinnacle.ResponsibleGaming.Subscriber
                             context.SaveChanges();
                             Console.WriteLine("Event processed!");
                         })
+                        .ThrowOnNoMatchingHandler = false
                         );
                     Console.ReadKey();
                 }
