@@ -27,7 +27,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             {
                 currentDepositLimit.Modify(limit);
             }
-            // Create if it is new
+            // Create if it doesn't
             else
             {
                 currentDepositLimit = limit;
