@@ -1,8 +1,6 @@
 ﻿using System;
-using Pinnacle.ResponsibleGaming.Infrastructure.Contexts;
 using Pinnacle.ResponsibleGaming.Events;
 using Pinnacle.ResponsibleGaming.Infrastructure.Hubs;
-using Pinnacle.ResponsibleGaming.Infrastructure.Repositories;
 
 namespace Pinnacle.ResponsibleGaming.Subscriber
 {
@@ -12,9 +10,6 @@ namespace Pinnacle.ResponsibleGaming.Subscriber
         {
             using (var bus = new RabbitHub())
             {
-                using (var context = new MainContext())
-                {
-                    var limitRepository = new LimitRepository(context);
                     Console.WriteLine("Subscriber is listenting...");
                     Console.WriteLine();
                     bus.Consume( x => x
@@ -25,7 +20,6 @@ namespace Pinnacle.ResponsibleGaming.Subscriber
                         .ThrowOnNoMatchingHandler = false
                         );
                     Console.ReadKey();
-                }
             }          
         }
     }
