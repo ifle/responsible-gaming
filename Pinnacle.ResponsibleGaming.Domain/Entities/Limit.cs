@@ -85,7 +85,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
                 Limit = Value,
                 PeriodInDays = PeriodInDays,
                 StartDate = StartDate,
-                EndDate = now.AddDays(1),//TODO: (Cesar) Cooling-off period
+                EndDate = now.AddDays(1),//TODO: (Cesar) Cooling-off period is for now fixed (1 day from the moment the limit gets set)
                 Author = author,
                 ModificationTime = now
             });
