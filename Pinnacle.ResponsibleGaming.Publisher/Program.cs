@@ -10,11 +10,11 @@ namespace Pinnacle.ResponsibleGaming.Publisher
     {
         static void Main(string[] args)
         {
-            using (var context = new MainContext())
+            Console.WriteLine("Publisher is listenting...");
+            Console.WriteLine();
+            while (true)
             {
-                Console.WriteLine("Publisher is listenting...");
-                Console.WriteLine();
-                while (true)
+                using (var context = new MainContext())
                 {
                     using (var rabbitHub = new RabbitHub())
                     {
