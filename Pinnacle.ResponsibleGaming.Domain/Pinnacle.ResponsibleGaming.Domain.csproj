@@ -60,7 +60,6 @@
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Messages\LimitMessages.cs" />
     <Compile Include="Repositories\ILimitRepository.cs" />
-    <Compile Include="Repositories\IEventRepository.cs" />
     <Compile Include="Repositories\ILogRepository.cs" />
     <Compile Include="Rules\LimitRules.cs" />
     <Compile Include="Services\LimitService.cs" />

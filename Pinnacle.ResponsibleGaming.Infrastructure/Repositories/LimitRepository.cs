@@ -23,7 +23,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
 
         public void AddOrUpdate(Limit limit)
         {
-            _context.Limits.AddOrUpdate(limit);
+           _context.Limits.AddOrUpdate(limit);
         }
     }
 }
