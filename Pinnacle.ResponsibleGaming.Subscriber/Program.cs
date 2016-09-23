@@ -8,11 +8,11 @@ namespace Pinnacle.ResponsibleGaming.Subscriber
     {
         static void Main(string[] args)
         {
-            using (var bus = new RabbitHub())
+            using (var rabbitHub = new RabbitHub())
             {
                     Console.WriteLine("Subscriber is listenting...");
                     Console.WriteLine();
-                    bus.Consume( x => x
+                    rabbitHub.Consume( x => x
                         .Add<LimitSet>((message, info) =>
                         {
                            Handler.Handle(message.Body);
