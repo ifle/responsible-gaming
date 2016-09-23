@@ -15,8 +15,7 @@ namespace Pinnacle.ResponsibleGaming.Subscriber
             {
                 var limitRepository = new LimitRepository(context);
                 var @event = limitSet;
-                var limit = limitRepository.Get(@event.CustomerId, (Domain.Entities.LimitType)@event.LimitType).Result;
-                if (limit == null) limit = new Limit();
+                var limit = limitRepository.Get(@event.CustomerId, (Domain.Entities.LimitType)@event.LimitType).Result ?? new Limit();
                 limit.ApplyEvent(@event);
                 context.Limits.AddOrUpdate(limit);
                 context.SaveChanges();
