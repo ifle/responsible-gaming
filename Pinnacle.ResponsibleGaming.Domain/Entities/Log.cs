@@ -1,4 +1,5 @@
 ﻿using System;
+using Pinnacle.ResponsibleGaming.Events;
 
 
 namespace Pinnacle.ResponsibleGaming.Domain.Entities
@@ -25,6 +26,18 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
             EndDate = limit.EndDate;
             Author = limit.Author;
             ModificationTime = limit.ModificationTime;
+        }
+
+        public Log(LimitSet limitSet)
+        {
+            CustomerId = limitSet.CustomerId;
+            LimitType = (LimitType)limitSet.LimitType;
+            Limit = limitSet.Limit;
+            PeriodInDays = limitSet.PeriodInDays;
+            StartDate = limitSet.StartDate;
+            EndDate = limitSet.EndDate;
+            Author = limitSet.Author;
+            ModificationTime = limitSet.ModificationTime;
         }
     }
 }

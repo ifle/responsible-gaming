@@ -25,7 +25,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Hubs
                     .Register<IEasyNetQLogger>(_ => new NullLogger()));
 
             _exchange = _bus.Advanced.ExchangeDeclare("responsible-gaming", ExchangeType.Fanout);
-            _queue = _bus.Advanced.QueueDeclare("responsible-gaming # responsible-gaming");
+            _queue = _bus.Advanced.QueueDeclare("responsible-gaming # cma");
             _bus.Advanced.Bind(_exchange, _queue, string.Empty);
         }
 

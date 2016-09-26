@@ -25,7 +25,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             // Modify if it exists
             if (currentDepositLimit != null)
             {
-                currentDepositLimit.Modify(limit);
+                currentDepositLimit.Modify(limit.Value, limit.PeriodInDays, limit.EndDate, limit.Author);
             }
             // Create if it doesn't
             else
@@ -36,7 +36,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
 
             //Log limit
             var log = new Log(limit);
-            _logRepository.Add(log);
+            //_logRepository.Add(log);
 
             return currentDepositLimit;
         }

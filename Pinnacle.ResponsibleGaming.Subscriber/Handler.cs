@@ -9,15 +9,26 @@ namespace Pinnacle.ResponsibleGaming.Subscriber
 {
     public static class Handler
     {
+        //public static void Handle(LimitSet limitSet)
+        //{
+        //    using (var context = new MainContext())
+        //    {
+        //        var limitRepository = new LimitRepository(context);
+        //        var @event = limitSet;
+        //        var limit = limitRepository.Get(@event.CustomerId, (Domain.Entities.LimitType)@event.LimitType).Result ?? new Limit();
+        //        limit.ApplyEvent(@event);
+        //        limitRepository.AddOrUpdate(limit);
+        //        context.SaveChanges();
+        //        Console.WriteLine("Event processed!");
+        //    }
+        //}
         public static void Handle(LimitSet limitSet)
         {
             using (var context = new MainContext())
             {
-                var limitRepository = new LimitRepository(context);
-                var @event = limitSet;
-                var limit = limitRepository.Get(@event.CustomerId, (Domain.Entities.LimitType)@event.LimitType).Result ?? new Limit();
-                limit.ApplyEvent(@event);
-                context.Limits.AddOrUpdate(limit);
+                var logRepository = new LogRepository(context);
+                var log = new Log(limitSet);
+                logRepository.Add(log);
                 context.SaveChanges();
                 Console.WriteLine("Event processed!");
             }

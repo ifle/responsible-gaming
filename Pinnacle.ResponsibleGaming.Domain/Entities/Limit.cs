@@ -20,10 +20,8 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         public LimitStatus Status => LimitExpressions.IsActive().Compile()(this) ? LimitStatus.Active : LimitStatus.Expired;
         public bool IsRecurring => PeriodInDays.HasValue;
 
+        public Limit() { }
 
-        public Limit()
-        {
-        }
         public Limit(string customerId, LimitType limitType, decimal value, int? periodInDays, DateTime? startDate, DateTime? endDate, string author)
         {
             var now = DateTime.Now;
@@ -41,17 +39,17 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
             });
         }
 
-        public void Modify(Limit limit)
+        public void Modify(decimal value, int? periodInDays, DateTime? endDate, string author)
         {
             // Apply common business rules
             //TODO: (Cesar) Check that the new limit is different
             //TODO: (Cesar) Check that CustomerId and StartDate have not changed. These are inmutable. 
-            if (!LimitRules.NewLAmountMustBeMoreRestrictiveThanTheCurrentOne(limit.Value, Value)) { throw new ConflictException(LimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
-            if (!LimitRules.PeriodAndAmountCannotBeChangedAtOnce(limit.Value, Value, limit.PeriodInDays, PeriodInDays)) { throw new ConflictException(LimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }
-            if (!LimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(limit.PeriodInDays, PeriodInDays)) { throw new ConflictException(LimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
+            if (!LimitRules.NewLAmountMustBeMoreRestrictiveThanTheCurrentOne(value, Value)) { throw new ConflictException(LimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
+            if (!LimitRules.PeriodAndAmountCannotBeChangedAtOnce(value, Value, periodInDays, PeriodInDays)) { throw new ConflictException(LimitMessages.PeriodAndLimitCannotBeChangedAtOnce); }
+            if (!LimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(periodInDays, PeriodInDays)) { throw new ConflictException(LimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
 
             // Apply specific business rules for each limit type
-            switch (limit.LimitType)
+            switch (LimitType)
             {
                 case LimitType.DepositLimit:
                     //TODO: (Cesar)
@@ -64,14 +62,14 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
             // Apply event
             ApplyEvent(new LimitSet
             {
-                CustomerId = limit.CustomerId,
-                LimitType = (Events.LimitType)limit.LimitType,
-                Limit = limit.Value,
-                PeriodInDays = limit.PeriodInDays,
-                StartDate = limit.StartDate,
-                EndDate = limit.EndDate,
-                Author = limit.Author,
-                ModificationTime = limit.ModificationTime
+                CustomerId = CustomerId,
+                LimitType = (Events.LimitType)LimitType,
+                Limit = value,
+                PeriodInDays = periodInDays,
+                StartDate = StartDate,
+                EndDate = endDate,
+                Author = author,
+                ModificationTime = DateTime.Now
             });
         }
         public void Disable(string author)
