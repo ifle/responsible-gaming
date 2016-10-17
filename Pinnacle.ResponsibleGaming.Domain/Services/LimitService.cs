@@ -20,7 +20,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
         public async Task<Limit> Set(Limit limit)
         {
             // Retrieve current limit
-            var currentDepositLimit = await Get(limit.CustomerId, limit.LimitType);
+            var currentDepositLimit = await _limitRepository.Get(limit.CustomerId, limit.LimitType);
 
             // Modify if it exists
             if (currentDepositLimit != null)
@@ -55,16 +55,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             //Log limit
             var log = new Log(limit);
             _logRepository.Add(log);
-
-            return limit;
-        }
-        public async Task<Limit> Get(string customerId, LimitType limitType)
-        {
-            // Throw NotFound if customer doesn't exist
-            if (false) throw new NotFoundException(LimitMessages.CustomerNotFound);
-
-            // Retrieve limit
-            var limit = await _limitRepository.Get(customerId, limitType);
 
             return limit;
         }
