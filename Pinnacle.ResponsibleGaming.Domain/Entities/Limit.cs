@@ -43,7 +43,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         {
             // Apply common business rules
             //TODO: (Cesar) Check that the new limit is different
-            //TODO: (Cesar) Check that CustomerId and StartDate have not changed. These are inmutable. 
             if (!LimitRules.NewLAmountMustBeMoreRestrictiveThanTheCurrentOne(value, Value)) { throw new ConflictException(LimitMessages.LimitMustBeMoreRestrictiveThanTheCurrentOne); }
             if (!LimitRules.PeriodAndAmountCannotBeChangedAtOnce(value, Value, periodInDays, PeriodInDays)) { throw new ConflictException(LimitMessages.PeriodAndLimitCannotBeChangedAtTheSameTime); }
             if (!LimitRules.NewPeriodMustBeMoreRestrictiveThanTheCurrentOne(periodInDays, PeriodInDays)) { throw new ConflictException(LimitMessages.PeriodMustBeMoreRestrictiveThanTheCurrentOne); }
