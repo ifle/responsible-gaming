@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Pinnacle.ResponsibleGaming.Events</id>
+    <id>Pinnacle.ResponsibleGaming.ApiClient</id>
     <version>1.0.0</version>
-    <title>Pinnacle.ResponsibleGaming.Events</title>
+    <title>Pinnacle.ResponsibleGaming.ApiClient</title>
     <authors>cesarc</authors>
     <owners></owners>
     <description>
@@ -15,17 +15,16 @@
       A short description of the package. If specified, this shows up in the middle pane of the Add Package Dialog. If not specified, a truncated version of the description is used instead.
     </summary>
     <language>en-US</language>
-    <projectUrl>https://nuget.org/packages/Pinnacle.ResponsibleGaming.Events.NuGet</projectUrl>
+    <projectUrl>https://nuget.org/packages/Pinnacle.ResponsibleGaming.ApiClient.NuGet</projectUrl>
     <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
     <copyright>Copyright  2016</copyright>
-    <dependencies>
-        <group targetFramework="net452">
-          <!--<dependency id="log4net" version="1.2.10" />-->
-          <dependency id="Newtonsoft.Json" version="9.0.1" />
+    <!--<dependencies>
+        <group targetFramework="net40">
+          <dependency id="log4net" version="1.2.10" />
         </group>
-    </dependencies>
+    </dependencies>-->
     <references></references>
     <tags></tags>
   </metadata>

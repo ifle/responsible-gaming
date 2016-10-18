@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.Events.NuGet", "Pinnacle.ResponsibleGaming.Events.NuGet\Pinnacle.ResponsibleGaming.Events.NuGet.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.ApiClient.NuGet", "Pinnacle.ResponsibleGaming.ApiClient.NuGet\Pinnacle.ResponsibleGaming.ApiClient.NuGet.csproj", "{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -115,6 +117,12 @@ Global
 		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Integration|Any CPU.Build.0 = Release|Any CPU
 		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}.Integration|Any CPU.ActiveCfg = Release|Any CPU
+		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}.Integration|Any CPU.Build.0 = Release|Any CPU
+		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,5 +139,6 @@ Global
 		{C40BD9B2-3AB4-4730-AC3C-A6CB326CA40F} = {997D3268-F37A-453D-8983-AA1510A79284}
 		{5CA666EB-7EEF-4A0F-B7F3-649D9B46CB82} = {9F6AD698-5DC6-474B-873D-70BED044629C}
 		{0451BAEF-DF2E-4B98-8644-94EE9415E389} = {65362678-0DDF-48E3-ACF0-4C9AFB007247}
+		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B} = {997D3268-F37A-453D-8983-AA1510A79284}
 	EndGlobalSection
 EndGlobal
