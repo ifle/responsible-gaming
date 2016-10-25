@@ -94,7 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
-    <Compile Include="OrleansHostWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +105,10 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
+      <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Grains\Pinnacle.ResponsibleGaming.Grains.csproj">
       <Project>{0a5da439-fb8d-47f8-af1d-15f346a4e577}</Project>
       <Name>Pinnacle.ResponsibleGaming.Grains</Name>

@@ -1,16 +1,18 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Orleans;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
-using Pinnacle.ResponsibleGaming.Domain.Repositories;
 using Pinnacle.ResponsibleGaming.IGrains;
 
 namespace Pinnacle.ResponsibleGaming.Grains
 {
     public class LogGrain : Grain, ILogGrain
     {
+        private List<Log> _log = new List<Log>();
         public Task Add(Log log)
         {
-            throw new System.NotImplementedException();
+            _log.Add(log);
+            return TaskDone.Done;
         }
     }
 }

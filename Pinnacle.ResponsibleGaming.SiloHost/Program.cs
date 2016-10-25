@@ -1,8 +1,7 @@
 using System;
-using System.Threading.Tasks;
-
 using Orleans;
-using Orleans.Runtime.Configuration;
+using Pinnacle.ResponsibleGaming.Domain.Entities;
+using Pinnacle.ResponsibleGaming.IGrains;
 
 namespace Pinnacle.ResponsibleGaming.SiloHost
 {
@@ -11,49 +10,68 @@ namespace Pinnacle.ResponsibleGaming.SiloHost
     /// </summary>
     public class Program
     {
+        static Orleans.Runtime.Host.SiloHost _siloHost;
+
         static void Main(string[] args)
         {
-            // The Orleans silo environment is initialized in its own app domain in order to more
-            // closely emulate the distributed situation, when the client and the server cannot
-            // pass data via shared memory.
-            AppDomain hostDomain = AppDomain.CreateDomain("OrleansHost", null, new AppDomainSetup
-            {
-                AppDomainInitializer = InitSilo,
-                AppDomainInitializerArguments = args,
-            });
+            // Orleans should run in its own AppDomain, we set it up like this
+            AppDomain hostDomain = AppDomain.CreateDomain("OrleansHost", null,
+                new AppDomainSetup()
+                {
+                    AppDomainInitializer = InitSilo
+                });
 
-            var config = ClientConfiguration.LocalhostSilo();
-            GrainClient.Initialize(config);
+            DoSomeClientWork();
 
-            // TODO: once the previous call returns, the silo is up and running.
-            //       This is the place your custom logic, for example calling client logic
-            //       or initializing an HTTP front end for accepting incoming requests.
 
             Console.WriteLine("Orleans Silo is running.\nPress Enter to terminate...");
             Console.ReadLine();
 
+            // We do a clean shutdown in the other AppDomain
             hostDomain.DoCallBack(ShutdownSilo);
         }
 
+        static void DoSomeClientWork()
+        {
+            // Orleans comes with a rich XML and programmatic configuration. Here we're just going to set up with basic programmatic config
+            var config = Orleans.Runtime.Configuration.ClientConfiguration.LocalhostSilo(30000);
+            GrainClient.Initialize(config);
+
+            var limit = new Limit
+            {
+                CustomerId =  "cesarc",
+                LimitType =    LimitType.DepositLimit
+            };
+            var limitGrain = GrainClient.GrainFactory.GetGrain<ILimitGrain>(limit.CustomerId);
+            limitGrain.AddOrUpdate(limit);
+            var result = limitGrain.Get(limit.CustomerId, limit.LimitType).Result;
+            Console.WriteLine(result);
+
+        }
+
+
+
         static void InitSilo(string[] args)
         {
-            hostWrapper = new OrleansHostWrapper(args);
+            _siloHost = new Orleans.Runtime.Host.SiloHost(System.Net.Dns.GetHostName());
+            // The Cluster config is quirky and weird to configure in code, so we're going to use a config file
+            _siloHost.ConfigFileName = "OrleansConfiguration.xml";
 
-            if (!hostWrapper.Run())
-            {
-                Console.Error.WriteLine("Failed to initialize Orleans silo");
-            }
+            _siloHost.InitializeOrleansSilo();
+            var startedok = _siloHost.StartOrleansSilo();
+            if (!startedok)
+                throw new SystemException(String.Format("Failed to start Orleans silo '{0}' as a {1} node", _siloHost.Name, _siloHost.Type));
+
         }
 
         static void ShutdownSilo()
         {
-            if (hostWrapper != null)
+            if (_siloHost != null)
             {
-                hostWrapper.Dispose();
-                GC.SuppressFinalize(hostWrapper);
+                _siloHost.Dispose();
+                GC.SuppressFinalize(_siloHost);
+                _siloHost = null;
             }
         }
-
-        private static OrleansHostWrapper hostWrapper;
     }
 }
