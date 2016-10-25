@@ -47,7 +47,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Grain1.cs" />
+    <Compile Include="LimitGrain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\orleans.codegen.cs" />
   </ItemGroup>
@@ -55,6 +55,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Pinnacle.ResponsibleGaming.Domain\Pinnacle.ResponsibleGaming.Domain.csproj">
+      <Project>{6223c61d-7f87-4c3d-bca6-696bb31a5ca7}</Project>
+      <Name>Pinnacle.ResponsibleGaming.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pinnacle.ResponsibleGaming.IGrains\Pinnacle.ResponsibleGaming.IGrains.csproj">
       <Project>{1ef37254-13ea-498d-ba34-271c95daf0cd}</Project>
       <Name>Pinnacle.ResponsibleGaming.IGrains</Name>
