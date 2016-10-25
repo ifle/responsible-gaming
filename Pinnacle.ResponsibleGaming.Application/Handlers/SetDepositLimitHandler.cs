@@ -22,7 +22,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         public async Task Handle(SetDepositLimit setDepositLimit)
         {
             //Set deposit limit
-            await _limitService.Set(setDepositLimit.ToLimit());
+            await _limitService.SetLimit(setDepositLimit.ToLimit());
 
             //Save changes
             await _context.SaveChangesAsync();

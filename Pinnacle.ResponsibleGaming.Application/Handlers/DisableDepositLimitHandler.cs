@@ -24,7 +24,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         public async Task Handle(DisableDepositLimit disableDepositLimit)
         {
             //Disable deposit limit
-            await _limitService.Disable(disableDepositLimit.CustomerId, LimitType.DepositLimit, disableDepositLimit.Author);
+            await _limitService.DisableLimit(disableDepositLimit.CustomerId, LimitType.DepositLimit, disableDepositLimit.Author);
 
             //Save changes
             await _context.SaveChangesAsync();

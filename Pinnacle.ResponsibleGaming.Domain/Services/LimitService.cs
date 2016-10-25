@@ -17,7 +17,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             _logRepository = logRepository;
         }
 
-        public async Task<Limit> Set(Limit limit)
+        public async Task<Limit> SetLimit(Limit limit)
         {
             // Retrieve current limit
             var currentDepositLimit = await _limitRepository.Get(limit.CustomerId, limit.LimitType);
@@ -40,7 +40,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
 
             return currentDepositLimit;
         }
-        public async Task<Limit> Disable(string customerId, LimitType limitType, string author)
+        public async Task<Limit> DisableLimit(string customerId, LimitType limitType, string author)
         {
             // Retrieve current limit
             var limit = await _limitRepository.Get(customerId, limitType);
