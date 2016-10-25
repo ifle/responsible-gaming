@@ -41,6 +41,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.ApiClient.NuGet", "Pinnacle.ResponsibleGaming.ApiClient.NuGet\Pinnacle.ResponsibleGaming.ApiClient.NuGet.csproj", "{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.Grains", "Pinnacle.ResponsibleGaming.Grains\Pinnacle.ResponsibleGaming.Grains.csproj", "{0A5DA439-FB8D-47F8-AF1D-15F346A4E577}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.IGrains", "Pinnacle.ResponsibleGaming.IGrains\Pinnacle.ResponsibleGaming.IGrains.csproj", "{1EF37254-13EA-498D-BA34-271C95DAF0CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "8.- Orleans", "8.- Orleans", "{BDDBC8CB-3882-4F65-B7A7-4532D5CEAAAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinnacle.ResponsibleGaming.SiloHost", "Pinnacle.ResponsibleGaming.SiloHost\Pinnacle.ResponsibleGaming.SiloHost.csproj", "{412E3A1D-4400-41EF-BE07-053F8816F3D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +131,24 @@ Global
 		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}.Integration|Any CPU.Build.0 = Release|Any CPU
 		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A5DA439-FB8D-47F8-AF1D-15F346A4E577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A5DA439-FB8D-47F8-AF1D-15F346A4E577}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A5DA439-FB8D-47F8-AF1D-15F346A4E577}.Integration|Any CPU.ActiveCfg = Release|Any CPU
+		{0A5DA439-FB8D-47F8-AF1D-15F346A4E577}.Integration|Any CPU.Build.0 = Release|Any CPU
+		{0A5DA439-FB8D-47F8-AF1D-15F346A4E577}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A5DA439-FB8D-47F8-AF1D-15F346A4E577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EF37254-13EA-498D-BA34-271C95DAF0CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EF37254-13EA-498D-BA34-271C95DAF0CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EF37254-13EA-498D-BA34-271C95DAF0CD}.Integration|Any CPU.ActiveCfg = Release|Any CPU
+		{1EF37254-13EA-498D-BA34-271C95DAF0CD}.Integration|Any CPU.Build.0 = Release|Any CPU
+		{1EF37254-13EA-498D-BA34-271C95DAF0CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EF37254-13EA-498D-BA34-271C95DAF0CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{412E3A1D-4400-41EF-BE07-053F8816F3D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{412E3A1D-4400-41EF-BE07-053F8816F3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{412E3A1D-4400-41EF-BE07-053F8816F3D9}.Integration|Any CPU.ActiveCfg = Release|Any CPU
+		{412E3A1D-4400-41EF-BE07-053F8816F3D9}.Integration|Any CPU.Build.0 = Release|Any CPU
+		{412E3A1D-4400-41EF-BE07-053F8816F3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{412E3A1D-4400-41EF-BE07-053F8816F3D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,5 +166,8 @@ Global
 		{5CA666EB-7EEF-4A0F-B7F3-649D9B46CB82} = {9F6AD698-5DC6-474B-873D-70BED044629C}
 		{0451BAEF-DF2E-4B98-8644-94EE9415E389} = {65362678-0DDF-48E3-ACF0-4C9AFB007247}
 		{E813EA3B-8305-4B2E-9F4C-7AE91BC8070B} = {997D3268-F37A-453D-8983-AA1510A79284}
+		{0A5DA439-FB8D-47F8-AF1D-15F346A4E577} = {BDDBC8CB-3882-4F65-B7A7-4532D5CEAAAD}
+		{1EF37254-13EA-498D-BA34-271C95DAF0CD} = {BDDBC8CB-3882-4F65-B7A7-4532D5CEAAAD}
+		{412E3A1D-4400-41EF-BE07-053F8816F3D9} = {BDDBC8CB-3882-4F65-B7A7-4532D5CEAAAD}
 	EndGlobalSection
 EndGlobal
