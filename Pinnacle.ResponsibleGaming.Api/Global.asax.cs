@@ -11,6 +11,7 @@ namespace Pinnacle.ResponsibleGaming.Api
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FluentValidationModelValidatorProvider.Configure(GlobalConfiguration.Configuration);
             UnityConfig.RegisterComponents();
+            OrleansConfig.InitializeGrainClient();
             XmlConfigurator.Configure();
         }
     }

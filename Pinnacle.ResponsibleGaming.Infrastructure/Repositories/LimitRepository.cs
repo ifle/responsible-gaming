@@ -21,9 +21,10 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
             return await _context.Limits.FirstOrDefaultAsync(LimitExpressions.IsActive(customerId, limitType));
         }
 
-        public void AddOrUpdate(Limit limit)
+        public Task AddOrUpdate(Limit limit)
         {
            _context.Limits.AddOrUpdate(limit);
+            return Task.FromResult(0);
         }
     }
 }
