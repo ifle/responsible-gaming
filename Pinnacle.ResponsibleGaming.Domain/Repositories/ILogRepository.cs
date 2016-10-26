@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Pinnacle.ResponsibleGaming.Domain.Entities;
+﻿using Pinnacle.ResponsibleGaming.Domain.Entities;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Repositories
 {
