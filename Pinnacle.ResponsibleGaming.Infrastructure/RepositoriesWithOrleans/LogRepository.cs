@@ -9,13 +9,13 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.RepositoriesWithOrleans
 {
     public class LogRepository : ILogRepository
     {
-        public async Task<List<Log>> GetAllLogs()
+        public async Task<List<Log>> GetLog()
         {
             var logGrain = GrainClient.GrainFactory.GetGrain<ILogGrain>(0);
             return await logGrain.Get();
         }
 
-        public async Task<List<Log>> GetCustomerLogs(string customerId)
+        public async Task<List<Log>> GetCustomerLog(string customerId)
         {
             var customerLogGrain = GrainClient.GrainFactory.GetGrain<ICustomerLogGrain>(customerId);
             return await customerLogGrain.Get();

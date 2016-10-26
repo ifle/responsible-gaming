@@ -16,12 +16,12 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<List<Log>> GetAllLogs()
+        public async Task<List<Log>> GetLog()
         {
             return await _context.Logs.ToListAsync();
         }
 
-        public Task<List<Log>> GetCustomerLogs(string customerId)
+        public Task<List<Log>> GetCustomerLog(string customerId)
         {
             throw new System.NotImplementedException();
         }
