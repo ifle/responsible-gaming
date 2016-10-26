@@ -12,13 +12,24 @@ namespace Pinnacle.ResponsibleGaming.Grains
         public Task<Limit> Get(LimitType limitType)
         {
             Limit limit;
-            _limits.TryGetValue(limitType.ToString(), out limit);
+            var key = limitType.ToString();
+            _limits.TryGetValue(key, out limit);
             return Task.FromResult(limit);
         }
 
         public Task AddOrUpdate(Limit limit)
         {
-            _limits.Add(limit.LimitType.ToString(), limit);
+            var key = limit.LimitType.ToString();
+
+            if (_limits.ContainsKey(key))
+            {
+                _limits[key] = limit;
+            }
+            else
+            {
+                _limits.Add(key,limit);
+            }
+
             return TaskDone.Done;
         }
     }
