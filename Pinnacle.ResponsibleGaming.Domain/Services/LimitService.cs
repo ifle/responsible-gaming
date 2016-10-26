@@ -50,11 +50,11 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
 
             // Disable limit
             limit.Disable(author);
-            _limitRepository.AddOrUpdate(limit);
+            await _limitRepository.AddOrUpdate(limit);
 
             //Log limit
             var log = new Log(limit);
-            _logRepository.Add(log);
+            await _logRepository.Add(log);
 
             return limit;
         }
