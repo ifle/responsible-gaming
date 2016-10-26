@@ -5,10 +5,13 @@ using Pinnacle.ResponsibleGaming.Domain.Entities;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
 {
-    public class LogConfiguration : EntityTypeConfiguration<Log>
+    public class LogConfiguration : EntityTypeConfiguration<LogEntry>
     {
         public LogConfiguration()
         {
+            //Table
+            ToTable("Log");
+
             //Key
             HasKey(x => x.LogId);
 

@@ -15,7 +15,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Contexts
         private ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public DbSet<Limit> Limits { get; set; }
-        public DbSet<Log> Logs { get; set; }
+        public DbSet<LogEntry> Log { get; set; }
         public DbSet<Event> Events { get; set; }
 
 

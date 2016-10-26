@@ -6,9 +6,9 @@ using Pinnacle.ResponsibleGaming.IGrains;
 
 namespace Pinnacle.ResponsibleGaming.Grains
 {
-    public class LimitGrain : Grain, ILimitGrain
+    public class CustomerLimitsGrain : Grain, ICustomerLimitsGrain
     {
-        private Dictionary<string, Limit> _limits = new Dictionary<string, Limit>();
+        private readonly Dictionary<string, Limit> _limits = new Dictionary<string, Limit>();
         public Task<Limit> Get(LimitType limitType)
         {
             return Task.FromResult(_limits[limitType.ToString()]);

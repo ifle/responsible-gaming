@@ -4,7 +4,7 @@ using Pinnacle.ResponsibleGaming.Domain.Entities;
 
 namespace Pinnacle.ResponsibleGaming.IGrains
 {
-	public interface ILimitGrain : IGrainWithStringKey
+	public interface ICustomerLimitsGrain : IGrainWithStringKey
     {
         Task<Limit> Get(LimitType limitType);
         Task AddOrUpdate(Limit limit);

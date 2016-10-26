@@ -14,8 +14,8 @@ namespace Pinnacle.ResponsibleGaming.Subscriber
             using (var context = new MainContext())
             {
                 var logRepository = new LogRepository(context);
-                var log = new Log(limitSet);
-                logRepository.Add(log);
+                var logEntry = new LogEntry(limitSet);
+                logRepository.Add(logEntry);
                 context.SaveChanges();
                 Console.WriteLine("Event processed!");
             }

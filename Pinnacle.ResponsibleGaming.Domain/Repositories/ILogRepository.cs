@@ -5,6 +5,6 @@ namespace Pinnacle.ResponsibleGaming.Domain.Repositories
 {
     public interface ILogRepository
     {
-        Task Add(Log log);
+        Task Add(LogEntry logEntry);
     }
 }

@@ -14,9 +14,9 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
             _context = context;
         }
 
-        public Task Add(Log log)
+        public Task Add(LogEntry logEntry)
         {
-            _context.Logs.Add(log);
+            _context.Log.Add(logEntry);
             return  Task.FromResult(0);
         }
     }
