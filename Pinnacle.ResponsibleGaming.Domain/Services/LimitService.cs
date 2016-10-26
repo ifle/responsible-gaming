@@ -36,7 +36,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
 
             //Log limit
             var log = new Log(limit);
-            //_logRepository.Add(log);
+            await _logRepository.Add(log);
 
             return currentDepositLimit;
         }

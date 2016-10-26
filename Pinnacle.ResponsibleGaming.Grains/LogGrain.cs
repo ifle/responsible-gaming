@@ -17,7 +17,7 @@ namespace Pinnacle.ResponsibleGaming.Grains
         public async Task Add(Log log)
         {
             _log.Add(log);
-            var customerLogGrain = GrainClient.GrainFactory.GetGrain<ICustomerLogGrain>(log.CustomerId);
+            var customerLogGrain = GrainFactory.GetGrain<ICustomerLogGrain>(log.CustomerId);
             await customerLogGrain.Add(log);
         }
     }
