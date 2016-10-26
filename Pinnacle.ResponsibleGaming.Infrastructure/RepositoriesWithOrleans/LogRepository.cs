@@ -8,10 +8,10 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.RepositoriesWithOrleans
 {
     public class LogRepository : ILogRepository
     {
-        public Task Add(LogEntry logEntry)
+        public Task Add(Log log)
         {
            var logGrain = GrainClient.GrainFactory.GetGrain<ILogGrain>(0);
-           return logGrain.Add(logEntry);
+           return logGrain.Add(log);
         }
     }
 }

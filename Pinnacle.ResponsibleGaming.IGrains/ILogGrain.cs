@@ -7,7 +7,7 @@ namespace Pinnacle.ResponsibleGaming.IGrains
 {
 	public interface ILogGrain : IGrainWithIntegerKey
     {
-        Task<List<LogEntry>> Get();
-        Task Add(LogEntry logEntry);
+        Task<List<Log>> Get();
+        Task Add(Log log);
     }
 }

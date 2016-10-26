@@ -8,15 +8,15 @@ namespace Pinnacle.ResponsibleGaming.Grains
 {
     public class LogGrain : Grain, ILogGrain
     {
-        private readonly List<LogEntry> _log = new List<LogEntry>();
-        public Task<List<LogEntry>> Get()
+        private readonly List<Log> _log = new List<Log>();
+        public Task<List<Log>> Get()
         {
            return Task.FromResult(_log);
         }
 
-        public Task Add(LogEntry logEntry)
+        public Task Add(Log log)
         {
-            _log.Add(logEntry);
+            _log.Add(log);
             return TaskDone.Done;
         }
     }

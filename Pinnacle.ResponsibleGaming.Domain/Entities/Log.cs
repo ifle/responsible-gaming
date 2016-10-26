@@ -4,7 +4,7 @@ using Pinnacle.ResponsibleGaming.Events;
 
 namespace Pinnacle.ResponsibleGaming.Domain.Entities
 {
-    public class LogEntry
+    public class Log
     {
         public int LogId { get; set; }
         public string CustomerId { get; set; }
@@ -16,7 +16,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         public string Author { get; set; }
         public DateTime ModificationTime { get; set; }
 
-        public LogEntry(Limit limit)
+        public Log(Limit limit)
         {
             CustomerId = limit.CustomerId;
             LimitType = limit.LimitType;
@@ -28,7 +28,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
             ModificationTime = limit.ModificationTime;
         }
 
-        public LogEntry(LimitSet limitSet)
+        public Log(LimitSet limitSet)
         {
             CustomerId = limitSet.CustomerId;
             LimitType = (LimitType)limitSet.LimitType;

@@ -1,17 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
 
 namespace Pinnacle.ResponsibleGaming.Infrastructure.Configurations
 {
-    public class LogConfiguration : EntityTypeConfiguration<LogEntry>
+    public class LogConfiguration : EntityTypeConfiguration<Log>
     {
         public LogConfiguration()
         {
-            //Table
-            ToTable("Log");
-
             //Key
             HasKey(x => x.LogId);
 
