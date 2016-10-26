@@ -44,7 +44,7 @@ namespace Pinnacle.ResponsibleGaming.SiloHost
             };
             var limitGrain = GrainClient.GrainFactory.GetGrain<ILimitGrain>(limit.CustomerId);
             limitGrain.AddOrUpdate(limit);
-            var result = limitGrain.Get(limit.CustomerId, limit.LimitType).Result;
+            var result = limitGrain.Get(limit.LimitType).Result;
             Console.WriteLine(result);
 
         }
