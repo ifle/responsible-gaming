@@ -11,7 +11,9 @@ namespace Pinnacle.ResponsibleGaming.Grains
         private readonly Dictionary<string, Limit> _limits = new Dictionary<string, Limit>();
         public Task<Limit> Get(LimitType limitType)
         {
-            return Task.FromResult(_limits[limitType.ToString()]);
+            Limit limit;
+            _limits.TryGetValue(limitType.ToString(), out limit);
+            return Task.FromResult(limit);
         }
 
         public Task AddOrUpdate(Limit limit)
