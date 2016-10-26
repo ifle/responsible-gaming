@@ -32,7 +32,7 @@ namespace Pinnacle.ResponsibleGaming.Domain.Services
             {
                 currentDepositLimit = limit;
             }
-            _limitRepository.AddOrUpdate(currentDepositLimit);
+            await _limitRepository.AddOrUpdate(currentDepositLimit);
 
             //Log limit
             var log = new Log(limit);
