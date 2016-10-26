@@ -16,7 +16,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task<Limit> Get(string customerId, LimitType limitType)
+        public async Task<Limit> GetCustomerLimitByLimitType(string customerId, LimitType limitType)
         {
             return await _context.Limits.FirstOrDefaultAsync(LimitExpressions.IsActive(customerId, limitType));
         }

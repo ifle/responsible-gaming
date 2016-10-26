@@ -47,6 +47,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICustomerLogGrain.cs" />
     <Compile Include="ILogGrain.cs" />
     <Compile Include="ICustomerLimitsGrain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

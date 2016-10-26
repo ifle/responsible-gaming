@@ -8,7 +8,7 @@ namespace Pinnacle.ResponsibleGaming.Infrastructure.RepositoriesWithOrleans
 {
     public class LimitRepository : ILimitRepository
     {
-        public  Task<Limit> Get(string customerId, LimitType limitType)
+        public  Task<Limit> GetCustomerLimitByLimitType(string customerId, LimitType limitType)
         {
             var limitGrain = GrainClient.GrainFactory.GetGrain<ICustomerLimitsGrain>(customerId);
             return limitGrain.Get(limitType);

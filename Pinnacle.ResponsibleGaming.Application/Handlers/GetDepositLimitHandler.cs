@@ -18,7 +18,7 @@ namespace Pinnacle.ResponsibleGaming.Application.Handlers
         public async Task<GetDepositLimitResponse> Handle(GetDepositLimit getDepositLimit)
         {
             // Retrieve limit
-            var limit = await _limitRepository.Get(getDepositLimit.CustomerId, LimitType.DepositLimit);
+            var limit = await _limitRepository.GetCustomerLimitByLimitType(getDepositLimit.CustomerId, LimitType.DepositLimit);
 
             // Return null if it doesn't exist
             if (limit == null) return null;
