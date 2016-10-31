@@ -1,4 +1,5 @@
 ﻿using System;
+using Pinnacle.ResponsibleGaming.Domain.Builders;
 using Pinnacle.ResponsibleGaming.Domain.Expressions;
 using Pinnacle.ResponsibleGaming.Domain.Messages;
 using Pinnacle.ResponsibleGaming.Domain.Rules;
@@ -26,17 +27,17 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         {
             var now = DateTime.Now;
 
-            ApplyEvent(new LimitSet
-            {
-                CustomerId = customerId,
-                LimitType = (Events.LimitType)limitType,
-                Limit = value,
-                PeriodInDays = periodInDays,
-                StartDate = startDate ?? now,
-                EndDate = endDate,
-                Author = author,
-                ModificationTime = now
-            });
+            CustomerId = customerId;
+            LimitType = limitType;
+            Value = value;
+            PeriodInDays = periodInDays;
+            StartDate = startDate ?? now;
+            EndDate = endDate;
+            Author = author;
+            ModificationTime = now;
+
+            // Add event
+            AddEvent(new LimitSet().Build(this));
         }
 
         public void Modify(decimal value, int? periodInDays, DateTime? endDate, string author)
@@ -58,48 +59,24 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
                     break;
             }
 
-            // Apply event
-            ApplyEvent(new LimitSet
-            {
-                CustomerId = CustomerId,
-                LimitType = (Events.LimitType)LimitType,
-                Limit = value,
-                PeriodInDays = periodInDays,
-                StartDate = StartDate,
-                EndDate = endDate,
-                Author = author,
-                ModificationTime = DateTime.Now
-            });
+            // Modify limit
+            Value = value;
+            PeriodInDays = periodInDays;
+            EndDate = endDate;
+            Author = author;
+            ModificationTime = DateTime.Now;
+
+            // Add event
+            AddEvent(new LimitSet().Build(this));
         }
         public void Disable(string author)
         {
             var now = DateTime.Now;
+            EndDate = now.AddDays(1); // Cooling-off period
+            Author = author;
 
-            ApplyEvent(new LimitSet
-            {
-                CustomerId = CustomerId,
-                LimitType = (Events.LimitType)LimitType,
-                Limit = Value,
-                PeriodInDays = PeriodInDays,
-                StartDate = StartDate,
-                EndDate = now.AddDays(1),//TODO: (Cesar) Cooling-off period is for now fixed (1 day from the moment the limit gets set)
-                Author = author,
-                ModificationTime = now
-            });
-        }
-
-        public void ApplyEvent(LimitSet limitSet)
-        {
-            Events.Add(new Event(limitSet));
-
-            CustomerId = limitSet.CustomerId;
-            LimitType = (LimitType) limitSet.LimitType;
-            Value = limitSet.Limit;
-            PeriodInDays = limitSet.PeriodInDays;
-            StartDate = limitSet.StartDate;
-            EndDate = limitSet.EndDate;
-            Author = limitSet.Author;
-            ModificationTime = limitSet.ModificationTime;
+            // Add event
+            AddEvent(new LimitSet().Build(this));
         }
     }
 }

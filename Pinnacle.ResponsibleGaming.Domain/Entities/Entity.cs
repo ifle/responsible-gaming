@@ -11,5 +11,10 @@ namespace Pinnacle.ResponsibleGaming.Domain.Entities
         {
             Events = new List<Event>();
         }
+
+        public void AddEvent (object @event)
+        {
+            Events.Add(new Event(@event));
+        }
     }
 }

@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\LimitBuilders.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\Limit.cs" />
