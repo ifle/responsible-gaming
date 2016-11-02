@@ -1,10 +1,9 @@
 ﻿using System;
 using Pinnacle.ResponsibleGaming.Domain.Entities;
-using WebApi.Hal;
 
 namespace Pinnacle.ResponsibleGaming.Application.Responses
 {
-    public class GetDepositLimitResponse: Representation
+    public class GetDepositLimitResponse
     {
         public decimal Amount { get; set; }
         public int? PeriodInDays { get; set; }

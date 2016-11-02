@@ -70,10 +70,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebApi.Hal, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebApi.Hal.2.6.0\lib\net45\WebApi.Hal.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Handlers\DisableDepositLimitHandler.cs" />
