@@ -4,7 +4,6 @@ using System.Web.Http;
 using Pinnacle.ResponsibleGaming.Application.Requests;
 using Pinnacle.ResponsibleGaming.Application.Handlers;
 using Pinnacle.ResponsibleGaming.Api.Constants;
-using Pinnacle.ResponsibleGaming.Api.Links;
 using Pinnacle.ResponsibleGaming.Api._Framework;
 using Swashbuckle.Swagger.Annotations;
 
@@ -40,9 +39,6 @@ namespace Pinnacle.ResponsibleGaming.Api.Controllers
 
             // Return NotFound if it doesn't exist
             if (response == null) return NotFound();
-
-            // Add HAL links
-            response.Links.Add(DepositLimitLinks.Get.CreateLink(new {customerId}));
 
             // Return response
             return Ok(response);
